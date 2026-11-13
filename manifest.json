@@ -1,0 +1,20 @@
+{
+  "name": "FLAME SMM",
+  "short_name": "FLAME SMM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e73ff",
+  "icons": [
+    {
+      "src": "/logo-20.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-20.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

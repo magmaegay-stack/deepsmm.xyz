@@ -1,0 +1,284 @@
+{% if settings['register_page']  ==  2 %} 
+{% include 'header.twig' %}
+<script src="https://accounts.google.com/gsi/client" async></script>
+
+
+<style>
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Card */
+.lud .card{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Span Tag */
+.footer span{
+ font-family:'Nunito', sans-serif;
+}
+/* Button */
+.input-group .input-group-append a{
+ top:-15px;
+ height:48px;
+}
+
+.social-media-marquee {
+    width: 100%;
+    overflow-x: auto; /* Enables user scroll */
+    overflow-y: hidden; /* Hides vertical scroll */
+    position: relative;
+    padding: 15px 0;
+    background: #fff;
+    display: flex;
+    gap: 20px;
+    cursor: grab; /* Visual cue for scroll interaction */
+}
+
+/* Hide scrollbar for all browsers */
+.social-media-marquee::-webkit-scrollbar {
+    width: 0; /* Hides scrollbar in Webkit browsers (Chrome, Safari, etc.) */
+    height: 0; /* Ensures no horizontal scrollbar for mobile/tablet */
+}
+
+.social-media-marquee::-moz-scrollbar {
+    display: none; /* Firefox */
+}
+
+.social-media-marquee {
+    -ms-overflow-style: none;  /* Internet Explorer and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.social-media-marquee ul {
+    display: flex;
+    gap: 20px;
+    animation: scrollHorizontal 30s linear infinite; /* Automatic scroll */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.social-media-marquee ul li {
+    display: inline-block;
+    text-align: center;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Nunito', sans-serif;
+    margin-right: 10px;
+    height: 74px;
+    width: 120px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.social-media-marquee ul li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-media-marquee ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.social-media-marquee ul li a i {
+    font-size: 24px;
+    color: #3A86FF;
+}
+
+/* Smooth infinite scroll */
+@keyframes scrollHorizontal {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Remove margin from the last item to prevent blank space */
+.social-media-marquee ul li:last-child {
+    margin-right: 0;
+}
+
+/* Font Icon Colors */
+.social-media-marquee a .fa-facebook-f,
+.social-media-marquee a .fa-twitter,
+.social-media-marquee a .fa-instagram,
+.social-media-marquee a .fa-linkedin-in,
+.social-media-marquee a .fa-youtube,
+.social-media-marquee a .fa-pinterest-p,
+.social-media-marquee a .fa-snapchat,
+.social-media-marquee a .fa-reddit,
+.social-media-marquee a .fa-tiktok,
+.social-media-marquee a .fa-whatsapp {
+    color: #000000;
+}
+
+@media (max-width:767px){
+    .social-media-marquee ul {
+    
+    animation: scrollHorizontal 60s linear infinite !important; /* Automatic scroll */
+    
+}
+
+}
+
+
+
+</style>
+<div class="component_navbar"></div>
+    <div class="component_navbar_sub"></div>
+</div>
+   <div class="">
+    <div class="wrapper-content__header">
+          </div>
+    <div class="wrapper-content__body">
+      <!-- Main variables *content* -->
+      
+      <div id="block_70">
+    <div class="sign-in">
+        <div class="bg"></div>
+        <div class="divider-top"></div>
+        <div class="divider-bottom"></div>
+        <div class="container">
+      
+           <div class="row sign-up-center-alignment" style="justify-content: center;">
+			
+                 <div class="col-lg-5 col-md-6 col-sm-12 lud">
+                     
+		{% if contentText %}
+<div class="card mb-4">
+    
+{{ contentText }}
+</div>
+{% endif %}
+                    <div class="component_card">
+                        
+                        <div class="card mb-4">
+                                   <div class="social-media-marquee">
+    <ul>
+        <!-- Social Media Items (Original) -->
+        <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i>Twitter</a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i>Instagram</a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i>LinkedIn</a></li>
+        <li><a href="#"><i class="fab fa-youtube"></i>YouTube</a></li>
+        <li><a href="#"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
+        <li><a href="#"><i class="fab fa-snapchat"></i>Snapchat</a></li>
+        <li><a href="#"><i class="fab fa-reddit"></i>Reddit</a></li>
+        <li><a href="#"><i class="fab fa-tiktok"></i>TikTok</a></li>
+        <li><a href="#"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
+
+        <!-- Duplicate the items for continuous scroll effect -->
+        <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i>Twitter</a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i>Instagram</a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i>LinkedIn</a></li>
+        <li><a href="#"><i class="fab fa-youtube"></i>YouTube</a></li>
+        <li><a href="#"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
+        <li><a href="#"><i class="fab fa-snapchat"></i>Snapchat</a></li>
+        <li><a href="#"><i class="fab fa-reddit"></i>Reddit</a></li>
+        <li><a href="#"><i class="fab fa-tiktok"></i>TikTok</a></li>
+        <li><a href="#"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
+    </ul>
+</div>
+
+					 {% if errorText %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ errorText }}
+        </div>
+      {% endif %}
+      {% if successText %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+                            <form action="" method="post" class="component_form_group component_checkbox">
+                                <div class="">
+<div class="form-group">
+                                        <label for="username" class="control-label">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" value="{{ data['username'] }}">
+                                                                                                            
+                                    </div>{% if settings['name_fileds']  ==  1 %} 
+                                                                            <div class="form-group">
+                                            <label for="firstname" class="control-label">Name</label>
+                                            <input type="text" class="form-control" id="firstname" name="name" value="{{ data['name'] }}">
+                                        </div>{% endif %}
+                                       
+                                                                        <div class="form-group">
+                                        <label for="email" class="control-label">E-Mail</label>
+                                        <input type="email" class="form-control" id="email" name="email" value="{{ data['email'] }}">
+                                    </div>{% if settings['skype_feilds']  ==  1 %} 
+                                                                            <div class="form-group">
+                                            <label for="skype" class="control-label">Contact No.</label>
+                                            <input type="text" class="form-control" id="skype" name="telephone" value="{{ data['telephone'] }}">
+                                        </div>{% endif %}
+                                                                        <div class="form-group">
+                                        <label for="password" class="control-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm" class="control-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirm" name="password_again">
+                                    </div>
+                                    
+                            
+                                      {% if captcha %}
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+            </div>
+          {% endif %}
+                                      <div class="checkbox">
+            <label>
+              <input type="checkbox" name="terms" value="1"> {{ lang['signup.accept_terms_text'] }}
+            </label>
+          </div>
+          
+		   
+                                <div class="component_button_submit">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <button type="submit" class="btn btn-block btn-big-primary">Sign Up</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+                                <div class="text-center">Already have an account ?<a href="/" class="sign-up-center-signin-link">Sign In</a></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+<div class="container">
+<div class="row sign-up-center-alignment" style="justify-content: center;margin-top:-5px">
+<div class="col-lg-5">
+{% if contentText2 %}
+<div class="card mt- mb-5"style="margin-top:-25px;">
+{{ contentText2 }}
+</div>
+{% endif %}
+</div></div> </div>
+
+
+
+
+{% include 'footer.twig' %}
+{% endif %} 

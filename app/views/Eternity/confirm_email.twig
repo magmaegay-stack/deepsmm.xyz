@@ -1,0 +1,48 @@
+{% include 'header.twig' %}
+
+<div style="min-height: calc(100vh - 120px); display:flex; align-items:center; justify-content:center; padding: 40px 20px; background: #070a12;">
+  <div style="width: 100%; max-width: 460px; background: #0c121e; border: 1px solid #1a2538; border-radius: 24px; padding: 40px 32px; box-shadow: 0 25px 60px -15px rgba(0,0,0,0.7), 0 0 0 1px rgba(16,185,129,0.15); text-align: center; position: relative;">
+    
+    <div style="width: 58px; height: 58px; border-radius: 18px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 24px; margin: 0 auto 18px;">
+      <i class="fas fa-envelope-open-text"></i>
+    </div>
+
+    <h2 style="font-size: 24px; font-weight: 800; color: #fff; margin: 0 0 8px;">Verifica la tua Email</h2>
+    <p style="font-size: 13.5px; color: #94a3b8; line-height: 1.6; margin: 0 0 24px;">
+      Abbiamo inviato un codice a 6 cifre al tuo indirizzo email.<br>
+      Inseriscilo qui sotto per attivare il tuo account:
+    </p>
+
+    {% if error %}
+      <div style="padding: 12px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; text-align: left; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">
+        <i class="fas fa-exclamation-triangle" style="margin-right: 6px;"></i> {{ errorText }}
+      </div>
+    {% endif %}
+
+    {% if success %}
+      <div style="padding: 12px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; text-align: left; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+        <i class="fas fa-check-circle" style="margin-right: 6px;"></i> {{ successText }}
+      </div>
+    {% endif %}
+
+    <form method="POST" action="/confirm_email">
+      <input type="text" name="verify_code" maxlength="6" placeholder="000000" autofocus required autocomplete="one-time-code" style="width: 100%; height: 56px; background: #101726; border: 1px solid #1e2c44; border-radius: 14px; color: #10b981; font-size: 28px; font-weight: 800; letter-spacing: 12px; text-align: center; margin-bottom: 20px; font-family: monospace; outline: none; box-sizing: border-box;">
+
+      <button type="submit" class="btn" style="width: 100%; height: 50px; border-radius: 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; font-size: 15px; font-weight: 800; border: none; cursor: pointer; box-shadow: 0 8px 24px -5px rgba(16, 185, 129, 0.5); display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <i class="fas fa-check"></i> Conferma & Attiva Account
+      </button>
+    </form>
+
+    <div style="margin-top: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 13px;">
+      <a href="/confirm_email/resend" style="color: #7b8ca6; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">
+        <i class="fas fa-redo" style="margin-right: 4px;"></i> Invia di nuovo codice
+      </a>
+      <a href="/logout" style="color: #7b8ca6; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#f87171'" onmouseout="this.style.color='#7b8ca6'">
+        <i class="fas fa-sign-out-alt" style="margin-right: 4px;"></i> Esci
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% include 'footer.twig' %}

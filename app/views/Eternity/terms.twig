@@ -1,0 +1,210 @@
+{% include 'header.twig' %}
+<br>
+<br>
+<style>
+/* Import Google Fonts */
+{{ settings.user_font_import|raw }}
+
+/* Column 12/12 */
+.add-funds__form .col-lg-12{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+/* Import Google Fonts */
+{{ settings.user_font_import|raw }}
+
+/* Heading */
+.add-funds__form .card h2{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+ line-height:1.5em;
+ font-size:16px;
+ font-style:normal;
+ background-color:rgba(243,156,18,0);
+}
+/* Import Google Fonts */
+{{ settings.user_font_import|raw }}
+
+/* Paragraph */
+.footer p{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+/* Divider Style */
+.header-divider {
+    width: 100%;
+    height: 20px; /* Adjust height as needed */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgICAgICAgICAgIDxnIGZpbGw9IiNmZmZmZmYiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTg1My44OTMsODYuOTk4Yy0zOC44NTksMC01OC44MTEtMTYuNDU1LTc3Ljk1Ni0zNS4wNTFjMTguMjk1LTEwLjUzNiw0MC44OTEtMTguMjc2LDczLjM3OC0xOC4yNzYgYzM4LjY4NSwwLDY0LjEzMiwxMi41NjQsODUuNDg5LDI4LjM0N0M5MTYuMTkyLDcyLjAxMiw5MDAuOCw4Ni45OTgsODUzLjg5Myw4Ni45OTh6IE01MjYuMjY1LDgwLjk0NSBjLTYuNTE3LTAuNTYyLTEzLjU5OS0wLjg3OS0yMS40MS0wLjg3OWMtNzAuNzk5LDAtOTEuMzM3LDI3LjIyOS0xMzQuNDMzLDM1LjY2MmMxNC45MDEsMy43MiwzMi4xMTgsNi4wNyw1Mi44OTgsNi4wNyBDNDcwLjE3MSwxMjEuNzk3LDUwMC4zNCwxMDMuNDIxLDUyNi4yNjUsODAuOTQ1eiIgZmlsbC1vcGFjaXR5PSIuMyIvPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTY2My40NTgsMTA5LjY3MWMtNjcuMTM3LDAtODAuMzQ1LTIzLjgyNC0xMzcuMTkzLTI4LjcyNkM1NjcuMDg2LDQ1LjU1NSw1OTcuMzgxLDAsNjY1LjY5MSwwIGM2MS44NTcsMCw4NS4zNjksMjcuNzgyLDExMC4yNDYsNTEuOTQ3QzczNi44ODgsNzQuNDM0LDcxNy40NTksMTA5LjY3MSw2NjMuNDU4LDEwOS42NzF6IE0yMTcuNjgsOTQuMTYzIGM1NS45NzEsMCw2Mi41MjYsMjQuMDI2LDEyNi4zMzcsMjQuMDI2YzkuODU4LDAsMTguNTA4LTAuOTE2LDI2LjQwNC0yLjQ2MWMtNTcuMTg2LTE0LjI3OC04MC4xNzctNDguODA4LTEzOC42NTktNDguODA4IGMtNzcuMDYzLDAtOTkuOTYsNDguNTY5LTE1MS43NTEsNDguNTY5Yy00MC4wMDYsMC02MC4wMDgtMTIuMjA2LTgwLjAxMS0yOS41MDZ2MTYuODA2YzIwLjAwMywxMC44OTEsNDAuMDA1LDIxLjc4Miw4MC4wMTEsMjEuNzgyIEMxNjAuMDE0LDEyNC41NywxNTguNjA4LDk0LjE2MywyMTcuNjgsOTQuMTYzeiBNMTIwMC4xMTIsNDYuMjkyYy01Ny40OTMsMC01Ni45MzUsNDYuNTk1LTExNS4wMTUsNDYuNTk1IGMtNTMuNjEyLDAtNTkuNzU1LTM5LjYxOC0xMTUuNjAyLTM5LjYxOGMtMTUuMjY3LDAtMjUuMzgxLDMuNzUxLTM0LjY5LDguNzQ5YzM2LjA5NiwyNi42NzUsNjAuNTAzLDYyLjU1MiwxMTcuMzQyLDYyLjU1MiBjNjkuMjQ5LDAsNzUuOTUxLTQzLjU1OSwxNDcuOTY0LTQzLjU1OWMzOS44MDQsMCw1OS45ODYsMTAuOTQzLDc5Ljg4OCwyMS43NzdWODUuOTgyIEMxMjYwLjA5Nyw2OC43NzEsMTIzOS45MTYsNDYuMjkyLDEyMDAuMTEyLDQ2LjI5MnoiIGZpbGwtb3BhY2l0eT0iLjUiLz4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMDUyLjE0NywxMjQuNTdjLTU2Ljg0LDAtODEuMjQ3LTM1Ljg3Ni0xMTcuMzQyLTYyLjU1MmMtMTguNjEzLDkuOTk0LTM0LjAwNSwyNC45OC04MC45MTIsMjQuOTggYy0zOC44NTksMC01OC44MTEtMTYuNDU1LTc3Ljk1Ni0zNS4wNTFjLTM5LjA1LDIyLjQ4Ny01OC40NzksNTcuNzI0LTExMi40OCw1Ny43MjRjLTY3LjEzNywwLTgwLjM0NS0yMy44MjQtMTM3LjE5My0yOC43MjYgYy0yNS45MjUsMjIuNDc1LTU2LjA5Myw0MC44NTItMTAyLjk0Niw0MC44NTJjLTIwLjc3OSwwLTM3Ljk5Ni0yLjM0OS01Mi44OTgtNi4wN2MtNy44OTUsMS41NDUtMTYuNTQ2LDIuNDYxLTI2LjQwNCwyLjQ2MSBjLTYzLjgxMSwwLTcwLjM2Ni0yNC4wMjYtMTI2LjMzNy0yNC4wMjZjLTU5LjA3MiwwLTU3LjY2NSwzMC40MDctMTM3LjY2OSwzMC40MDdjLTQwLjAwNiwwLTYwLjAwOC0xMC44OTEtODAuMDExLTIxLjc4MlYxNDBoMTI4MCB2LTM3LjIxMmMtMTkuOTAzLTEwLjgzNS00MC4wODQtMjEuNzc3LTc5Ljg4OC0yMS43NzdDMTEyOC4wOTgsODEuMDExLDExMjEuMzk3LDEyNC41NywxMDUyLjE0NywxMjQuNTd6Ii8+CiAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L3N2Zz4='); /* Replace with the actual URL */
+    background-size: cover;
+    background-position: center;
+    margin: 10px 0; /* Adjust spacing as needed */
+}
+/* Header divider */
+.header-divider{
+ height:37px !important;
+ transform: rotateX(180deg);
+ margin-top:-50px !important;
+}
+
+/* Button */
+.add-funds__form .card .btn-big-primary{
+ font-size:24px;
+ line-height:2em;
+ font-weight:600;
+}
+/* General styles */
+body {
+    font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive container */
+.wrapper-content {
+    padding: 15px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* Import Google Fonts */
+{{ settings.user_font_import|raw }}
+
+/* Card */
+#block_93 .new_order-block .container .container-fluid .row .component_radio_button .card{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }} !important;
+}
+
+/* Card */
+.new_order-block .card{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }} ;
+}
+
+/* Heading */
+.new_order-block .card h3{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }} ;
+}
+
+/* Heading */
+.new_order-block .card h2{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }} ;
+ font-size:24px;
+}
+/* Wrapper content  body */
+.wrapper-sidebar-navbar .wrapper-content__body{
+ margin-top:15px;
+}
+
+@media (max-width:991px){
+
+ /* Wrapper content */
+ .wrapper-sidebar-navbar .wrapper-content{
+  margin-top:-45px;
+ }
+ 
+}
+{% if user['auth'] == 0 %}
+/* Wrapper content */
+.wrapper-content{
+ margin-top:-55px !important;
+}
+{% endif %}
+
+</style>
+
+
+ <div class="wrapper-content">
+    <div class="wrapper-content__header">
+          </div>
+    <div class="wrapper-content__body">
+      <!-- Main variables *content* -->
+      <div id="block_93">
+    <div class="new_order-block ">
+        <div class="bg"></div>
+        
+        <div class="container">
+		{% if contentText %}
+		<div class="card mt-4 mb-2">
+{{ contentText }}
+</div>
+{% endif %}
+           {% if contentText2 %}
+           <div class="card mt-4 mb-4">
+{{ contentText2 }}
+</div>
+{% endif %}
+ <div class="container-fluid">
+
+  <div class="row">
+  	
+<div class="component_form_group component_card component_radio_button">
+<div class="card ">  
+            <h3 class="title text-center top-spacing">
+        Terms of Service & Privacy Policy
+      </h3>
+      <p class="txt text-center">By accessing or using the services provided by {{site["site_name"]}}, you agree to be bound by the following Terms of Service.
+By registering or using our services, you confirm that you have read, understood, and accepted these terms in full.
+{{site["site_name"]}} will not be held responsible for any losses incurred by users who fail to read or understand the Terms of Service outlined below.
+       
+      </p>
+      <hr>
+      <h2>1. Acceptance of Terms</h2><p>By using {{ site["site_name"] }} services, you agree to be bound by these terms and conditions, as well as any other guidelines, rules, and additional terms referenced herein, and all such guidelines, rules, and terms are hereby incorporated by reference into these terms and conditions.</p>
+<p><br></p>
+        <h2>2. Modification of Terms</h2>
+        <p>{{ site["site_name"] }} reserves the right to modify these terms and conditions at any time. Any changes will be effective immediately upon posting on our website. Your continued use of the services following the posting of changes constitutes your acceptance of such changes.</p>
+<p><br></p>
+        <h2>3. Eligibility</h2>
+        <p>You must be at least 18 years old to use our services. By using our services, you represent and warrant that you meet this age requirement.</p>
+<p><br></p>
+        <h2>4. Account Registration</h2>
+        <p>You are required to register an account to use our services. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for safeguarding your account password and for any activities or actions under your account.</p>
+<p><br></p>
+        <h2>5. Services</h2>
+        <p>{{ site["site_name"] }} provides social media marketing services, including but not limited to followers, likes, views, and other forms of engagement on various social media platforms. We reserve the right to modify or discontinue, temporarily or permanently, the services (or any part thereof) with or without notice.</p>
+<p><br></p>
+        <h2>6. Payment and Fees</h2>
+        <p>All payments for services must be made in advance. You agree to pay all fees and charges specified for the selected services. Prices for services may change at any time, and {{ site["site_name"] }} does not provide price protection or refunds in the event of a price reduction or promotional offering.</p>
+<p><br></p>
+        <h2>7. Refund Policy</h2>
+        <p>All sales are final. We do not offer refunds for completed services. In the event of a service failure, you may be eligible for a partial or full refund at the discretion of {{ site["site_name"] }}. Please note that we do not provide refunds in cases where the service link has been changed or broken after placing the order.</p>
+<p><br></p>
+        <h2>8. Use of Services</h2>
+        <p>You agree to use the services only for lawful purposes and in accordance with these terms and conditions. You agree not to use the services in any way that could damage, disable, overburden, or impair the services, or interfere with any other party's use of the services.</p>
+<p><br></p>
+        <h2>9. Prohibited Activities</h2>
+        <p>You agree not to engage in any of the following prohibited activities:</p>
+        <ul>
+            <li>Violating any applicable laws or regulations.</li>
+            <li>Infringing on any intellectual property rights.</li>
+            <li>Engaging in fraudulent or deceptive practices.</li>
+            <li>Distributing viruses or any other harmful code.</li>
+            <li>Attempting to gain unauthorized access to any part of the services or systems.</li>
+        </ul>
+<p><br></p>
+        <h2>10. Intellectual Property</h2>
+        <p>All content and materials on {{ site["site_name"] }}, including but not limited to text, graphics, logos, and software, are the property of {{ site["site_name"] }} or its licensors and are protected by copyright, trademark, and other intellectual property laws. You agree not to reproduce, distribute, modify, or create derivative works of any content without our prior written consent.</p>
+<p><br></p>
+        <h2>11. Disclaimer of Warranties</h2>
+        <p>{{ site["site_name"] }} provides the services on an "as is" and "as available" basis. We make no warranties, express or implied, regarding the services, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+<p><br></p>
+        <h2>12. Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, {{ site["site_name"] }} shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (i) your use or inability to use the services; (ii) any unauthorized access to or use of our servers and/or any personal information stored therein; (iii) any interruption or cessation of transmission to or from the services; (iv) any bugs, viruses, trojan horses, or the like that may be transmitted to or through the services by any third party; (v) any errors or omissions in any content or for any loss or damage incurred as a result of the use of any content posted, emailed, transmitted, or otherwise made available through the services; and/or (vi) the defamatory, offensive, or illegal conduct of any third party.</p>
+<p><br></p>
+        <h2>13. Indemnification</h2>
+        <p>You agree to indemnify and hold {{ site["site_name"] }}, its affiliates, officers, agents, employees, and partners harmless from any claim, demand, loss, or damages, including reasonable attorneys' fees, arising out of or related to your use of the services, your violation of these terms and conditions, or your violation of any rights of another.</p>
+<p><br></p>
+        <h2>14. Termination</h2>
+        <p>{{ site["site_name"] }} reserves the right to terminate or suspend your account and access to the services at our sole discretion, without notice and without liability, for any reason, including if we believe you have violated these terms and conditions.</p>
+
+        <p><br></p>
+        <h2>15. Contact Information</h2>
+        <p>If you have any questions about these terms and conditions, please contact us on WhatsApp.</p>
+
+          </div>
+  </div></div>
+</div>
+         
+
+</div>
+</div>    </div></div></div></div></div>
+  </div></div></div></div></div></div></div>
+
+
+{% include 'new-footer.twig' %}

@@ -1,0 +1,493 @@
+
+{% include 'header.twig' %}
+
+    <style>
+    /* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Card */
+.wrapper-sidebar-navbar > .wrapper-content__body > #block_api > .block-api > .container-fluid > .justify-content-center > .col-lg-8 .col-md-12g .well .dashboard-content .clearfix .card{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Card */
+#block_api .block-api .container-fluid .justify-content-center > .wrapper-content__body > #block_api > .block-api > .container-fluid .justify-content-center .col-lg-8 .col-md-12g .well .dashboard-content .clearfix .card{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Heading */
+.dashboard-content .clearfix .card .content h4{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Heading */
+#block_api .block-api .container-fluid .justify-content-center > .wrapper-content__body > #block_api > .block-api > .container-fluid .justify-content-center .col-lg-8 .col-md-12g .well .dashboard-content .clearfix .card h4{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Heading */
+#block_api .block-api .container-fluid .justify-content-center .wrapper-content__body #block_api .block-api .wrapper-content__body #block_api .block-api .container-fluid .justify-content-center .col-lg-8 .col-md-12g .well .dashboard-content .clearfix .card h4{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Label */
+#block_api form label{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Card */
+#block_api .block-api .container-fluid .justify-content-center .wrapper-content__body #block_api .block-api .wrapper-content__body #block_api .block-api .container-fluid .justify-content-center .col-lg-8 .col-md-12g .well .dashboard-content .clearfix .card{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Link */
+.sidebar-block__left-menu li a{
+ font-family:'Nunito', sans-serif ;
+}
+/* Balance Unknowndown  toggle */
+.navbar-nav-currencies .balance-dropdown .balance-dropdown__toggle{
+ font-family:'Nunito', sans-serif;
+}
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Modal header */
+.modal-dialog .modal-header{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Timezone modal label */
+#timezoneModalLabel{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Timezone modal */
+#timezoneModal{
+ font-family:'Nunito', sans-serif;
+}
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Change email modal */
+#changeEmailModal{
+ font-family:'Nunito', sans-serif;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Change email modal label */
+#changeEmailModalLabel{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Heading */
+#block_api .block-api .container-fluid .justify-content-center .wrapper-content__body #block_api > .wrapper-content__body > #block_api > .block-api > .container-fluid .justify-content-center .col-lg-8 .col-md-12g .well .dashboard-content .clearfix .card h4{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Button */
+#block_api .well form .btn-big-primary{
+ font-family:'Nunito', sans-serif;
+}
+/* Button */
+.input-group .input-group-append a{
+ top:-15px;
+}
+.body .alert-info{
+    font-family:'Nunito', sans-serif !important;
+}
+.body select.form-control:not([multiple]){
+    font-family:'Nunito', sans-serif !important;
+}
+
+
+
+</style>
+
+<div class="wrapper-content__body">
+    
+  <!-- Main variables *content* -->
+  <div id="block_api" class="pt-5 mt-2 ">
+  <div class="block-api">
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+  <div class="col-lg-8">
+         
+  <div class="col-md-12g">
+  <div class="well ">
+      <br>
+      <br>
+      
+  <div class="dashboard-content">
+  <div class="head clearfix">
+      <div class="card">
+  <div class="content">
+  {% if error %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% endif %}
+      {% if success %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+       {% if user['email_type'] == 1 %}
+  <div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Warning :</strong> Your email address is not verified. Please check your inbox for the verification email or <a href="confirm_email/resend" class="alert-link">click here to resend the verification email</a>.
+  </div>
+{% endif %}
+<br>
+
+      <h4 class="mb-3"><i class="fad fa-user-alt"></i> Account Details</h4>
+      <div class="form-group">
+          <label for="charge" class="control-label">{{ lang['account.username'] }}</label>
+          <input type="text" class="form-control" value="{{ user['username'] }}" readonly>
+        </div>
+
+        
+
+        <div class="form-group">
+          <label for="charge" class="control-label">E-Mail</label>
+          <input type="text" class="form-control" value="{{ user['email'] }}" readonly>
+        </div>
+
+{% if site['languages']|length > 1 %}
+        <div class="well">
+          <form method="post" action="account/change_lang">
+
+            <div class="form-group">
+              <label for="charge" class="control-label">{{ lang['account.changelang.title'] }}</label>
+              <select class="form-control" name="lang">
+                  {% for language in site['languages'] %}
+                  <option {% if language["code"] == user["lang"] %} selected {% endif %} value="{{ language["code"] }}">{{ language["name"] }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-block btn-big-primary">{{ lang['account.changelang.button'] }}</button>
+          </div>
+                                </div>
+                            </form>
+                       </div>
+  </div>
+  </div>
+{% endif %}
+
+<button type="button" class="btn btn-block btn-big-primary" data-toggle="modal" data-target="#changeEmailModal">
+    Change Email
+</button>
+<hr>
+<!-- New Section for Changing WhatsApp Number -->
+                        <h4 class="mb-3"><i class="fab fa-whatsapp"></i> Update WhatsApp Number</h4>
+                        <div class="alert alert-info">
+                          <p>To update your WhatsApp number, enter your new number with country code below and click "Save WhatsApp Number".</p>
+                        </div>
+                        <br>
+                        <form method="post" action="account/change_phone">
+                          <div class="form-group d-flex">
+                            <label for="new_phone" class="control-label mr-2">New WhatsApp Number</label>
+                            <div class="input-group w-100">
+                             <input type="text" class="form-control" name="new_phone" placeholder="Enter your new phone number with country code (e.g., +1 123 456 7890)" value="{{ user['telephone'] }}" required>
+    
+    
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-block btn-big-primary">Save WhatsApp Number</button>
+                        </form>
+                        
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div> 
+  </div></div>
+ 
+  <div class="wrapper-content__body">
+  <!-- Main variables *content* -->
+  <div id="block_api" class="mt-3 mb-5">
+    <div class="block-api">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="col-md-12g">
+              <div class="well">
+                <div class="dashboard-content">
+                  <div class="head clearfix">
+                    <div class="card">
+                     <!-- New Section for Telegram Notifications -->
+                        <h4 class="mb-3"><i class="fab fa-telegram-plane"></i> Telegram Notifications</h4>
+                        <div class="alert alert-info">
+                          <p>Click the "Connect" button below to connect your Telegram account. Once connected, you will receive notifications via Telegram.</p>
+                        </div>
+                        <br>
+                       {% if user['chat_id'] %}
+    <form method="post" action="account/disconnect_telegram">
+        <button type="submit" class="btn btn-block btn-big-primary">Disconnect</button>
+    </form>
+{% else %}
+    <a href="https://t.me/{{settings['userbotusername']}}?start={{ user['secure_token'] }}" 
+       target="_blank" 
+       class="btn btn-block btn-big-primary">
+        Connect
+    </a>
+{% endif %}
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+ 
+ 
+ 
+  <div class="wrapper-content__body">
+  <!-- Main variables *content* -->
+  <div id="block_api" class="mt-3 mb-5">
+    <div class="block-api">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="col-md-12g">
+              <div class="well">
+                <div class="dashboard-content">
+                  <div class="head clearfix">
+                    <div class="card">
+                      <h4 class="mb-3"><i class="fas fa-shield-alt"></i> Two-Factor Authentication</h4>
+<div class="alert alert-info">
+    <p>Enhance the security of your account by enabling two-factor authentication (2FA). Once enabled, you will receive a verification code via email each time you log in.</p>
+</div>
+<br>
+
+<!-- Check if Two-Factor Authentication is enabled -->
+{% if user['two_factor'] == 1 %}
+    <form method="post" action="account/disable-2fa">
+        <input type="hidden" name="action" value="disable">
+        <button type="submit" class="btn btn-block btn-big-primary">Disable Two-Factor Authentication</button>
+    </form>
+{% else %}
+    <form method="post" action="account/enable-2fa">
+        <input type="hidden" name="action" value="enable">
+        <button type="submit" class="btn btn-block btn-big-primary">Enable Two-Factor Authentication</button>
+    </form>
+{% endif %}
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  
+ 
+ 
+ 
+ 
+  <div class="wrapper-content__body">
+  <!-- Main variables *content* -->
+  <div id="block_api" class="mt-3 mb-5">
+    <div class="block-api">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="col-md-12g">
+              <div class="well">
+                <div class="dashboard-content">
+                  <div class="head clearfix">
+                    <div class="card">
+                      <h4 class="mb-3"><i class="fad fa-globe"></i> Change Timezone</h4>
+                      <div class="content">
+                        <form method="post" action="account/timezone">
+                          <div class="form-group">
+                            <label for="timezone">Select Timezone</label>
+                            <select name="timezone" id="timezone" class="form-control">
+                              {% for timezone in timezones %}
+                              <option {% if timezone["timezone"] == user['timezone'] %} selected {% endif %} value="{{ timezone["timezone"] }}">
+                                {{ timezone["label"] }}
+                              </option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-block btn-big-primary">Save Changes</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+  
+    <!---Copun Code---->
+<div class="wrapper-content__body">
+  <!-- Main variables *content* -->
+  <div id="block_api" class="mt-3">
+  <div class="block-api">
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+  <div class="col-lg-8">
+         
+  <div class="col-md-12g">
+  <div class="well ">
+  <div class="dashboard-content">
+  <div class="head clearfix">
+      <div class="card">
+  <h4 class="mb-3"><i class="fad fa-key"></i> Change Password </h4>
+    
+  
+  <div class="content">
+  
+
+
+ <form method="post" action="account">
+
+          <div class="form-group">
+            <label for="charge" class="control-label">{{ lang['account.password.current'] }}</label>
+            <input type="password" class="form-control" value="" name="current_password">
+          </div>
+
+          <div class="form-group">
+            <label for="charge" class="control-label">{{ lang['account.password.new'] }}</label>
+            <input type="password" class="form-control" value="" name="password">
+          </div>
+
+          <div class="form-group">
+            <label for="charge" class="control-label">{{ lang['account.password.confirm'] }}</label>
+            <input type="password" class="form-control" value="" name="confirm_password">
+          </div>
+          <button type="submit" class="btn btn-block btn-big-primary">{{ lang['account.password.button'] }}</button>
+        
+      </div></div>
+</form>
+</div></div>
+  </div>
+  </div>
+  </div>
+  </div>  
+                                </div>
+                            
+  
+    <!---Copun Code---->
+<div class="wrapper-content__body">
+  <!-- Main variables *content* -->
+  <div id="block_api" class="mt-3 mb-5">
+  <div class="block-api">
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+  <div class="col-lg-8">
+  <div class="col-md-12g">
+  <div class="well ">
+  <div class="dashboard-content">
+  <div class="head clearfix">
+      <div class="card">
+           
+
+  <h4 class="mb-3"><i class="fad fa-link"></i> Generate New API</h4>
+  <div class="content">
+ <form  action="/account/newapikey" method="post">
+								 <div class="form-group mb-4">
+<label>API Key</label>
+	<div class="d-flex form-group__line">								
+
+<input  class="form-control mb-3 "style="width:100%;" type="text" id="api_key"  value="{{ masked_api_key }}" readonly>
+								 </div>
+								 	<div class="account-button-right">
+																<div class="component_button_save">
+																	<div class="">
+								<button type="submit" style="margin-bottom:-20px;" class="btn btn-block btn-big-primary">Generate New</button>
+										
+								 </form>
+</div>
+  </div>
+  </div>
+  </div>
+  </div>  
+  </div>
+  </div>
+  </div>
+  </div>  </div>
+  </div>  </div>
+  </div>  
+ 
+{% include 'footer.twig' %}
+<div class="modal fade" id="timezoneModal" tabindex="-1" role="dialog" aria-labelledby="timezoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="timezoneModalLabel">Change Timezone</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="account/timezone">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="timezone">Select Timezone</label>
+            <select name="timezone" id="timezone" class="form-control">
+              {% for timezone in timezones %}
+              <option {% if timezone["timezone"] == user['timezone'] %} selected {% endif %} value="{{ timezone["timezone"] }}">
+                {{ timezone["label"] }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-block btn-big-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="changeEmailModal" tabindex="-1" role="dialog" aria-labelledby="changeEmailModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeEmailModalLabel">Change Email</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="account/change_email">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="current_email">Current Email</label>
+            <input type="email" class="form-control" id="current_email" value="{{ user['email'] }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="new_email">New Email</label>
+            <input type="email" name="new_email" id="new_email" class="form-control" placeholder="Enter new email" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-block btn-big-primary">Update Email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+    

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <base href="{{ site['url'] }}/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if pagetitle %}{{ pagetitle }} · KrazySmm{% else %}Pannello SMM · KrazySmm{% endif %}</title>
+  <meta name="description" content="Pannello SMM: follower, like e visualizzazioni su Instagram, TikTok, YouTube e altre piattaforme. Consegna immediata, prezzi da rivenditore.">
+  <link rel="icon" type="image/png" href="/public/Eternity/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/public/Eternity/krazysmm-green.css">
+  
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('krazysmm.theme') || 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch(e) {}
+    })();
+  </script>
+
+  <style>
+    /* KrazySMM Green Theme Overrides & Global Enhancements */
+    :root {
+      --primary-green: #10b981;
+      --primary-green-dark: #059669;
+      --primary-green-glow: rgba(16, 185, 129, 0.4);
+      --dark-bg: #070a12;
+      --dark-card: #0c121e;
+      --dark-border: #162032;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      min-height: 100vh;
+    }
+
+    /* Modal overlay for KrazySMM Login */
+    .login-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(3, 6, 13, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .login-modal-overlay.active {
+      display: flex;
+    }
+    .login-modal-container {
+      position: relative;
+      width: 100%;
+      max-width: 980px;
+      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.08);
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* KrazySMM Modern Dynamic Button Animations */
+    .btn, .btn-primary, .rbtn, .pbtn, .order-btn, button, input[type="submit"], a.btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      cursor: pointer;
+    }
+    .btn:hover, .btn-primary:hover, .rbtn:hover, .pbtn:hover, .order-btn:hover, button:hover, input[type="submit"]:hover, a.btn:hover {
+      transform: translateY(-2.5px) scale(1.02) !important;
+      box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.45), 0 0 12px rgba(16, 185, 129, 0.25) !important;
+    }
+    .btn:active, .btn-primary:active, .rbtn:active, .pbtn:active, .order-btn:active, button:active, input[type="submit"]:active, a.btn:active {
+      transform: translateY(1px) scale(0.985) !important;
+      box-shadow: 0 4px 12px -2px rgba(16, 185, 129, 0.35) !important;
+    }
+
+    /* Green accent buttons */
+    .btn.primary, .btn-primary, button.primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+      border-color: #10b981 !important;
+      color: #fff !important;
+      box-shadow: 0 6px 20px -4px rgba(16, 185, 129, 0.5) !important;
+      font-weight: 700;
+    }
+    .btn.primary:hover, .btn-primary:hover, button.primary:hover {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+      border-color: #34d399 !important;
+      box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.65), 0 0 16px rgba(52, 211, 153, 0.35) !important;
+      transform: translateY(-2.5px) scale(1.025) !important;
+    }
+    .rbtn.accent {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+      color: #fff !important;
+      box-shadow: 0 10px 24px -10px rgba(16, 185, 129, 0.8) !important;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .rbtn.accent:hover {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+      transform: translateY(-2.5px) scale(1.025) !important;
+      box-shadow: 0 14px 30px -6px rgba(16, 185, 129, 0.75) !important;
+    }
+    
+    /* Elegant light sweep shine on button hover */
+    .btn.primary::before, .btn-primary::before, button.primary::before, .rbtn.accent::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      transition: left 0.55s ease;
+      pointer-events: none;
+    }
+    .btn.primary:hover::before, .btn-primary:hover::before, button.primary:hover::before, .rbtn.accent:hover::before {
+      left: 120%;
+    }
+    
+    /* Green highlight in hero */
+    .hero em, .heroin h1 em {
+      color: #10b981 !important;
+      font-style: normal !important;
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Green welcome card */
+    .card.hero, .dcard.hero {
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 16px 36px -12px rgba(16, 185, 129, 0.45) !important;
+    }
+    .card.hero h2, .card.hero .eyebrow, .card.hero .sub {
+      color: #fff !important;
+    }
+
+    /* Sidebar active indicator */
+    .sidebar nav a.on {
+      background: #10b981 !important;
+      color: #fff !important;
+      box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.7) !important;
+    }
+    .sidebar nav a.on svg {
+      color: #fff !important;
+    }
+    .sidebar nav a:hover:not(.on) {
+      background: rgba(16, 185, 129, 0.08) !important;
+      color: #10b981 !important;
+    }
+    .sidebar nav a:hover:not(.on) svg {
+      color: #10b981 !important;
+    }
+
+    /* Top bar balance pill */
+    .bal {
+      background: #10b981 !important;
+      color: #fff !important;
+      box-shadow: 0 8px 18px -6px rgba(16, 185, 129, 0.6) !important;
+    }
+    .bal:hover {
+      background: #059669 !important;
+    }
+
+    /* Form controls in dark mode */
+    .form-control, input[type="text"], input[type="password"], input[type="email"], input[type="number"], select, textarea {
+      background: #0d1524 !important;
+      border: 1px solid #1a2538 !important;
+      color: #e2e8f0 !important;
+      border-radius: 10px !important;
+    }
+    .form-control:focus, input:focus, select:focus, textarea:focus {
+      border-color: #10b981 !important;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25) !important;
+      outline: none !important;
+    }
+
+    /* Enhanced Card Hover & Micro-Animations */
+    .dash-card, .status-counter-card, .pricecard, .dash-recent-orders-card, .order-form-panel, .card {
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease !important;
+    }
+    .dash-card:hover, .status-counter-card:hover, .pricecard:hover, .dash-recent-orders-card:hover, .order-form-panel:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.75), 0 0 22px -3px rgba(16, 185, 129, 0.3) !important;
+      border-color: rgba(16, 185, 129, 0.45) !important;
+    }
+
+    /* Platform Filter Pills Animations (Screenshot 8) */
+    .jap-platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .jap-pill-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border-radius: 12px;
+      background: #0d1524;
+      border: 1px solid #1a263c;
+      color: #cbd5e1;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      user-select: none;
+      outline: none;
+    }
+    .jap-pill-btn i {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+    .jap-pill-btn:hover {
+      background: #121d31 !important;
+      border-color: #10b981 !important;
+      color: #fff !important;
+      transform: translateY(-3px) scale(1.025) !important;
+      box-shadow: 0 12px 28px -6px rgba(16, 185, 129, 0.45) !important;
+    }
+    .jap-pill-btn:hover i {
+      transform: scale(1.25) rotate(-6deg) !important;
+    }
+    .jap-pill-btn.active {
+      background: rgba(16, 185, 129, 0.16) !important;
+      border-color: #10b981 !important;
+      color: #34d399 !important;
+      box-shadow: 0 0 22px rgba(16, 185, 129, 0.4), inset 0 0 12px rgba(16, 185, 129, 0.15) !important;
+      font-weight: 700 !important;
+    }
+
+    /* Sidebar Navigation Links Smooth Slide */
+    .sidebar nav a {
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .sidebar nav a:hover:not(.on) {
+      transform: translateX(4px) !important;
+    }
+
+    /* Table Interactive Row Hover */
+    table tbody tr, .dtable .dtr {
+      transition: background 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    table tbody tr:hover, .dtable .dtr:hover {
+      background: rgba(16, 185, 129, 0.05) !important;
+      box-shadow: inset 3px 0 0 #10b981 !important;
+    }
+
+    /* Green Pulse Keyframe for Live Badges */
+    @keyframes greenGlowPulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+      animation: greenGlowPulse 2s infinite;
+    }
+  </style>
+
+  {{ headerCode }}
+</head>
+
+{% set cur_code = active_lang_code|default(site.active_lang_code|default('it')) %}
+{% set cur_flag = '🇮🇹' %}
+{% set cur_name = 'Italiano' %}
+{% if cur_code == 'en' %}{% set cur_flag = '🇬🇧' %}{% set cur_name = 'English' %}
+{% elseif cur_code == 'es' %}{% set cur_flag = '🇪🇸' %}{% set cur_name = 'Español' %}
+{% elseif cur_code == 'fr' %}{% set cur_flag = '🇫🇷' %}{% set cur_name = 'Français' %}
+{% elseif cur_code == 'de' %}{% set cur_flag = '🇩🇪' %}{% set cur_name = 'Deutsch' %}
+{% elseif cur_code == 'pt' %}{% set cur_flag = '🇵🇹' %}{% set cur_name = 'Português' %}
+{% elseif cur_code == 'tr' %}{% set cur_flag = '🇹🇷' %}{% set cur_name = 'Türkçe' %}
+{% endif %}
+
+{% if user['auth'] %}
+<body class="app" data-theme="dark">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar" id="mainSidebar">
+    <div class="sbtop">
+      <a class="brand" href="/" aria-label="DeepSMM">
+        <img src="/public/Eternity/logo.png" alt="DeepSMM" style="width: 160px; height: auto;">
+      </a>
+      <button class="collapse" type="button" aria-label="Riduci barra" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav id="sbNav">
+      <a href="/" class="{% if active_menu == 'dashboard' or active_menu == '' %}on{% endif %}" data-tip="Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 13h8V3H3v10Zm0 8h8v-6H3v6Zm10 0h8V11h-8v10Zm0-18v6h8V3h-8Z"/>
+        </svg>
+        <span data-i18n="side_dash">Dashboard</span>
+      </a>
+
+      <span class="navgroup">Ordina</span>
+
+      <a href="/neworder" class="{% if active_menu == 'neworder' %}on{% endif %}" data-tip="Nuovo ordine">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        <span data-i18n="side_neworder">+ Nuovo ordine</span>
+      </a>
+
+      <a href="/services" class="{% if active_menu == 'services' %}on{% endif %}" data-tip="Servizi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16"/><circle cx="2.5" cy="6" r="1.2"/><circle cx="2.5" cy="12" r="1.2"/><circle cx="2.5" cy="18" r="1.2"/>
+        </svg>
+        <span data-i18n="side_services">Servizi</span>
+      </a>
+
+      <a href="/orders" class="{% if active_menu == 'orders' %}on{% endif %}" data-tip="Ordini">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/>
+        </svg>
+        <span data-i18n="side_orders">Ordini</span>
+      </a>
+
+      <span class="navgroup">Il tuo account</span>
+
+      <a href="/addfunds" class="{% if active_menu == 'addfunds' %}on{% endif %}" data-tip="Aggiungi fondi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1"/><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/><path d="M21 9v6h-4a3 3 0 0 1 0-6h4Z"/>
+        </svg>
+        <span data-i18n="side_addfunds">Aggiungi fondi</span>
+      </a>
+
+      <a href="/tickets" class="{% if active_menu == 'tickets' %}on{% endif %}" data-tip="Ticket">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a3 3 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a3 3 0 0 0 0-6Z"/><path d="M13 5v2M13 11v2M13 17v2"/>
+        </svg>
+        <span data-i18n="side_ticket">Ticket</span>
+        {% if ticketCount %}<span class="badge" style="background:#10b981;color:#fff;border-radius:9999px;font-size:11px;padding:2px 7px;margin-left:auto;">{{ ticketCount }}</span>{% endif %}
+      </a>
+
+      <a href="/account" class="{% if active_menu == 'account' %}on{% endif %}" data-tip="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
+        </svg>
+        <span data-i18n="side_account">Account</span>
+      </a>
+
+      <a href="/api" class="{% if active_menu == 'api' %}on{% endif %}" data-tip="API">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+        <span>API</span>
+      </a>
+    </nav>
+
+    <div class="sidefoot">
+      <div class="usercard">
+        <div class="uav" style="background:linear-gradient(135deg, #10b981, #059669);">{{ user['username']|slice(0, 2)|upper }}</div>
+        <div class="uinfo">
+          <b>{{ user['username'] }}</b>
+          <i style="color:#10b981;">{{ user['balance'] }}</i>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1"/><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/><path d="M21 9v6h-4a3 3 0 0 1 0-6h4Z"/>
+        </svg>
+      </div>
+      <a href="/logout" class="logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span data-i18n="side_logout">Disconnetti</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== TOPBAR ==================== -->
+  <header class="topbar">
+    <button class="burger" type="button" aria-label="Menu" onclick="toggleSidebar()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="ptitle">{% if pagetitle %}{{ pagetitle }}{% else %}Dashboard{% endif %}</div>
+    <div class="spacer"></div>
+
+    <div class="lang-dropdown-wrapper" style="position:relative;">
+      <button type="button" class="lang-btn" onclick="toggleLangDropdown(event)" style="display:flex;align-items:center;gap:8px;padding:7px 12px;background:#0d1524;border:1px solid #1e2c44;border-radius:12px;cursor:pointer;color:#fff;transition:all 0.2s ease;">
+        <span class="lang-btn-current-flag" style="font-size:16px;">{{ cur_flag }}</span>
+        <span class="lang-btn-current-text" style="font-size:13px;font-weight:700;color:#e2e8f0;">{{ cur_name }}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;color:#7b8ca6;"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      
+      <div class="lang-dropdown-menu" id="langDropdownMenu" style="display:none;position:absolute;top:calc(100% + 8px);right:0;width:175px;background:#0c121e;border:1px solid #1e2c44;border-radius:16px;box-shadow:0 18px 40px -10px rgba(0,0,0,0.8), 0 0 16px rgba(16,185,129,0.15);padding:8px;z-index:99999;">
+        <a href="javascript:void(0)" onclick="selectLanguage('it')" class="lang-opt-item" data-lang="it" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'it' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇮🇹</span>
+          <span>Italiano</span>
+        </a>
+        <a href="javascript:void(0)" onclick="selectLanguage('en')" class="lang-opt-item" data-lang="en" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'en' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇬🇧</span>
+          <span>English</span>
+        </a>
+        <a href="javascript:void(0)" onclick="selectLanguage('es')" class="lang-opt-item" data-lang="es" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'es' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇪🇸</span>
+          <span>Español</span>
+        </a>
+        <a href="javascript:void(0)" onclick="selectLanguage('fr')" class="lang-opt-item" data-lang="fr" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'fr' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇫🇷</span>
+          <span>Français</span>
+        </a>
+        <a href="javascript:void(0)" onclick="selectLanguage('de')" class="lang-opt-item" data-lang="de" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'de' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇩🇪</span>
+          <span>Deutsch</span>
+        </a>
+        <a href="javascript:void(0)" onclick="selectLanguage('pt')" class="lang-opt-item" data-lang="pt" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'pt' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇵🇹</span>
+          <span>Português</span>
+        </a>
+        <a href="javascript:void(0)" onclick="selectLanguage('tr')" class="lang-opt-item" data-lang="tr" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'tr' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}transition:all 0.15s ease;">
+          <span style="font-size:15px;">🇹🇷</span>
+          <span>Türkçe</span>
+        </a>
+      </div>
+    </div>
+
+    <button class="themebtn" type="button" aria-label="Cambia tema" onclick="toggleTheme()">
+      <svg class="ic moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z"/>
+      </svg>
+    </button>
+
+    <a href="/addfunds" class="bal" style="background:#10b981;box-shadow:0 8px 18px -8px rgba(16,185,129,0.7);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.8 1.8 0 0 1 0 3.6h-3a1.8 1.8 0 0 0 0 3.6h4"/>
+      </svg>
+      <span>{{ user['balance'] }}</span>
+    </a>
+
+    <div class="avatar" style="background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3);">
+      {{ user['username']|slice(0, 2)|upper }}
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT AREA ==================== -->
+  <main class="content">
+
+{% else %}
+<body class="site" data-theme="dark">
+
+  <!-- ==================== PUBLIC NAVBAR ==================== -->
+  <header class="sitebar">
+    <div class="barin">
+      <a class="brand" href="/" aria-label="DeepSMM">
+        <img src="/public/Eternity/logo.png" alt="DeepSMM" style="width: 175px; height: auto;">
+      </a>
+      <nav class="sitenav">
+        <a href="/services">Servizi</a>
+        <a href="/#come">Come funziona</a>
+        <a href="/#faq">Domande</a>
+      </nav>
+      <div class="siteact">
+        <div class="lang-dropdown-wrapper" style="position:relative;">
+          <button type="button" class="lang-btn" onclick="toggleLangDropdownPublic(event)" style="display:flex;align-items:center;gap:8px;padding:7px 12px;background:#0d1524;border:1px solid #1e2c44;border-radius:12px;cursor:pointer;color:#fff;transition:all 0.2s ease;">
+            <span class="lang-btn-current-flag" style="font-size:16px;">{{ cur_flag }}</span>
+            <span class="lang-btn-current-text" style="font-size:13px;font-weight:700;color:#e2e8f0;">{{ cur_name }}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;color:#7b8ca6;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          
+          <div class="lang-dropdown-menu" id="langDropdownMenuPublic" style="display:none;position:absolute;top:calc(100% + 8px);right:0;width:175px;background:#0c121e;border:1px solid #1e2c44;border-radius:16px;box-shadow:0 18px 40px -10px rgba(0,0,0,0.8), 0 0 16px rgba(16,185,129,0.15);padding:8px;z-index:99999;">
+            <a href="javascript:void(0)" onclick="selectLanguage('it')" class="lang-opt-item" data-lang="it" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'it' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇮🇹</span>
+              <span>Italiano</span>
+            </a>
+            <a href="javascript:void(0)" onclick="selectLanguage('en')" class="lang-opt-item" data-lang="en" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'en' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇬🇧</span>
+              <span>English</span>
+            </a>
+            <a href="javascript:void(0)" onclick="selectLanguage('es')" class="lang-opt-item" data-lang="es" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'es' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇪🇸</span>
+              <span>Español</span>
+            </a>
+            <a href="javascript:void(0)" onclick="selectLanguage('fr')" class="lang-opt-item" data-lang="fr" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'fr' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇫🇷</span>
+              <span>Français</span>
+            </a>
+            <a href="javascript:void(0)" onclick="selectLanguage('de')" class="lang-opt-item" data-lang="de" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'de' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇩🇪</span>
+              <span>Deutsch</span>
+            </a>
+            <a href="javascript:void(0)" onclick="selectLanguage('pt')" class="lang-opt-item" data-lang="pt" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'pt' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}margin-bottom:2px;transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇵🇹</span>
+              <span>Português</span>
+            </a>
+            <a href="javascript:void(0)" onclick="selectLanguage('tr')" class="lang-opt-item" data-lang="tr" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:13.5px;{% if cur_code == 'tr' %}color:#10b981;background:rgba(16,185,129,0.12);font-weight:700;{% else %}color:#cbd5e1;font-weight:600;{% endif %}transition:all 0.15s ease;">
+              <span style="font-size:15px;">🇹🇷</span>
+              <span>Türkçe</span>
+            </a>
+          </div>
+        </div>
+        <button class="themebtn" type="button" aria-label="Cambia tema" onclick="toggleTheme()">
+          <svg class="ic moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z"/>
+          </svg>
+        </button>
+        <a class="btn small" href="/auth/login" onclick="openLoginModal(event)">Accedi</a>
+        <a class="btn small primary" href="/signup" style="background:#fff !important;color:#0b1220 !important;border-radius:9999px;font-weight:700;box-shadow:none;">Registrati</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+{% endif %}

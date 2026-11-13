@@ -1,0 +1,719 @@
+{% include 'header.twig' %}
+
+
+
+<style>.news-title{
+    background: #334e6e15;
+    padding:8px;
+    margin-top:8px;
+    border-radius:10px 10px 0px 0px;
+}
+.news-content{
+    background: #334e6e15;
+    margin-top:-8px;
+    padding:5px 10px 10px;
+    border-radius:0px 0px 10px 10px;
+}
+.news-date {
+    margin-top:8px;
+    font-size:12px;
+    background: #334e6e35;
+    padding:0px 8px 0px 8px;
+    border-radius:6px;
+    width:max-content;
+}
+.headsir{
+    font-weight:900;
+    font-size:20px;
+    margin-top:-5px;
+    margin-bottom:10px;
+}
+  .ssw{max-height: 450px;overflow-y: auto;}.body .summary-card{border-radius: 22px;background: rgb(255 255 255 / 35%);border: 1.5px solid rgb(255 255 255 / 32%) !important;backdrop-filter: none;}
+
+
+.loading-spinner {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #fff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 5px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+</style>
+<style>
+#unique-dropdown{max-height: 300px;border-radius: 8px;margin-top:8px;border-left-width: 0px;border-right-width: 0px;border-top-width: 0px;border-bottom-width: 0px;border-color: transparent;border-style: solid;box-shadow: 0 12px 24px 12px rgba(0, 0, 0, 0.2);overflow-y: auto;display: block;position: absolute;left:auto;max-width:100%;width: 86%;background:white;z-index: 1;}@media(min-width:776px){ #unique-dropdown{width: 93%;}}@media(min-width:991px){ #unique-dropdown{width: 92.4%;}}.selectme {padding: 3px 10px;cursor: pointer;list-style-type: none; }.selectme:hover {background-color: #f2f2f2;}.highlight {font-weight: bold; }.form-group .search-dropdown .input-wrapper .input-wrapper__prepend, .form-group .search-dropdown .input-wrapper .input-wrapper__append {position: absolute;background: none;border: none;top: 50%;transform: translateY(-50%);padding: 0px 15px;color: var(--form_group_icon_color);}.form-group .search-dropdown .input-wrapper .input-wrapper__prepend:hover, .form-group .search-dropdown .input-wrapper .input-wrapper__append:hover {opacity: 0.5;}.form-group .search-dropdown .input-wrapper .input-wrapper__prepend:hover, .form-group .search-dropdown .input-wrapper .input-wrapper__append:focus {outline:none;}.form-group .search-dropdown .input-wrapper .input-wrapper__append {font-size: 12px;right: 3px;display: none;}
+</style>
+
+<style>
+.body .summary-card{border-radius: 16px;background: #fff;color:#334e6e !important;border: none !important;backdrop-filter: none;padding:14px !important;}
+#block_93 .totals-block__icon-preview{
+    box-shadow:none ;}
+    #block_93 .totals-block__icon-preview i {
+    font-size: 40px;
+}
+#block_93 .totals-block__icon-preview {
+    width: 100px;}
+    #block_93 .totals-block__card-left{
+        
+        
+    }
+        .totals-block__count-value {
+    font-size: 25px !important;
+    line-height: 25px !important;
+}.totals-block__card-name{
+  padding-top:7px;
+  color:#334e6e;
+  font-weight: 445;
+  white-space: wrap;
+  font-size: 15px;
+    clear: both;
+    display: block;
+}
+#block_93 .totals-block__card-leftr {
+    flex-basis: 0px;
+    padding-right: 12px;
+}
+#block_93 .totals-block__card-left {
+    width: 100%;
+    flex-basis: 100%;
+    padding-right: 16px;
+}#block_93 .totals-block__card {
+    display: flex;
+    align-items: center;
+}
+.totals-block__count-value{
+    color:#334e6e !important;}
+    
+    
+    /* Import Google Fonts */
+{{ settings.user_font_import|raw }}
+
+/* Summary card */
+.totals .mb-3 .summary-card{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+
+/* Heading */
+.totals .mb-3 h2{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+
+/* Totals block  card */
+.totals .mb-3 .totals-block__card{
+ position:relative;
+ top:10px;
+}
+
+/* Totals block  card */
+.totals .mb-3:nth-child(1) .totals-block__card{
+ top:0px;
+}
+
+@media (max-width:991px){
+
+ /* Totals block  card */
+ .totals .mb-3 .totals-block__card{
+  top:0px;
+ }
+ 
+}
+
+@media (max-width:767px){
+
+ /* Totals block  card */
+ .wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 #block_93 .totals .container-fluid .justify-content-center .mb-3 .summary-card .totals-block__card{
+  top:-1px !important;
+ }
+ 
+}
+
+@media (max-width:640px){
+
+ /* Totals block  card left */
+ .totals .mb-3 .totals-block__card-left{
+  position:relative;
+  top:2px;
+ }
+ 
+}
+/* Import Google Fonts */
+{{ settings.user_font_import|raw }}
+
+/* Card */
+#block_44 .mb-3 .card{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+
+/* Span Tag */
+.form-control > span > span{
+ position:relative;
+ top:1px;
+}
+
+/* Span Tag */
+#description .control-label span{
+ text-transform:capitalize;
+}
+
+/* Small Tag */
+#neworder_fields small{
+ position:relative;
+ top:-10px;
+}
+
+/* Card */
+#block_44 .component_content_headers .card{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+ padding-left:20px;
+ padding-right:20px;
+ padding-top:20px;
+ padding-bottom:20px;
+}
+
+/* Heading */
+.news-item .news-details h4{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+
+/* Column 5/12 */
+#block_44 .new_order-block .col-lg-5{
+ font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+}
+
+/* Svg */
+#block_93 .totals svg{
+ background-image:url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgICAgICAgICAgIDxnIGZpbGw9IiNmZmZmZmYiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTg1My44OTMsODYuOTk4Yy0zOC44NTksMC01OC44MTEtMTYuNDU1LTc3Ljk1Ni0zNS4wNTFjMTguMjk1LTEwLjUzNiw0MC44OTEtMTguMjc2LDczLjM3OC0xOC4yNzYgYzM4LjY4NSwwLDY0LjEzMiwxMi41NjQsODUuNDg5LDI4LjM0N0M5MTYuMTkyLDcyLjAxMiw5MDAuOCw4Ni45OTgsODUzLjg5Myw4Ni45OTh6IE01MjYuMjY1LDgwLjk0NSBjLTYuNTE3LTAuNTYyLTEzLjU5OS0wLjg3OS0yMS40MS0wLjg3OWMtNzAuNzk5LDAtOTEuMzM3LDI3LjIyOS0xMzQuNDMzLDM1LjY2MmMxNC45MDEsMy43MiwzMi4xMTgsNi4wNyw1Mi44OTgsNi4wNyBDNDcwLjE3MSwxMjEuNzk3LDUwMC4zNCwxMDMuNDIxLDUyNi4yNjUsODAuOTQ1eiIgZmlsbC1vcGFjaXR5PSIuMyIvPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTY2My40NTgsMTA5LjY3MWMtNjcuMTM3LDAtODAuMzQ1LTIzLjgyNC0xMzcuMTkzLTI4LjcyNkM1NjcuMDg2LDQ1LjU1NSw1OTcuMzgxLDAsNjY1LjY5MSwwIGM2MS44NTcsMCw4NS4zNjksMjcuNzgyLDExMC4yNDYsNTEuOTQ3QzczNi44ODgsNzQuNDM0LDcxNy40NTksMTA5LjY3MSw2NjMuNDU4LDEwOS42NzF6IE0yMTcuNjgsOTQuMTYzIGM1NS45NzEsMCw2Mi41MjYsMjQuMDI2LDEyNi4zMzcsMjQuMDI2YzkuODU4LDAsMTguNTA4LTAuOTE2LDI2LjQwNC0yLjQ2MWMtNTcuMTg2LTE0LjI3OC04MC4xNzctNDguODA4LTEzOC42NTktNDguODA4IGMtNzcuMDYzLDAtOTkuOTYsNDguNTY5LTE1MS43NTEsNDguNTY5Yy00MC4wMDYsMC02MC4wMDgtMTIuMjA2LTgwLjAxMS0yOS41MDZ2MTYuODA2YzIwLjAwMywxMC44OTEsNDAuMDA1LDIxLjc4Miw4MC4wMTEsMjEuNzgyIEMxNjAuMDE0LDEyNC41NywxNTguNjA4LDk0LjE2MywyMTcuNjgsOTQuMTYzeiBNMTIwMC4xMTIsNDYuMjkyYy01Ny40OTMsMC01Ni45MzUsNDYuNTk1LTExNS4wMTUsNDYuNTk1IGMtNTMuNjEyLDAtNTkuNzU1LTM5LjYxOC0xMTUuNjAyLTM5LjYxOGMtMTUuMjY3LDAtMjUuMzgxLDMuNzUxLTM0LjY5LDguNzQ5YzM2LjA5NiwyNi42NzUsNjAuNTAzLDYyLjU1MiwxMTcuMzQyLDYyLjU1MiBjNjkuMjQ5LDAsNzUuOTUxLTQzLjU1OSwxNDcuOTY0LTQzLjU1OWMzOS44MDQsMCw1OS45ODYsMTAuOTQzLDc5Ljg4OCwyMS43NzdWODUuOTgyIEMxMjYwLjA5Nyw2OC43NzEsMTIzOS45MTYsNDYuMjkyLDEyMDAuMTEyLDQ2LjI5MnoiIGZpbGwtb3BhY2l0eT0iLjUiLz4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMDUyLjE0NywxMjQuNTdjLTU2Ljg0LDAtODEuMjQ3LTM1Ljg3Ni0xMTcuMzQyLTYyLjU1MmMtMTguNjEzLDkuOTk0LTM0LjAwNSwyNC45OC04MC45MTIsMjQuOTggYy0zOC44NTksMC01OC44MTEtMTYuNDU1LTc3Ljk1Ni0zNS4wNTFjLTM5LjA1LDIyLjQ4Ny01OC40NzksNTcuNzI0LTExMi40OCw1Ny43MjRjLTY3LjEzNywwLTgwLjM0NS0yMy44MjQtMTM3LjE5My0yOC43MjYgYy0yNS45MjUsMjIuNDc1LTU2LjA5Myw0MC44NTItMTAyLjk0Niw0MC44NTJjLTIwLjc3OSwwLTM3Ljk5Ni0yLjM0OS01Mi44OTgtNi4wN2MtNy44OTUsMS41NDUtMTYuNTQ2LDIuNDYxLTI2LjQwNCwyLjQ2MSBjLTYzLjgxMSwwLTcwLjM2Ni0yNC4wMjYtMTI2LjMzNy0yNC4wMjZjLTU5LjA3MiwwLTU3LjY2NSwzMC40MDctMTM3LjY2OSwzMC40MDdjLTQwLjAwNiwwLTYwLjAwOC0xMC44OTEtODAuMDExLTIxLjc4MlYxNDBoMTI4MCB2LTM3LjIxMmMtMTkuOTAzLTEwLjgzNS00MC4wODQtMjEuNzc3LTc5Ljg4OC0yMS43NzdDMTEyOC4wOTgsODEuMDExLDExMjEuMzk3LDEyNC41NywxMDUyLjE0NywxMjQuNTd6Ii8+CiAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L3N2Zz4=");
+}
+
+/* News content */
+.news-item .news-details .news-content{
+ padding:15px;
+}
+
+
+
+</style>
+
+<style>.loader{display:inline-block;width:15px;height:15px;border:2px solid #fff;border-radius:50%;border-top:2px solid transparent;animation:1s linear infinite spin}@keyframes spin{100%{transform:rotate(360deg)}}.toast{position:fixed;top:-100px;left:50%;transform:translateX(-50%);background-color:#333;color:#fff;padding:15px 20px;border-radius:5px;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;transition:top .5s ease-in-out}.toast.success{background-color:#28a745}.toast.error{background-color:#dc3545}.toast.show{top:20px}.toast .close{background:0 0;border:none;color:#fff;font-size:16px;cursor:pointer;margin-left:15px;padding:5px 0 0;outline:0}.toast .close:hover{opacity:.8;outline:0}</style>
+
+<div class="wrapper-content">
+<div class="wrapper-content__header">
+  </div>
+<div class="wrapper-content__body">
+  <!-- Main variables *content* -->
+<div id="block_93">
+    <div class="new_order-block ">
+<div class="bg"></div>
+<div class="divider-top"></div>
+<div class="divider-bottom"></div>
+<div class="container">
+       <div class="row">
+<div class="col-lg-12 mt-3 mb- mb-lg-0">
+<div class="component_form_group component_card component_radio_button">
+<div class="">
+<div class="component_button_forms">
+
+{% if contentText %}
+<div class="card ">																
+{{ contentText }}
+</div>
+{% endif %}
+</div>
+</form>
+</div>
+</div></div>
+</div>
+</div></div>
+
+
+<div id="block_93">
+    <div class="totals mt-2">
+        <div class="container-fluid">
+            <div class="row align-items-stretch justify-content-center">
+
+                <!-- Card 1: Welcome Dear -->
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <div class="card h-100 summary-card">
+                        <div class="totals-block__card">
+                            <div class="totals-block__icon-preview">
+                                <i class="fa-solid fa-circle-user"></i>
+                            </div>
+                             <div class="totals-block__card-left">
+                                <h2 class="totals-block__count-value">{{ user["username"] }}</h2>
+                                <p class="totals-block__card-name">Welcome To {{ site["site_name"]  }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Total Spent -->
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <div class="card h-100 summary-card">
+                        <div class="totals-block__card">
+                            <div class="totals-block__icon-preview">
+                                <i class="fa-solid fa-comment-dollar"></i>
+                            </div>
+                            <div class="totals-block__card-left">
+                                <h2 id="flash-text" class="totals-block__count-value">{{ user["spent"] }}</h2>
+                                <p id="flash-label" class="totals-block__card-name">Total Spent</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% if settings.rank_display == '2' %}
+<script>
+  let showingSpent = true;
+  const flashText = document.getElementById("flash-text");
+  const flashLabel = document.getElementById("flash-label");
+
+  setInterval(() => {
+    if (showingSpent) {
+      flashText.innerText = "{{ user["rank_name"] ?: 'Unranked' }}";
+      flashLabel.innerText = "Rank Status";
+    } else {
+      flashText.innerText = "{{ user["spent"] }}";
+      flashLabel.innerText = "Total Spent";
+    }
+    showingSpent = !showingSpent;
+  }, 3000); // 3 sec toggle
+</script>
+{% endif %}
+                <!-- Card 3: Total Orders -->
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <div class="card h-100 summary-card">
+                        <div class="totals-block__card">
+                            <div class="totals-block__icon-preview">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                            <div class="totals-block__card-left">
+                                <h2 class="totals-block__count-value">{{ totalorders }}</h2>
+                                <p class="totals-block__card-name">Panel Orders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Total Balance -->
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <div class="card h-100 summary-card">
+                        <div class="totals-block__card">
+                            <div class="totals-block__icon-preview">
+                             <i class="fa-solid fa-money-bill-wave"></i>
+                            </div>
+                            <div class="totals-block__card-left">
+                                <h2 class="totals-block__count-value">{{ user["balance"] }}</h2>
+                                <p class="totals-block__card-name">
+                                    Account Balance 
+                                   
+                                </p>
+                            </div>
+                        
+                    
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<svg style="transform: rotateX(180deg); margin-bottom: -8px; margin-top: 4px;" width="100%" height="40px" viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#ffffff">
+    <!-- Background Wave -->
+    <path d="M0,80 C480,0 960,160 1440,80 L1440,140 L0,140 Z" fill-opacity="0.3"/>
+    
+    <!-- Middle Wave -->
+    <path d="M0,100 C480,40 960,180 1440,100 L1440,140 L0,140 Z" fill-opacity="0.5"/>
+    
+    <!-- Foreground Wave -->
+    <path d="M0,120 C480,80 960,200 1440,120 L1440,140 L0,140 Z"/>
+  </g>
+</svg>
+
+<div id="block_44">
+  <div class="new_order-block ">
+<div class="bg"></div>
+<div class="divider-top"></div>
+<div class="divider-bottom"></div>
+<div class="container-fluid">
+  <div class="row">
+
+  <div class="col-lg-7 mb-3">
+<div class="component_form_group component_card component_radio_button">
+<div class="card ">
+    
+    {% if error %}
+      <div class="alert alert-dismissible alert-danger">
+        {{ errorText }}
+      </div>
+    {% endif %}
+
+ {% if data["order"]["success"] == 1 %}
+      <div class="alert alert-dismissible alert-success">
+          <strong> {{ lang["neworder.success.id"] }}: </strong> {{ data['order']['id'] }} <br>
+          <strong> {{ lang["neworder.success.service"] }}: </strong> {{ data['order']['service'] }} <br>
+          <strong> {{ lang["neworder.success.link"] }}: </strong> {{ data['order']['link'] }} <br>
+          <strong> {{ lang["neworder.success.quantity"] }}: </strong> {{ data['order']['quantity'] }} <br>
+          <strong> {{ lang["neworder.success.charge"] }}: </strong> {{ data['order']['price'] }} <br>
+          <strong> {{ lang["neworder.success.balance"] }}: </strong>{{ data['order']['balance'] }} <br>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">✕</span></button>
+
+      </div>
+    {% endif %}
+    
+    
+    {% if data["order"]["success"] == 2 %}
+      <div class="alert alert-dismissible alert-success">
+ <strong> {{ lang["neworder.success.id"] }}: </strong> {{ data['order']['id'] }} <br>
+ <strong> {{ lang["neworder.success.service"] }}: </strong> {{ data['order']['service'] }} <br>
+ <strong> {{ lang["neworder.success.username"] }}: </strong> {{ data['order']['link'] }} <br>
+ <strong> {{ lang["neworder.success.quantity"] }}: </strong> {{ data['order']['min'] }} - {{ data['order']['max'] }} <br>
+ <strong> {{ lang["neworder.success.posts"] }}: </strong> {{ data['order']['posts'] }} <br>
+ <strong> {{ lang["neworder.success.delay"] }}: </strong>{{ data['order']['delay'] }} <br>
+       </div>
+    {% endif %}
+  
+
+<br>
+ 	
+    <div class="well">
+
+	
+<form method="post" action>
+<div class="component_button_forms">
+ <div class="form-group">
+  <div class="search-dropdown" id="new-order-search" style="position: relative;" data-lang-placeholder="Search">
+    <div class="input-wrapper" style="position: relative;">
+      <!-- Search Button -->
+      <button type="button" class="input-wrapper__prepend" onclick="focusInputField()">
+        <span class="fas fa-search"></span>
+      </button>
+
+      <!-- Input Field -->
+      <input 
+        style="padding-left:41px" 
+        type="text" 
+        class="form-control" 
+        id="unique-input" 
+        value="" 
+        placeholder="Search" 
+        autocomplete="off"
+      >
+
+      <!-- Clear Button -->
+      <button type="button" class="input-wrapper__append" onclick="clearInput()">
+        <span class="fa fa-times"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search Results Dropdown -->
+  <div class="search-results" id="unique-dropdown" style="display: none;"></div>
+</div>
+
+<style>
+.body .badge {
+    color: #fff;
+}
+
+.search-results {
+  position: absolute;
+ 
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  background: #fff;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-results .dropdown-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: normal;
+  border-bottom: 1px solid #eee;
+}
+
+.search-results .dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+#unique-dropdown {
+    width: 93% !important;
+}
+
+    @media (max-width:991px){
+        #unique-dropdown {
+    width: 86% !important;
+}}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+function focusInputField() {
+  $('#unique-input').focus();
+}
+
+function clearInput() {
+  $('#unique-input').val('');
+  $('#unique-dropdown').hide();
+}
+
+function serviceclicked(sid, cid) {
+  $(`#neworder_category option[value="${cid}"]`).prop('selected', true).change();
+  setTimeout(() => {
+    $(`#neworder_services option[value="${sid}"]`).prop('selected', true).change();
+    $('#unique-dropdown').hide();
+  }, 1000);
+}
+
+$(document).ready(function () {
+  $('#unique-input').on('input', function () {
+    const inputValue = $(this).val().trim();
+    if (!inputValue) {
+      $('#unique-dropdown').hide();
+      return;
+    }
+
+    // Show loading state
+    $('#unique-dropdown').show().html(`
+      <div class="dropdown-item">
+        <span class="badge bg-primary">Searching</span>
+      </div>
+    `);
+
+    // AJAX search
+    $.ajax({
+      type: 'POST',
+      url: '/ajax_data', // ✅ Server must support this
+      data: {
+        action: 'service_search',
+        search_term: inputValue
+      },
+      success: function (response) {
+        console.log("AJAX Success:", response); // ✅ Check Console
+        $('#unique-dropdown').html(response).show();
+      },
+      error: function (xhr) {
+        console.error("AJAX Error:", xhr);
+        $('#unique-dropdown').html(`
+          <div class="dropdown-item text-danger">Error loading results</div>
+        `).show();
+      }
+    });
+  });
+});
+</script>
+
+
+
+    
+
+    <div class="form-group">
+<label for="orderform-category" class="control-label">{{ lang["neworder.category"] }}</label>
+
+<select class="form-control" id="neworder_category" name="categories" data-select="true" data-select-search="true" data-select-search-placeholder="Search" data-select-container="#select-category-container" tabindex="-1" aria-hidden="true">
+{{ category_html_simplify }}
+
+</select>
+<div id="select-category-container" class="position-relative"></div>
+</div>
+</div>
+    <div class="form-group">
+<label for="orderform-service" class="control-label">{{ lang["neworder.service"] }}</label>
+<select class="form-control" id="neworder_services" name="services" data-select="true" data-select-search="true" data-select-search-placeholder="Search" data-select-container="#select-service-container" tabindex="-1" aria-hidden="true">
+<option value="1">No services found in this category</option>
+</select>
+<div id="select-service-container" class="position-relative"></div>
+    </div>
+
+
+  
+  
+  
+  
+  
+  
+  
+
+    <<div id="neworder_fields"></div>
+
+  
+  <div class="form-group" id="charge_div">
+      <label for="charge" class="control-label">Charge</label>
+      <input type="text" class="form-control" id="charge" readonly>
+    </div>
+  
+
+
+
+
+
+  
+  <button 
+  type="submit" 
+  class="btn btn-block btn-big-primary modern-btn">
+  {{ lang["neworder.button"] }}
+</button>
+
+<style>
+  .modern-btn {
+    background-color: #10b981; /* Theme emerald green */
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 0 #1e40af, 0 6px 12px rgba(0,0,0,0.15);
+    transition: all 0.15s ease-in-out;
+  }
+
+  .modern-btn:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #1e40af, 0 8px 18px rgba(0,0,0,0.2);
+  }
+
+  .modern-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #1e40af, 0 4px 8px rgba(0,0,0,0.1);
+  }
+</style>
+</div>
+   </div>
+</div>
+    </div>
+
+<div class="col-lg-5">
+  <div class="component_content_card component_content_button component_content_headers">
+{% if news %}
+    <div class="card"style="max-height: 550px;">
+      <div class="headsir"><i class="fal fa-newspaper mr-2"></i>Latest News</div>
+      <div class="ssw">
+      {% for new in news %}
+      <div class="news-item">
+        <div class="news-details">
+          <p class="news-date"><i class="fad fa-calendar-alt mr-1" style="--fa-secondary-opacity: 0.65;"></i>{{ new['news_date'] }}</p>
+          <h4 class="news-title">
+            {{ new['news_title'] }}
+          </h4>
+          <div class="news-content">{{ new['news_content'] }}</div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+  </div>
+  </div>
+{% endif%}
+
+<div class="container">
+</div>	
+{% if contentText2 %}
+<div class="card mt-3 mb-4">
+{{ contentText2 }}
+</div>
+{% endif %}
+														
+</div></div>
+</div></div>
+</div>
+</div></div></div>
+</div></div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    function showToast(message, type) {
+      var $toast = $(".toast");
+      $toast.removeClass("success error").addClass(type).html(message).addClass("show");
+      $(".toast .close").on("click", function () {$toast.removeClass("show");}); 
+      setTimeout(function () {$toast.removeClass("show");}, 6000);
+    }
+    $(".order-btn").on("click", function (e) {
+        e.preventDefault();
+        var $btn = $(this);
+        var categories = $('[name="categories"]').val();
+        var services = $('[name="services"]').val();
+        var link = $('[name="link"]').val();  
+        var quantity = $('[name="quantity"]').val();
+        var comments = $('[name="comments"]').val();  
+        $btn.html('<span class="loader"></span> Processing...').prop("disabled", true);
+        $.post("neworder", {
+            categories: categories,
+            services: services,
+            link: link,
+            quantity: quantity,
+            comments: comments
+        }, function(response) {
+            var $response = $("<div>").html(response); 
+            var successMessage = $response.find(".alert.alert-dismissible.alert-success").html();
+            var errorMessage = $response.find(".alert.alert-dismissible.alert-danger").html(); 
+            if (errorMessage) {
+                $btn.html('❌ Order Failed');
+                showToast(errorMessage, "error");
+                $('[name="link"]').val('');
+                $('[name="quantity"]').val('');
+                $('#charge').val('');
+            } else if (successMessage){
+                $btn.html('✔ Order Placed');
+                showToast(successMessage, "success");
+                $('[name="link"]').val('');
+                $('[name="quantity"]').val('');
+                $('#charge').val('');
+            }
+            setTimeout(function () {$btn.html('{{ lang["neworder.button"] }}').prop("disabled", false);}, 2300);
+        }).fail(function() {
+            showToast("Failed. Try again.", "error");
+            $btn.html("Failed. Try again.");
+            setTimeout(function () {$btn.html('{{ lang["neworder.button"] }}').prop("disabled", false);}, 2300);
+        });
+    });
+});
+</script>
+
+{% include 'new-footer.twig' %}
+<script>
+$(document).ready(function () {
+    // URL se params nikaalo
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryId = urlParams.get('category_id');
+    const serviceId = urlParams.get('service_id');
+
+    if (categoryId) {
+        // Set category dropdown
+        $('#neworder_category').val(categoryId).trigger('change');
+
+        // Wait until services load (some panels load via AJAX)
+        const interval = setInterval(function () {
+            const $services = $('#neworder_services');
+            if ($services.find('option').length > 1) {
+                if (serviceId) {
+                    $services.val(serviceId).trigger('change');
+                }
+                clearInterval(interval);
+            }
+        }, 300);
+    }
+});
+</script>

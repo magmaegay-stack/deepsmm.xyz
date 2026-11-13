@@ -1,0 +1,577 @@
+{% include 'header.twig' %}
+
+<!-- ==================== NEW ORDER PAGE (KrazySMM Full Style) ==================== -->
+<div class="dash-head-section" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px;">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:#10b981;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </div>
+    <div>
+      <h1 style="font-size:22px;font-weight:800;color:#fff;margin:0 0 3px;">Nuovo ordine</h1>
+      <p style="font-size:13.5px;color:#7b8ca6;margin:0;">Scegli la piattaforma, incolla il link e parti in pochi secondi.</p>
+    </div>
+  </div>
+
+  <a href="/services" class="btn" style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 20px;border-radius:10px;background:#101726;border:1px solid #1e2c44;color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;transition:all 0.2s ease;" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='#1e2c44'">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:#10b981;">
+      <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+      <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+    </svg>
+    <span>Tutti i servizi</span>
+  </a>
+</div>
+
+<!-- ==================== BANNER RICARICA DISCORD ==================== -->
+<div style="background:linear-gradient(90deg, rgba(88,101,242,0.18) 0%, rgba(16,185,129,0.18) 100%);border:1px solid rgba(16,185,129,0.35);padding:16px 22px;border-radius:16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div style="width:40px;height:40px;border-radius:12px;background:#5865F2;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 6px 18px rgba(88,101,242,0.4);flex-shrink:0;">
+      <i class="fab fa-discord"></i>
+    </div>
+    <div>
+      <h4 style="font-size:14.5px;font-weight:800;color:#fff;margin:0 0 2px;">Hai bisogno di ricaricare il saldo?</h4>
+      <p style="font-size:12.5px;color:#cbd5e1;margin:0;">Entra nel Discord, apri un ticket e paga l'importo desiderato (es. 10€): un admin caricherà subito il saldo sul tuo account per ordinare!</p>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="/addfunds" class="btn" style="height:38px;padding:0 16px;border-radius:10px;background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;box-shadow:0 4px 12px rgba(16,185,129,0.4);">
+      <i class="fas fa-wallet"></i> Ricarica Saldo
+    </a>
+    <a href="https://discord.gg/" target="_blank" rel="noopener" class="btn" style="height:38px;padding:0 16px;border-radius:10px;background:#5865F2;color:#fff;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;box-shadow:0 4px 12px rgba(88,101,242,0.4);">
+      <i class="fab fa-discord"></i> Apri Ticket Discord
+    </a>
+  </div>
+</div>
+
+<!-- ==================== PLATFORMS SELECTOR PILLS WITH BADGES (Screenshot 13) ==================== -->
+<div class="jap-platforms-full-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));gap:8px;margin-bottom:20px;">
+  <button type="button" class="ko-pill active" data-platform="Everything" onclick="filterPlatformKrazy('Everything', this)">
+    <span>Tutti</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Instagram" onclick="filterPlatformKrazy('Instagram', this)">
+    <i class="fab fa-instagram" style="color:#E1306C;"></i>
+    <span>Instagram</span>
+    <span class="ko-badge">1768</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="TikTok" onclick="filterPlatformKrazy('TikTok', this)">
+    <i class="fab fa-tiktok" style="color:#fff;"></i>
+    <span>TikTok</span>
+    <span class="ko-badge">1591</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Youtube" onclick="filterPlatformKrazy('Youtube', this)">
+    <i class="fab fa-youtube" style="color:#FF0000;"></i>
+    <span>YouTube</span>
+    <span class="ko-badge">1086</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Facebook" onclick="filterPlatformKrazy('Facebook', this)">
+    <i class="fab fa-facebook-f" style="color:#1877F2;"></i>
+    <span>Facebook</span>
+    <span class="ko-badge">799</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Twitter" onclick="filterPlatformKrazy('Twitter', this)">
+    <i class="fab fa-x-twitter" style="color:#cbd5e1;"></i>
+    <span>Twitter / X</span>
+    <span class="ko-badge">528</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Telegram" onclick="filterPlatformKrazy('Telegram', this)">
+    <i class="fab fa-telegram-plane" style="color:#229ED9;"></i>
+    <span>Telegram</span>
+    <span class="ko-badge">499</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Spotify" onclick="filterPlatformKrazy('Spotify', this)">
+    <i class="fab fa-spotify" style="color:#1ED760;"></i>
+    <span>Spotify</span>
+    <span class="ko-badge">276</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Traffic" onclick="filterPlatformKrazy('Traffic', this)">
+    <i class="fas fa-globe" style="color:#38bdf8;"></i>
+    <span>Traffico / SEO</span>
+    <span class="ko-badge">75</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Linkedin" onclick="filterPlatformKrazy('Linkedin', this)">
+    <i class="fab fa-linkedin-in" style="color:#0A66C2;"></i>
+    <span>LinkedIn</span>
+    <span class="ko-badge">59</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Discord" onclick="filterPlatformKrazy('Discord', this)">
+    <i class="fab fa-discord" style="color:#5865F2;"></i>
+    <span>Discord</span>
+    <span class="ko-badge">36</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Snapchat" onclick="filterPlatformKrazy('Snapchat', this)">
+    <i class="fab fa-snapchat-ghost" style="color:#FFFC00;"></i>
+    <span>Snapchat</span>
+    <span class="ko-badge">34</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Twitch" onclick="filterPlatformKrazy('Twitch', this)">
+    <i class="fab fa-twitch" style="color:#9146FF;"></i>
+    <span>Twitch</span>
+    <span class="ko-badge">27</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Review" onclick="filterPlatformKrazy('Review', this)">
+    <i class="far fa-star" style="color:#fbbf24;"></i>
+    <span>TrustPilot</span>
+    <span class="ko-badge">83</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Google" onclick="filterPlatformKrazy('Google', this)">
+    <i class="fab fa-google" style="color:#4285F4;"></i>
+    <span>Google</span>
+    <span class="ko-badge">6</span>
+  </button>
+  <button type="button" class="ko-pill" data-platform="Others" onclick="filterPlatformKrazy('Others', this)">
+    <i class="fas fa-plus" style="color:#a855f7;"></i>
+    <span>+ Altro</span>
+  </button>
+</div>
+
+<!-- ==================== SEARCH BAR ==================== -->
+<div style="margin-bottom:24px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="position:relative;flex:1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#7b8ca6;">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input type="text" id="liveSearchInput" onkeyup="handleLiveServiceSearch(this.value)" placeholder="Cerca un servizio per nome o ID..." style="width:100%;height:46px;padding:0 14px 0 42px;background:#101726;border:1px solid #1e2c44;color:#fff;border-radius:10px;font-size:14px;">
+    </div>
+    <button type="button" onclick="handleLiveServiceSearch(document.getElementById('liveSearchInput').value)" class="btn primary" style="height:46px;padding:0 24px;border-radius:10px;background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:700;font-size:14px;border:none;cursor:pointer;box-shadow:0 6px 18px -4px rgba(16,185,129,0.55);">
+      Cerca
+    </button>
+  </div>
+</div>
+
+{% if error %}
+  <div style="background:rgba(220,53,69,0.15);border:1px solid #dc3545;color:#ff6b77;padding:12px 18px;border-radius:12px;margin-bottom:20px;font-size:14px;">
+    {{ errorText }}
+  </div>
+{% endif %}
+
+{% if data["order"]["success"] == 1 %}
+  <div style="background:rgba(16,185,129,0.15);border:1px solid #10b981;color:#34d399;padding:14px 18px;border-radius:12px;margin-bottom:20px;font-size:14px;">
+    <strong>Ordine completato con successo!</strong><br>
+    ID Ordine: #{{ data['order']['id'] }} — Servizio: {{ data['order']['service'] }} — Quantità: {{ data['order']['quantity'] }}
+  </div>
+{% endif %}
+
+<!-- ==================== MAIN 2-COLUMN ORDER WORKSPACE (Screenshot 13 & 14) ==================== -->
+<div class="neworder-layout-grid" style="display:grid;grid-template-columns:1.25fr 0.75fr;gap:22px;margin-bottom:30px;">
+  
+  <!-- LEFT COLUMN: ORDER FORM & SERVICE SPECS -->
+  <div>
+    <div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:24px;">
+      
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #162234;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;color:#10b981;">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0;">Nuovo ordine</h3>
+      </div>
+
+      <form method="post" action="/neworder" id="orderForm">
+        <!-- Categoria -->
+        <div style="margin-bottom:18px;">
+          <label for="neworder_category" style="display:block;font-size:13px;font-weight:700;color:#cbd5e1;margin-bottom:8px;">
+            Categoria
+          </label>
+          <select class="form-control" id="neworder_category" name="categories" onchange="onCategorySelectChange()" style="width:100%;height:46px;padding:0 14px;background:#101726;border:1px solid #1e2c44;color:#fff;border-radius:10px;font-size:14px;">
+            {{ category_html_simplify }}
+          </select>
+        </div>
+
+        <!-- Servizio -->
+        <div style="margin-bottom:20px;">
+          <label for="neworder_services" style="display:block;font-size:13px;font-weight:700;color:#cbd5e1;margin-bottom:8px;">
+            Servizio
+          </label>
+          <select class="form-control" id="neworder_services" name="services" onchange="onServiceSelectChange()" style="width:100%;height:46px;padding:0 14px;background:#101726;border:1px solid #1e2c44;color:#fff;border-radius:10px;font-size:14px;">
+            <option value="1">Caricamento servizi in corso...</option>
+          </select>
+        </div>
+
+        <!-- SERVICE PREVIEW CARD (Screenshot 14) -->
+        <div id="servicePreviewCard" style="display:flex;align-items:flex-start;gap:14px;padding:18px;border-radius:14px;background:#101726;border:1px solid #1e2c44;margin-bottom:22px;">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:#10b981;flex-shrink:0;">
+            <i class="fas fa-layer-group" style="font-size:20px;"></i>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+              <span id="cardServiceBadge" style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:linear-gradient(135deg, #10b981, #059669);color:#fff;">
+                SERVICE
+              </span>
+              <h4 id="cardServiceTitle" style="font-size:14.5px;font-weight:800;color:#fff;margin:0;line-height:1.4;">
+                Seleziona un servizio dal menu
+              </h4>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;font-size:13px;color:#7b8ca6;flex-wrap:wrap;">
+              <span id="cardServiceRate" style="color:#10b981;font-weight:800;">$0.00 / 1000</span>
+              <span id="cardServiceMinMax">min 100 · max 50000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPECIFICATIONS 6-GRID (Screenshot 14) -->
+        <div style="margin-bottom:22px;">
+          <h4 style="font-size:14px;font-weight:800;color:#fff;margin:0 0 12px;">Descrizione</h4>
+          <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;margin-bottom:16px;">
+            <div style="padding:12px;border-radius:10px;background:#101726;border:1px solid #1e2c44;">
+              <span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">ORA DI INIZIO</span>
+              <b style="font-size:12.5px;color:#fff;">0 – 1 ora</b>
+            </div>
+            <div style="padding:12px;border-radius:10px;background:#101726;border:1px solid #1e2c44;">
+              <span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">VELOCITÀ</span>
+              <b style="font-size:12.5px;color:#fff;">Standard fornitore</b>
+            </div>
+            <div style="padding:12px;border-radius:10px;background:#101726;border:1px solid #1e2c44;">
+              <span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">GARANZIA</span>
+              <b id="specRefill" style="font-size:12.5px;color:#10b981;">Refill garantito ♻️</b>
+            </div>
+            <div style="padding:12px;border-radius:10px;background:#101726;border:1px solid #1e2c44;">
+              <span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">LINK</span>
+              <b style="font-size:12.5px;color:#fff;">Link del profilo / post</b>
+            </div>
+            <div style="padding:12px;border-radius:10px;background:#101726;border:1px solid #1e2c44;">
+              <span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">QUANTITÀ</span>
+              <b id="specMinMax" style="font-size:12.5px;color:#fff;">da 10 a 1.000.000</b>
+            </div>
+            <div style="padding:12px;border-radius:10px;background:#101726;border:1px solid #1e2c44;">
+              <span style="display:block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">ANNULLAMENTO</span>
+              <b style="font-size:12.5px;color:#34d399;">Consentito da fornitore</b>
+            </div>
+          </div>
+
+          <!-- BULLET RULES (Screenshot 14 & 15) -->
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:#94a3b8;line-height:1.5;">
+            <li style="display:flex;align-items:flex-start;gap:8px;">
+              <span style="color:#10b981;font-weight:800;">•</span>
+              Il link fornito nell'ordine deve essere visibile a tutti. I link nascosti o privati non possono essere elaborati.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:8px;">
+              <span style="color:#10b981;font-weight:800;">•</span>
+              Non rendere privato il tuo account durante il processo e non cambiare il nome utente fino al completamento.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:8px;">
+              <span style="color:#10b981;font-weight:800;">•</span>
+              Non effettuare un secondo ordine per lo stesso link finché il primo non è completato.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:8px;">
+              <span style="color:#10b981;font-weight:800;">•</span>
+              Il tempo medio di consegna indicato si riferisce a 1.000 unità standard.
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:8px;">
+              <span style="color:#10b981;font-weight:800;">•</span>
+              L'ordine può essere annullato dal fornitore: in quel caso l'importo non consumato ti viene restituito subito.
+            </li>
+          </ul>
+        </div>
+
+        <!-- LINK INPUT (Screenshot 15) -->
+        <div style="margin-bottom:18px;">
+          <label for="order_link" style="display:block;font-size:13px;font-weight:700;color:#cbd5e1;margin-bottom:8px;">
+            Link
+          </label>
+          <div style="position:relative;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#7b8ca6;">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <input type="text" id="order_link" name="link" required placeholder="https://..." style="width:100%;height:46px;padding:0 14px 0 42px;background:#101726;border:1px solid #1e2c44;color:#fff;border-radius:10px;font-size:14px;">
+          </div>
+        </div>
+
+        <!-- QUANTITY INPUT & PRESETS (Screenshot 15) -->
+        <div style="margin-bottom:18px;">
+          <label for="order_quantity" style="display:block;font-size:13px;font-weight:700;color:#cbd5e1;margin-bottom:8px;">
+            Quantità
+          </label>
+          <div style="position:relative;margin-bottom:10px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#7b8ca6;">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+            <input type="number" id="order_quantity" name="quantity" min="1" step="10" value="1000" oninput="calculateOrderTotal()" style="width:100%;height:46px;padding:0 14px 0 42px;background:#101726;border:1px solid #1e2c44;color:#fff;border-radius:10px;font-size:14px;font-weight:700;">
+          </div>
+
+          <!-- 5 Preset Pills -->
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <button type="button" class="qty-pill" onclick="setOrderQuantity(100, this)">100</button>
+            <button type="button" class="qty-pill" onclick="setOrderQuantity(500, this)">500</button>
+            <button type="button" class="qty-pill active" onclick="setOrderQuantity(1000, this)">1000</button>
+            <button type="button" class="qty-pill" onclick="setOrderQuantity(5000, this)">5000</button>
+            <button type="button" class="qty-pill" onclick="setOrderQuantity(10000, this)">10.000</button>
+          </div>
+        </div>
+
+        <!-- TOTAL CARD (Screenshot 15 in Green) -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-radius:12px;background:rgba(16,185,129,0.08);border:1px dashed #10b981;margin-bottom:22px;">
+          <span style="font-size:14px;font-weight:700;color:#cbd5e1;">Totale</span>
+          <b id="orderTotalDisplay" style="font-size:22px;font-weight:800;color:#10b981;">$0.0000</b>
+        </div>
+
+        <input type="hidden" id="charge" name="charge" value="0.0000">
+
+        <button type="submit" class="btn primary" style="width:100%;height:50px;border-radius:12px;background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:800;font-size:16px;border:none;cursor:pointer;box-shadow:0 8px 26px -6px rgba(16,185,129,0.6);transition:all 0.25s ease;">
+          Invia ordine
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN: ADVICE & PLATFORM WARNING (Screenshot 13) -->
+  <div style="display:flex;flex-direction:column;gap:20px;">
+    
+    <!-- NOTICE CARD -->
+    <div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:24px 26px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#f59e0b;">
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <h4 style="font-size:15px;font-weight:800;color:#f59e0b;margin:0;">Attenzione — Linee Guida</h4>
+      </div>
+
+      <div style="font-size:13px;color:#94a3b8;line-height:1.6;display:flex;flex-direction:column;gap:10px;">
+        <p style="margin:0;">
+          Il profilo o il post deve essere <strong>pubblico</strong>: gli account privati non possono essere raggiunti dal sistema.
+        </p>
+        <p style="margin:0;">
+          Per Instagram: disattiva il flag di revisione follower da <em>Impostazioni → Segui e invita amici → togli la spunta a "Segnala per revisione"</em>.
+        </p>
+        <p style="margin:0;">
+          Non cambiare username e non rendere privato l'account mentre l'ordine è in corso di consegna.
+        </p>
+      </div>
+    </div>
+
+    <!-- ADVICE CARD -->
+    <div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:24px 26px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#10b981;">
+          <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+        </svg>
+        <h4 style="font-size:15px;font-weight:800;color:#fff;margin:0;">Consigli & Best Practice</h4>
+      </div>
+
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:13px;color:#94a3b8;line-height:1.5;">
+        <li style="display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#10b981;font-weight:800;">✓</span>
+          Scegli sempre servizi con refill garantito ♻️ per la massima sicurezza.
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#10b981;font-weight:800;">✓</span>
+          Usa ordini a rilascio naturale per simulare una crescita organica ed evitare spike bruschi.
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:8px;">
+          <span style="color:#10b981;font-weight:800;">✓</span>
+          Per qualsiasi dubbio apri un ticket o scrivici su Telegram per supporto diretto 24/7.
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  var originalCategoriesList = [];
+  var currentSelectedRate = 0.5;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var catSel = document.getElementById('neworder_category');
+    if (catSel) {
+      for (var i = 0; i < catSel.options.length; i++) {
+        originalCategoriesList.push({
+          value: catSel.options[i].value,
+          text: catSel.options[i].text
+        });
+      }
+    }
+    // Load first category services
+    onCategorySelectChange();
+  });
+
+  function filterPlatformKrazy(platform, btn) {
+    document.querySelectorAll('.ko-pill').forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+
+    var catSel = document.getElementById('neworder_category');
+    if (!catSel || !originalCategoriesList.length) return;
+
+    catSel.innerHTML = '';
+    var pLower = platform.toLowerCase();
+    var matchCount = 0;
+
+    originalCategoriesList.forEach(function(item) {
+      var itLower = item.text.toLowerCase();
+      var matches = false;
+      if (platform === 'Everything') {
+        matches = true;
+      } else if (platform === 'Others') {
+        var mains = ['instagram', 'tiktok', 'youtube', 'facebook', 'twitter', 'telegram', 'spotify', 'traffic', 'linkedin', 'discord', 'snapchat', 'twitch', 'google', 'review'];
+        matches = !mains.some(function(m){ return itLower.indexOf(m) !== -1; });
+      } else {
+        matches = itLower.indexOf(pLower) !== -1;
+      }
+
+      if (matches) {
+        var opt = document.createElement('option');
+        opt.value = item.value;
+        opt.textContent = item.text;
+        catSel.appendChild(opt);
+        matchCount++;
+      }
+    });
+
+    if (matchCount === 0) {
+      var emptyOpt = document.createElement('option');
+      emptyOpt.value = '';
+      emptyOpt.textContent = 'Nessuna categoria per ' + platform;
+      catSel.appendChild(emptyOpt);
+    }
+
+    onCategorySelectChange();
+  }
+
+  function handleLiveServiceSearch(term) {
+    if (!term || term.trim() === '') return;
+    term = term.toLowerCase().trim();
+    var srvSel = document.getElementById('neworder_services');
+    for (var i = 0; i < srvSel.options.length; i++) {
+      if (srvSel.options[i].text.toLowerCase().indexOf(term) !== -1) {
+        srvSel.selectedIndex = i;
+        onServiceSelectChange();
+        break;
+      }
+    }
+  }
+
+  function onCategorySelectChange() {
+    var catId = document.getElementById('neworder_category').value;
+    if (!catId) return;
+
+    if (window.jQuery) {
+      $.ajax({
+        url: '/ajax_data',
+        type: 'POST',
+        data: { action: 'services_list', category: catId },
+        success: function(resp) {
+          try {
+            var data = typeof resp === 'string' ? JSON.parse(resp) : resp;
+            if (data && data.services) {
+              $('#neworder_services').html(data.services);
+              onServiceSelectChange();
+            }
+          } catch(e) {}
+        }
+      });
+    }
+  }
+
+  function onServiceSelectChange() {
+    var srvSel = document.getElementById('neworder_services');
+    if (!srvSel || !srvSel.options.length || srvSel.selectedIndex < 0) return;
+
+    var opt = srvSel.options[srvSel.selectedIndex];
+    var text = opt.text || '';
+    var srvId = opt.value;
+
+    document.getElementById('cardServiceBadge').innerText = '#' + srvId;
+    document.getElementById('cardServiceTitle').innerText = text.replace(/#\d+\s*/, '');
+
+    // Extract rate if present in text
+    var priceMatch = text.match(/\$\s*([0-9\.]+)/);
+    if (priceMatch) {
+      currentSelectedRate = parseFloat(priceMatch[1]);
+      document.getElementById('cardServiceRate').innerText = '$' + currentSelectedRate.toFixed(4) + ' / 1000';
+    } else {
+      currentSelectedRate = 0.85;
+      document.getElementById('cardServiceRate').innerText = '$0.8500 / 1000';
+    }
+
+    calculateOrderTotal();
+  }
+
+  function setOrderQuantity(val, btn) {
+    document.querySelectorAll('.qty-pill').forEach(function(p){ p.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    document.getElementById('order_quantity').value = val;
+    calculateOrderTotal();
+  }
+
+  function calculateOrderTotal() {
+    var qty = parseFloat(document.getElementById('order_quantity').value) || 0;
+    var total = (currentSelectedRate * qty / 1000).toFixed(4);
+    document.getElementById('orderTotalDisplay').innerText = '$' + total;
+    document.getElementById('charge').value = total;
+  }
+</script>
+
+<style>
+  .ko-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 12px;
+    border-radius: 9px;
+    background: #0d1524;
+    border: 1px solid #1a263c;
+    color: #cbd5e1;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+  }
+  .ko-pill:hover {
+    border-color: #10b981;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .ko-pill.active {
+    background: rgba(16, 185, 129, 0.16) !important;
+    border-color: #10b981 !important;
+    color: #34d399 !important;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.35) !important;
+    font-weight: 700 !important;
+  }
+  .ko-badge {
+    font-size: 10.5px;
+    padding: 1px 6px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #7b8ca6;
+  }
+  .ko-pill.active .ko-badge {
+    background: rgba(16, 185, 129, 0.25);
+    color: #34d399;
+  }
+  .qty-pill {
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: #101726;
+    border: 1px solid #1e2c44;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .qty-pill:hover {
+    border-color: #10b981;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .qty-pill.active {
+    background: rgba(16, 185, 129, 0.16) !important;
+    border-color: #10b981 !important;
+    color: #34d399 !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.3) !important;
+  }
+  @media (max-width: 992px) {
+    .neworder-layout-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+{% include 'footer.twig' %}

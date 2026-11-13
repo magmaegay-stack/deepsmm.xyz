@@ -1,0 +1,28 @@
+# SMM PANEL CRONJOBS
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/orders.php >/dev/null
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/failed_orders.php >/dev/null
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/payments.php >/dev/null
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/resend_orders.php >/dev/null
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/assign_ranks.php >/dev/null
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/autolike.php >/dev/null
+
+
+wget --spider -O - https://exampleyourdomain.com/cronjobs/seller-sync.php >/dev/null
+
+
+
+NOTE:
+If master cronjob has any problem, you can set each cronjob separately with 5 minutes interval.
+Replace "exampleyourdomain.com" with your real domain before using.

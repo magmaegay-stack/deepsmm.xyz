@@ -1,0 +1,1373 @@
+{% include 'header.twig' %}
+
+<style>
+.alert {
+    position: relative;
+    top:-5px;
+}
+/* Span Tag */
+#description .control-label span{
+ text-transform:capitalize;
+}
+
+
+/* Small Tag */
+#neworder_fields small{
+ position:relative;
+ top:-7px;
+}
+/* Span Tag */
+.component_button_forms .form-control span span{
+ position:relative;
+ top:2px;
+}
+
+/* Span Tag */
+.form-control > span > span{
+ position:relative;
+ top:2px;
+}
+
+
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Balance Unknowndown  toggle */
+.navbar-nav-currencies .balance-dropdown .balance-dropdown__toggle{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Balance Unknowndown  toggle */
+.wrapper-sidebar-navbar #block_82 span div .sidebar-block__top div .navbar .navbar-collapse .d-flex .navbar-nav-currencies .balance-dropdown-container .balance-dropdown .balance-dropdown__toggle{
+ font-family:'Nunito' !important;
+}
+
+/* Card */
+.totals .mt-2 .card{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Image */
+.totals .totals-block__count img{
+ display:none;
+}
+
+/* Totals block  card left */
+.totals .mt-2 .totals-block__card-left{
+ position:relative;
+ top:7px;
+}
+
+/* Card */
+.wrapper-sidebar-navbar #block_93 .new_order-block .container .new-order-form .col-lg-7 .component_radio_button .card{
+ font-family:'Nunito' !important;
+}
+
+/* Card */
+.new-order-form .component_radio_button .card{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Component content headers */
+.new-order-form .mt-3 .component_content_headers{
+ font-family:'Nunito', sans-serif;
+ display:inline-block;
+ transform:translatex(0px) translatey(0px) !important;
+}
+
+/* Image */
+#service_description img{
+ display:none;
+}
+
+/* Totals block  count value */
+.totals .mt-2 .totals-block__count-value{
+ font-family:'Nunito';
+}
+
+/* Link */
+.sidebar-block__left-menu .component-sidebar__menu-item-active a{
+ font-family:'Nunito', sans-serif;
+}
+
+/* Link */
+.sidebar-block__left-menu li a{
+ font-family:'Nunito', sans-serif !important;
+}
+
+/* Service description */
+#service_description{
+ font-family:'Nunito', sans-serif;
+}
+/* Totals block  card */
+.totals .mt-2 .totals-block__card{
+ position:relative;
+ left:6px;
+ top:-4px;
+}
+
+/* Totals block  card right */
+.totals .mt-2:nth-child(2) .totals-block__card-right{
+ position:relative;
+ top:10px;
+}
+
+/* Totals block  card right */
+.totals .mt-2:nth-child(3) .totals-block__card-right{
+ position:relative;
+ top:10px;
+}
+
+/* Totals block  card right */
+.totals .mt-2:nth-child(4) .totals-block__card-right{
+ position:relative;
+ top:10px;
+}
+
+/* Totals block  card */
+.totals .mt-2:nth-child(2) .totals-block__card{
+ left:30px;
+}
+
+/* Totals block  card */
+.wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .totals .container-fluid .row .mt-2:nth-child(2) .card .totals-block__card{
+ width:90% !important;
+}
+
+/* Totals block  card */
+.totals .mt-2:nth-child(3) .totals-block__card{
+ left:30px;
+ padding-right:18px;
+}
+
+/* Totals block  card */
+.totals .mt-2:nth-child(4) .totals-block__card{
+ left:30px;
+ padding-right:18px;
+}
+ .totals .mt-2 p{
+  position:relative;
+  top:6px;
+ }
+
+ /* News date */
+ .wrapper-sidebar-navbar .wrapper-content__body #block_93 .new_order-block .container .new-order-form .mt-3 .component_content_headers .card .ssw .news-item .news-details .news-date{
+  width:100% !important;
+}
+</style>
+<style>
+@media (max-width:992px){
+
+ /* Totals block  card right */
+ .totals .mt-2 .totals-block__card-right{
+  background-color:#ffffff;
+  top:0px !important;
+  left:-22px;
+ }
+ 
+ /* Totals block  card left */
+ .totals .mt-2 .totals-block__card-left{
+  top:0px !important;
+  left:-11px;
+ }
+ 
+ 
+ 
+ /* Totals block  count value */
+ .totals .mt-2 .totals-block__count-value{
+  position:relative;
+  top:3px;
+ }
+ 
+ /* Paragraph */
+ .totals .mt-2 p{
+  position:relative;
+  top:3px;
+ }
+  /* Totals block  card left */
+ #block_93 .totals .container-fluid .row .mt-2 .card .totals-block__card .totals-block__card-left{
+  top:4px !important;
+ }
+ 
+ /* Totals block  card right */
+ #block_93 .totals .container-fluid .row .mt-2 .card .totals-block__card .totals-block__card-right{
+  top:4px !important;
+ }
+ 
+ /* Paragraph */
+ .totals .mt-2 p{
+  top:20px !important;
+ }
+ 
+}
+</style>
+<style>
+@media (max-width:480px){
+
+ /* Totals block  count value */
+ .navbar-nav-sidebar-menu div h3.totals-block__count-value{
+  display:none;
+ }
+ 
+ /* Image */
+ .navbar-nav-sidebar-menu center img{
+  display:none;
+ }
+ 
+ /* Totals block  count value */
+ .navbar-nav-sidebar-menu div h2.totals-block__count-value{
+  font-family:'Nunito', sans-serif !important;
+ }
+ 
+ /* Totals block  count value */
+ .sidebar-block__top div .navbar .navbar-collapse .d-flex .navbar-nav-sidebar-menu div .justify-content-center .mt-2 .card .totals-block__card-right .totals-block__count center h2.totals-block__count-value{
+  font-family:'Nunito' !important;
+ }
+ 
+ /* Button */
+ .navbar-nav-sidebar-menu div .btn-big-primary{
+  font-family:'Nunito', sans-serif !important;
+ }
+ 
+ /* Button */
+ .sidebar-block__top div .navbar .navbar-collapse .d-flex .navbar-nav-sidebar-menu div .justify-content-center .mt-2 .card .totals-block__card-right .totals-block__count center .btn-big-primary{
+  font-family:'Nunito' !important;
+ }
+
+ 
+ /* Totals block  card left */
+ .totals .mt-2:nth-child(2) .totals-block__card-left{
+  left:-27px;
+  top:0px;
+ }
+ 
+ /* Totals block  card left */
+ .totals .mt-2:nth-child(3) .totals-block__card-left{
+  top:0px;
+  left:-27px;
+ }
+ 
+ /* Totals block  card left */
+ .totals .mt-2:nth-child(4) .totals-block__card-left{
+  top:0px;
+  left:-27px;
+ }
+ 
+
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(2) .totals-block__card-right{
+  top:0px !important;
+  left:-31px;
+ }
+  /* Totals block  card right */
+ .totals .mt-2 .totals-block__card-right{
+  background-color:#ffffff;
+ }
+ 
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(3) .totals-block__card-right{
+  top:0px !important;
+  left:-33px;
+ }
+ 
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(4) .totals-block__card-right{
+  top:0px !important;
+  left:-33px;
+ }
+ 
+ /* Totals block  count value */
+ .totals .mt-2 .totals-block__count-value{
+  position:relative;
+  top:3px;
+ }
+ 
+ /* Paragraph */
+ .totals .mt-2 p{
+  position:relative;
+  top:3px;
+ }
+ @media (max-width:480px){
+
+ /* Totals block  count value */
+ .totals .mt-2 .totals-block__count-value{
+  top:3px;
+ }
+  /* Totals block  card left */
+ .totals .mt-2:nth-child(1) .totals-block__card-left{
+  left:0px !important;
+ }
+ 
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(1) .totals-block__card-right{
+  left:-10px !important;
+ }
+
+}
+</style>
+<style>
+/* Marquee */
+.totals .totals-block__count marquee{
+ position:relative;
+ top:10px;
+}
+
+@media (max-width:991px){
+
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(1) .totals-block__card-right{
+  position:relative;
+  left:0px;
+  transform:translatex(0px) translatey(0px);
+ }
+ 
+ /* Totals block  card right */
+ #block_93 .totals .container-fluid .row .mt-2:nth-child(1) .card .totals-block__card .totals-block__card-right{
+  top:5px !important;
+ }
+ 
+ /* Marquee */
+ .totals .totals-block__count marquee{
+  top:-5px !important;
+ }
+ 
+ /* Marquee */
+ .totals p marquee{
+  position:relative;
+  top:-14px;
+ }
+  /* Totals block  card left */
+ .totals .mt-2:nth-child(1) .totals-block__card-left{
+  left:15px;
+ }
+
+}
+@media (min-width:993px){
+
+ /* Totals block  card left */
+ .totals .mt-2 .totals-block__card-left{
+  top:5px !important;
+ }
+ 
+}
+@media (max-width:991px){
+
+ /* Card */
+ .navbar-nav-sidebar-menu div .card{
+  width:235px;
+  left:5px;
+ }
+ 
+}
+
+
+</style>
+
+<style>
+#unique-dropdown{max-height: 300px;border-radius: 8px;margin-top:8px;border-left-width: 0px;border-right-width: 0px;border-top-width: 0px;border-bottom-width: 0px;border-color: transparent;border-style: solid;box-shadow: 0 12px 24px 12px rgba(0, 0, 0, 0.2);overflow-y: auto;display: block;position: absolute;left:auto;max-width:100%;width: 86%;background:white;z-index: 1;}@media(min-width:776px){ #unique-dropdown{width: 93%;}}@media(min-width:991px){ #unique-dropdown{width: 92.4%;}}.selectme {padding: 3px 10px;cursor: pointer;list-style-type: none; }.selectme:hover {background-color: #f2f2f2;}.highlight {font-weight: bold; }.form-group .search-dropdown .input-wrapper .input-wrapper__prepend, .form-group .search-dropdown .input-wrapper .input-wrapper__append {position: absolute;background: none;border: none;top: 50%;transform: translateY(-50%);padding: 0px 15px;color: var(--form_group_icon_color);}.form-group .search-dropdown .input-wrapper .input-wrapper__prepend:hover, .form-group .search-dropdown .input-wrapper .input-wrapper__append:hover {opacity: 0.5;}.form-group .search-dropdown .input-wrapper .input-wrapper__prepend:hover, .form-group .search-dropdown .input-wrapper .input-wrapper__append:focus {outline:none;}.form-group .search-dropdown .input-wrapper .input-wrapper__append {font-size: 12px;right: 3px;display: none;}
+</style>
+
+<style>
+@media (max-width:991px){ #block_93 .totals-block__card-right {margin-left:-13px;padding-left:22px;border:2px solid;border-bottom-width:0px;border-top-width:0px;border-right-width:0px;border-radius: 0px 12px 12px 0px;margin-right:-10px;}}.news-item{display: flex;align-items: flex-start;gap: 20px;}.news-item:first-child{margin-top:-20px;}.news-icon-inline{width: 30px;margin-right:7px;}.news-icon img{width: 100%;}.news-details{flex: 1;}.news-title{display: flex;font-size: 14px;margin-bottom:0px;padding:7px ;background:;border-radius:12px 12px 0 0;}.news-content{margin: 0;color: #000;padding:7px ;background:;border-radius:0px 0px 12px 12px;}.headsir{position:sticky;top:0;width:101%;font-weight: 700;font-size: 22px;padding: 1rem 1rem;color: #fff;margin:-1.2px 0px 0px -1.2px;border-radius:20px 20px 0px 0px;background: #e70720e0;box-shadow: 0px 5px 15px -3px rgba(0,0,0,0.1);}.news-date {margin: 0;padding:0.5px 0px;color: #fff;font-size: 12px;width:50%;text-align: center;border-radius:8px;margin-bottom:10px;margin-top:20px;}.ssw{max-height: 450px;overflow-y: auto;padding-top: 25px;padding-bottom: 25px;padding-right: 20px;padding-left: 20px;}@media (min-width: 992px){.news-date{width:40%;}}.select2-container--default .select2-results > .select2-results__options {max-height: 412px;overflow-y: auto;}.body .form-group .select2-results__option {border-bottom: 0px solid white;}.select2-container .select2-selection--single .select2-selection__rendered{padding: 4px;margin-left:-5px}.body .style-bg-primary-alpha-10 {box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.2);transform: skew(0deg, 0deg);overflow: hidden;}.body .style-bg-primary-alpha-10:before {content: '';display: block;background: #ffffff50;height: 205%;width: 20px;transform: rotate(35deg);position: absolute;left: 0;top: -24px;transition: all 0.3s ease-in-out;animation: 3.2s shine infinite;}@keyframes shine {0% {left: -20px;}20% {left: 100%;top: -20px;}100% {left: 100%;top: -20px;}}.mop{transform:rotatey(180deg);margin-bottom:-5px;margin-top:-12px;opacity:2}.select2-container--default .select2-results__option[aria-selected=true] a{color:#fff;}.select2-container--default .select2-results__option:hover a{color:#fff;}.badge.badge-secondary {color: #fff;}.body .style-bg-primary-alpha-10 {background: rgb(233 233 233 / 22%);}
+{% if settings["site_theme_alt"] == "Red" %}
+.totals-block__card-right{ background-color: #fbf1f2; }
+		#service_description,
+		#service_avg_time {padding: 13px;border-radius: 10px;color: #393e46;box-shadow:none;background-color: #fbf1f2;}
+	{% elseif settings["site_theme_alt"] == "Blue" %}
+	.totals-block__card-right{ background-color: #F1F7FC; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #F1F7FC;}
+	{% elseif settings["site_theme_alt"] == "Lime" %}
+	.totals-block__card-right{ background-color: #eff7f0; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #eff7f0;}
+	{% elseif settings["site_theme_alt"] == "Grapes" %}
+	.totals-block__card-right{ background-color: #f3edff; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #f3edff;}
+	{% elseif settings["site_theme_alt"] == "Dark" %}
+	.totals-block__card-right{ background-color: #252427; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #fff;
+			box-shadow:none;
+			background-color: #252427;}
+	{% elseif settings["site_theme_alt"] == "Cyan" %}
+	.totals-block__card-right{ background-color: #e5f9fa; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #e5f9fa;}
+	{% elseif settings["site_theme_alt"] == "Coral" %}
+	.totals-block__card-right{ background-color: #fff5f4; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #fff5f4;}
+	{% elseif settings["site_theme_alt"] == "Green" %}
+	.totals-block__card-right{ background-color: #e4f1ef; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #e4f1ef;}
+		{% elseif settings["site_theme_alt"] == "Grey" %}
+		.totals-block__card-right{ background-color: #e2e8ee; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #e2e8ee;}
+{% elseif settings["site_theme_alt"] == "Lilac" %}
+.totals-block__card-right{ background-color: #f5f2f8; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #f5f2f8;}
+{% elseif settings["site_theme_alt"] == "Orange" %}
+.totals-block__card-right{ background-color: #fff4ed; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #393e46;
+			box-shadow:none;
+			background-color: #fff4ed;}
+	{% else %}
+	.totals-block__card-right{ background-color: #252427; }
+		#service_description,
+		#service_avg_time {
+			padding: 13px;
+			border-radius: 12px;
+			color: #fff;
+			box-shadow:none;
+			background-color: #252427;}
+	{% endif %}
+	{% if settings["site_theme_alt"] == "Red" %}svg {fill: #d83346;}{% elseif settings["site_theme_alt"] == "Blue" %}svg {fill: #1979c8;}{% elseif settings["site_theme_alt"] == "Lime" %}svg {fill: #46b649;}{% elseif settings["site_theme_alt"] == "Grapes" %}.mop{margin-top:15px;}svg {fill: #6216fb;}{% elseif settings["site_theme_alt"] == "Dark" %}svg {fill: #ff8355;}{% elseif settings["site_theme_alt"] == "Cyan" %}svg {fill: #32c7ce;}{% elseif settings["site_theme_alt"] == "Coral" %}svg {fill:#ff6b63;}{% elseif settings["site_theme_alt"] == "Green" %}svg {fill: #307c6f;}{% elseif settings["site_theme_alt"] == "Grey" %}svg {fill: #415566;}{% elseif settings["site_theme_alt"] == "Lilac" %}svg {fill: #7c96cf;}{% elseif settings["site_theme_alt"] == "Orange" %}svg {fill: #f36b15;}{% else %}svg {fill: #000;}{% endif %}
+@media (min-width:992px){
+    .totals-block__card-right{ background-color: #fff; }
+}
+/* Component content headers */
+.wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .new_order-block .container .new-order-form .mt-3 .component_content_headers{
+ width:100% !important;
+}
+
+
+</style>
+<style>
+{% if settings.rank_display == '2' %}
+@media (max-width:1199px){
+
+ /* Totals block  icon preview */
+ .totals .mt-2:nth-child(4) .totals-block__icon-preview{
+  left:-25px !important;
+ }
+ 
+ /* Totals block  icon preview */
+ .totals .mt-2 .totals-block__icon-preview{
+  left:-2px !important;
+ }
+ 
+ /* Paragraph */
+ .totals .mt-2 p{
+  top:10px;
+ }
+ 
+ /* Paragraph */
+ .wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .totals .container-fluid .row .mt-2 .card .totals-block__card .totals-block__card-right .totals-block__card-name p{
+  top:10px !important;
+ }
+ 
+ /* Marquee */
+ .totals .totals-block__count marquee{
+  top:3px !important;
+ }
+ 
+ /* Marquee */
+ .totals p marquee{
+  position:relative;
+  top:-10px;
+ }
+ 
+ /* Totals block  icon preview */
+ .totals .mt-2:nth-child(2) .totals-block__icon-preview{
+  left:-25px !important;
+ }
+ 
+}
+
+@media (max-width:991px){
+
+ /* Totals block  icon preview */
+ .totals .mt-2:nth-child(2) .totals-block__icon-preview{
+  left:0px !important;
+ }
+ 
+ /* Totals block  icon preview */
+ .totals .mt-2:nth-child(4) .totals-block__icon-preview{
+  left:0px !important;
+ }
+ 
+ /* Totals block  icon preview */
+ .totals .mt-2:nth-child(5) .totals-block__icon-preview{
+  left:25px !important;
+ }
+ 
+}
+
+@media (max-width:767px){
+
+ /* Totals block  icon preview */
+ .wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .totals .container-fluid .row .mt-2:nth-child(2) .card .totals-block__card .totals-block__card-left .totals-block__icon-preview{
+  left:1px !important;
+ }
+ 
+}
+
+@media (max-width:480px){
+
+ /* Totals block  card left */
+ .totals .mt-2:nth-child(5) .totals-block__card-left{
+  left:-27px;
+ }
+ 
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(5) .totals-block__card-right{
+  position:relative;
+  left:-10px;
+ }
+ 
+}
+
+@media (min-width:993px){
+
+ /* Totals block  card right */
+ .totals .mt-2:nth-child(5) .totals-block__card-right{
+  position:relative;
+  top:6px;
+ }
+ 
+}
+{% else %}
+@media (max-width:1199px){
+
+ /* Totals block  icon preview */
+ .totals .mt-2 .totals-block__icon-preview{
+  left:-20px;
+ }
+ 
+ /* Totals block  icon preview */
+ .totals .mt-2:nth-child(1) .totals-block__icon-preview{
+  left:5px;
+ }
+ 
+ /* Marquee */
+ .totals .totals-block__count marquee{
+  top:0px !important;
+ }
+ 
+ /* Marquee */
+ .totals p marquee{
+  position:relative;
+  top:-10px;
+ }
+ 
+ /* Flash label */
+ #flash-label{
+  top:10px !important;
+ }
+ 
+ /* Paragraph */
+ .wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .totals .container-fluid .row .mt-2 .card .totals-block__card .totals-block__card-right .totals-block__card-name p{
+  top:10px !important;
+ }
+ 
+}
+
+@media (max-width:991px){
+
+ /* Totals block  icon preview */
+ .wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .totals .container-fluid .row .mt-2 .card .totals-block__card .totals-block__card-left .totals-block__icon-preview{
+  left:-19px !important;
+ }
+ 
+}
+@media (max-width:480px){
+
+ /* Totals block  card left */
+ #block_93 .totals .container-fluid .row .mt-2 .card .totals-block__card .totals-block__card-left{
+  left:-5px !important;
+ }
+ 
+ /* Totals block  icon preview */
+ .wrapper-sidebar-navbar .wrapper-content .wrapper-content__body #block_93 .totals .container-fluid .row .mt-2:nth-child(1) .card .totals-block__card .totals-block__card-left .totals-block__icon-preview{
+  left:5px !important;
+ }
+ 
+}
+{% endif %}
+</style>
+   <div class="wrapper-content">
+    <div class="wrapper-content__header">
+  </div>
+    <div class="wrapper-content__body">
+
+  <div id="block_93">
+ 
+ <div class="totals ">
+    <div class="bg"></div>
+    <div class="divider-top"></div>
+    <div class="divider-bottom"></div>
+    <div class="container-fluid">
+        {% if contentText %}
+<div class="card mt-2 mb-2">																
+{{ contentText }}
+</div>
+{% endif %}
+      <div class="row align-items-stretch justify-content-center">
+<div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+<div class="card h-100" style="padding-top:12px;padding-bottom: 12px;padding-left:14px">
+<div class="totals-block__card">
+<div class="totals-block__card-left">
+<div class="totals-block__icon-preview style-bg-primary-alpha-10  style-text-primary" style="">
+  <img style="height:65px;width: 65px;margin:8px 0px 0px 2px" src="https://i.postimg.cc/76mRLL9j/20241110-170428-0000.png">
+</div>
+    </div>
+      <div class="totals-block__card-right style-text-primary">
+    <div class="totals-block__count">
+<h2 class="totals-block__count-value style-text-primary" style=" font-size:22px;"><marquee>
+    {{ user["username"]  }}</marquee><img src="https://i.imgur.com/YLalTAd.png" width="20" height="20">
+</h2>
+    </div>
+    <div class="totals-block__card-name">
+  <p style="color:#170900"><marquee>Welcome To {{ site["site_name"]  }}</marquee> </p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+  <div class="card h-100" style="padding-top:12px;padding-bottom: 12px;padding-left:14px">
+    <div class="totals-block__card">
+      <div class="totals-block__card-left">
+        <div class="totals-block__icon-preview style-bg-primary-alpha-10 style-text-primary">
+          <img style="margin:6px 0px 0px 2px" src="https://i.postimg.cc/DZjCTMyT/Picsart-24-11-11-08-56-30-321.png">
+        </div>
+      </div>
+
+      <div class="totals-block__card-right style-text-primary">
+        <div class="totals-block__count">
+          <h2 id="flash-text" class="totals-block__count-value style-text-primary" style="font-size: 22px;">
+            {{ user["spent"] }}
+          </h2>
+        </div>
+        <div class="totals-block__card-name">
+          <p id="flash-label" style="color:#170900">Total Spent</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if settings.rank_display == '2' %}
+<script>
+  let showingSpent = true;
+  const flashText = document.getElementById("flash-text");
+  const flashLabel = document.getElementById("flash-label");
+
+  setInterval(() => {
+    if (showingSpent) {
+      flashText.innerText = "{{ user["rank_name"] ?: 'Unranked' }}";
+      flashLabel.innerText = "Rank Status";
+    } else {
+      flashText.innerText = "{{ user["spent"] }}";
+      flashLabel.innerText = "Total Spent";
+    }
+    showingSpent = !showingSpent;
+  }, 3000); // 3 sec toggle
+</script>
+{% endif %}
+
+
+  <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+<div class="card h-100" style="
+  padding-top:12px;padding-bottom: 12px;padding-left:14px">
+<div class="totals-block__card">
+<div class="totals-block__card-left">
+<div class="totals-block__icon-preview style-bg-primary-alpha-10 style-text-primary" style="
+  ">
+<img style="margin:3px 0px 0px -2px" src="https://i.postimg.cc/BtWBZWrd/20241110-171908-0000.png"">
+</div>
+    </div>
+      <div class="totals-block__card-right style-text-primary">
+    <div class="totals-block__count">
+<h2 class="totals-block__count-value style-text-primary" style=" font-size: 22px;">
+{{totalorders}}     </h2>
+    </div>
+    <div class="totals-block__card-name">
+  <p style="color:#170900" style="color:#170900">Total Orders<a href="/orders" style="color: blue; text-decoration: none; font-size: 16px;">
+    ➡ my orders
+</a></p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+<div class="card h-100" style="
+  padding-top:12px;padding-bottom: 12px;padding-left:14px">
+<div class="totals-block__card">
+<div class="totals-block__card-left">
+<div class="totals-block__icon-preview style-bg-primary-alpha-10 style-text-primary" style="
+  ">
+ <img style="height:60px;width: 63px;margin:5px 0px 0px 4px" src="https://i.postimg.cc/J7ywhNwq/20241110-171309-0000.png" >
+</div>
+    </div>
+      <div class="totals-block__card-right style-text-primary">
+          
+    <div class="totals-block__count">
+  
+<h2 class="totals-block__count-value style-text-primary" style=" font-size: 22px;">
+{{ user["balance"] }}  </h2>
+    </div>
+    <div class="totals-block__card-name">
+  <p style="color:#170900">Total Balance <a href="/addfunds" style="color: blue; text-decoration: none; font-size: 16px;">
+    ➡ Add Funds
+</a> </p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+</div>
+    </div>
+</div>
+</div>
+ 
+<div class="mop">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.28 2.17" height="35px"width="100%" preserveAspectRatio="none"><path d="M0 .5c3.07.55 9.27-.42 16.14 0 6.88.4 13.75.57 19.14-.11V0H0z" fill="%23ffffff"/><path d="M0 1c3.17.8 7.29-.38 10.04-.55 2.75-.17 9.25 1.47 12.67 1.3 3.43-.17 4.65-.84 7.05-.87 2.4-.02 5.52.88 5.52.88V0H0z" opacity=".5" fill="%23ffffff"/><path d="M0 1.85c2.56-.83 7.68-.3 11.79-.42 4.1-.12 6.86-.61 9.58-.28 2.73.33 5.61 1.17 8.61 1 3-.19 4.73-.82 5.3-.84V.1H0z" opacity=".5" fill="%23ffffff"/></svg>
+ </div>
+ <!-- Progressive Moving Line -->
+<style>
+.progressive-line {
+  width: 100%;
+  overflow: hidden;
+  background: #;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 8px 0;
+  box-sizing: border-box;
+}
+
+.progressive-line span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-text 20s linear infinite;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+</style>
+
+<div class="progressive-line">
+  <span>
+    Welcome to {{site["site_name"]}} 🌟 We have world cheapest & best quality services 🚩 Disable flag for review before ordering Instagram follower's 🚫 No refill = No guarantee ♻️ 30/60 days refill = 30/60 guarantee 🔔 Lifetime Refill = refill guarantee   •  
+  </span>
+</div> 
+ 
+<div style="padding-bottom: 2px;padding-top: 2px;" id="block_93">
+    <div class="new_order-block ">
+<div class="bg"></div>
+<div class="divider-top"></div>
+<div class="divider-bottom"></div>
+<div class="container">
+    <div class="row new-order-form">
+<div class="col-lg-7">
+   <div class="component_form_group component_card component_radio_button">
+<div class="card mt-3 ">
+{% if error %}
+      <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">✕</button>
+{{ errorText }}
+      </div>
+    {% endif %}
+
+     {% if data["order"]["success"] == 1 %}
+      <div class="alert alert-dismissible alert-success">
+          <strong> {{ lang["neworder.success.id"] }}: </strong> {{ data['order']['id'] }} <br>
+          <strong> {{ lang["neworder.success.service"] }}: </strong> {{ data['order']['service'] }} <br>
+          <strong> {{ lang["neworder.success.link"] }}: </strong> {{ data['order']['link'] }} <br>
+          <strong> {{ lang["neworder.success.quantity"] }}: </strong> {{ data['order']['quantity'] }} <br>
+          <strong> {{ lang["neworder.success.charge"] }}: </strong> {{ data['order']['price'] }} <br>
+          <strong> {{ lang["neworder.success.balance"] }}: </strong>{{ data['order']['balance'] }} <br>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">✕</span></button>
+
+      </div>
+    {% endif %}
+    
+    
+    {% if data["order"]["success"] == 2 %}
+      <div class="alert alert-dismissible alert-success">
+ <strong> {{ lang["neworder.success.id"] }}: </strong> {{ data['order']['id'] }} <br>
+ <strong> {{ lang["neworder.success.service"] }}: </strong> {{ data['order']['service'] }} <br>
+ <strong> {{ lang["neworder.success.username"] }}: </strong> {{ data['order']['link'] }} <br>
+ <strong> {{ lang["neworder.success.quantity"] }}: </strong> {{ data['order']['min'] }} - {{ data['order']['max'] }} <br>
+ <strong> {{ lang["neworder.success.posts"] }}: </strong> {{ data['order']['posts'] }} <br>
+ <strong> {{ lang["neworder.success.delay"] }}: </strong>{{ data['order']['delay'] }} <br>
+       </div>
+    {% endif %}
+ 
+
+     <div class="well">
+
+	
+<form method="post" action>
+<div class="component_button_forms">
+    <div class="form-group">
+         <div class="search-dropdown" id="new-order-search" style="position: relative;" data-lang-placeholder="Search">
+                    <div class="input-wrapper" style="position: relative;">
+                        <!-- Search Button -->
+                        <button type="button" class="input-wrapper__prepend" onclick="focusInputField()">
+                            <span class="fas fa-search"></span>
+                        </button>
+                        
+                        <!-- Input Field -->
+                        <input 
+                            style="padding-left:41px" 
+                            type="text" 
+                            class="form-control" 
+                            id="unique-input" 
+                            value="" 
+                            placeholder="Search" 
+                            oninput="fetchResults(this.value)" 
+                            autocomplete="off"
+                        >
+                        
+                        <!-- Clear Button -->
+                        <button type="button" class="input-wrapper__append" onclick="clearInput()">
+                            <span class="fas fa-times"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Results Dropdown -->
+                <div class="search-results" id="unique-dropdown" style="display: none;">
+                    <!-- Dynamic Results will be injected here -->
+                </div>
+    </div>
+  <script>
+fetch('/ajax_data', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'selectize', searchValue: 'query' })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data); // Handle the response data here
+});
+
+</script>
+
+    
+
+    <div class="form-group">
+<label for="orderform-category" class="control-label">{{ lang["neworder.category"] }}</label>
+
+<select class="form-control" id="neworder_category" name="categories" data-select="true" data-select-search="true" data-select-search-placeholder="Search" data-select-container="#select-category-container" tabindex="-1" aria-hidden="true">
+{{ category_html_simplify }}
+
+</select>
+<div id="select-category-container" class="position-relative"></div>
+</div>
+</div>
+    <div class="form-group">
+<label for="orderform-service" class="control-label">{{ lang["neworder.service"] }}</label>
+<select class="form-control" id="neworder_services" name="services" data-select="true" data-select-search="true" data-select-search-placeholder="Search" data-select-container="#select-service-container" tabindex="-1" aria-hidden="true">
+<option value="1">No services found in this category</option>
+</select>
+<div id="select-service-container" class="position-relative"></div>
+    </div>
+
+
+  
+  
+  
+  
+  
+  
+  
+
+    <div id="neworder_fields"></div>
+
+  
+  <div class="form-group" id="charge_div">
+      <label for="charge" class="control-label">Charge</label>
+      <input type="text" class="form-control" id="charge" readonly>
+    </div>
+  
+
+
+
+
+
+  
+  <button type="submit" class="btn btn-block btn-big-primary">{{ lang["neworder.button"] }}</button>
+</form>
+</div>
+   </div>
+</div>
+    </div>
+
+<div class="col-lg-5 mt-3">
+  <div class="component_content_card component_content_button component_content_headers">
+{% if news %}
+    <div style="padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;" class="card mb-3">
+      <div class="style-bg-primary headsir"><i class="fal fa-newspaper mr-2"></i>Latest News</div>
+      <div class="ssw">
+      {% for new in news %}
+      <div class="news-item">
+        <div class="news-details">
+          <p class="style-bg-primary news-date"><i class="fad fa-calendar-alt mr-1" style="--fa-secondary-opacity: 0.65;"></i>{{ new['news_date'] }}</p>
+          <h4 id="service_description" class=" news-title"style="border-bottom-left-radius:0px;border-bottom-right-radius:0px;">
+            <span class="icon-container">
+              <img width="30" class="news-icon-inline" src="{{ new['news_icon'] }}" alt="News Icon">
+            </span>
+            {{ new['news_title'] }}
+          </h4>
+          <p id="service_description" class= "news-content" style="border-top-left-radius:0px;border-top-right-radius:0px;">{{ new['news_content'] }}</p>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+  </div>
+  </div>
+{% endif%}
+
+<div class="container">
+</div>	
+{% if contentText2 %}
+<div class="card mt-3 mb-4">
+{{ contentText2 }}
+</div>
+{% endif %}
+														
+</div></div>
+</div></div>
+</div>
+</div></div></div>
+</div></div>
+</div>
+</div>
+  <!-- Install App Popup -->
+<div class="install-app-popup" id="installAppPopup">
+    <div class="popup-content">
+        
+        <!-- HEADER -->
+        <div class="popup-header">
+            <div class="app-icon">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z"/>
+                </svg>
+            </div>
+
+            <div class="header-text">
+                <h3>Install Our App</h3>
+                <p>Get the full experience</p>
+            </div>
+
+          <button type="button" class="close-popup" onclick="hideInstallPopup(event)">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- FEATURES -->
+       <div class="popup-body">
+            <div class="features-list">
+                <div class="feature-item">
+                    <span class="feature-icon">🚀</span>
+                    <div class="feature-text">
+                        <strong>Fast Performance</strong>
+                        <span>Lightning fast loading</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📱</span>
+                    <div class="feature-text">
+                        <strong>Mobile Optimized</strong>
+                        <span>Perfect for mobile devices</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔔</span>
+                    <div class="feature-text">
+                        <strong>Push Notifications</strong>
+                        <span>Stay updated instantly</span>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="popup-footer">
+            <button type="button" class="install-btn-primary" onclick="installPWA(event)">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 8px;">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                Install App
+            </button>
+
+            <button type="button" class="install-btn-secondary" onclick="hideInstallPopup(event)">
+Not Now
+</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<style>
+/* Install App Popup Styles */
+.install-app-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10002;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.install-app-popup.show {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    padding: 0;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.popup-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f15f23, #ff8c5a);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    padding: 25px 25px 15px 25px;
+    gap: 15px;
+}
+
+.app-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #f15f23, #ff8c5a);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(241, 95, 35, 0.4);
+}
+
+.header-text {
+    flex: 1;
+}
+
+.header-text h3 {
+    color: #333;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+.header-text p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.close-popup {
+    background: #f8f9fa;
+    color: #666;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-popup:hover {
+    background: #e9ecef;
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.popup-body {
+    padding: 0 25px 15px 25px;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(241, 95, 35, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(241, 95, 35, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(241, 95, 35, 0.1);
+    transform: translateX(5px);
+}
+
+.feature-icon {
+    font-size: 1.5em;
+    width: 40px;
+    text-align: center;
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-text strong {
+    color: #333;
+    font-size: 0.95em;
+    margin-bottom: 3px;
+}
+
+.feature-text span {
+    color: #666;
+    font-size: 0.8em;
+}
+
+.popup-footer {
+    padding: 20px 25px 25px 25px;
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.install-btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, #f15f23, #ff8c5a);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(241, 95, 35, 0.4);
+}
+
+.install-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(241, 95, 35, 0.6);
+}
+
+.install-btn-secondary {
+    background: transparent;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.install-btn-secondary:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+/* Your existing button styling */
+#installAppBtn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #f15f23, #ff8c5a);
+    color: #fff;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(241, 95, 35, 0.3);
+}
+
+#installAppBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(241, 95, 35, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .popup-content {
+        max-width: 320px;
+        margin: 20px;
+    }
+    
+    .popup-header {
+        padding: 20px 20px 15px 20px;
+    }
+    
+    .popup-body {
+        padding: 0 20px 15px 20px;
+    }
+    
+    .popup-footer {
+        padding: 15px 20px 20px 20px;
+        flex-direction: column;
+    }
+    
+    .feature-item {
+        padding: 12px;
+    }
+}
+</style>
+
+<script>
+let deferredPrompt = null;
+
+// Detect PWA Install
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Show popup after 2 sec
+    setTimeout(() => {
+        if (deferredPrompt) showInstallPopup();
+    }, 1000);
+});
+
+// Show Popup
+function showInstallPopup() {
+    document.getElementById("installAppPopup").classList.add("show");
+}
+
+// Hide Popup
+function hideInstallPopup() {
+    document.getElementById("installAppPopup").classList.remove("show");
+}
+
+// Install App
+function installPWA() {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+        hideInstallPopup();
+    });
+}
+
+// Register Service Worker
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js")
+        .catch(err => console.log("SW Failed", err));
+}
+</script>
+<!-- PWA END -->
+{% include 'footer.twig' %}

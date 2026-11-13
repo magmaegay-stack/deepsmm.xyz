@@ -1,0 +1,193 @@
+{% include 'header.twig' %}
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f7f9fc;
+        color: #333;
+    }
+    .alert {
+        border-radius: 0.25rem;
+        margin-bottom: 20px;
+    }
+    .confirm-email-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+    }
+    .confirm-email__header h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        color: #007bff;
+    }
+    .confirm-email__description {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: #555;
+    }
+    .component_button_resend,
+    .component_button_change {
+        margin: 10px 0;
+    }
+    .btn-big-primary {
+        background: #21c5fb;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-big-primary:hover {
+        background: #17a2b8;
+    }
+    .btn-big-secondary {
+        background: #6c757d;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-big-secondary:hover {
+        background: #5a6268;
+    }
+    .modal-header, .modal-footer {
+        border: none;
+    }
+    .modal-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+    .error-summary {
+        display: none; /* Initially hidden */
+    }
+    .footer {
+        background: #343a40;
+        color: white;
+        padding: 20px 0;
+    }
+    .footer p {
+        margin: 0;
+        text-align: center;
+    }
+    /* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("//fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Confirm email card */
+.wrapper-sidebar-navbar .confirm-email-card{
+ position:relative;
+ top:100px;
+ font-family:'Nunito', sans-serif;
+}
+
+/* Heading */
+.confirm-email-card .confirm-email__header h3{
+ font-family:'Nunito', sans-serif;
+ color:#d83346;
+}
+
+/* Button */
+#resendEmailLink{
+ background-color:#d83346;
+}
+
+/* Button */
+#changeEmailLink{
+ background-color:#d83346;
+}
+
+
+</style>
+
+
+
+<div class="confirm-email-card">
+    <div class="confirm-email__header">
+        <h3>Confirm Email</h3>
+    </div>
+    <div class="confirm-email__description">
+        Please check your inbox and click the link to confirm your email address.
+    </div>
+
+    <div class="confirm-email__actions">
+        {% if settings["resend_max"] == user["resend_max"] %}
+        <div class="alert alert-warning">
+            Sorry, you have used <span>{{ user["resend_max"] }}</span> confirmation emails. You have reached the limit.
+        </div>
+        {% else %}
+        <div class="component_button_resend">
+            <a href="confirm_email/resend"><button class="btn btn-big-primary" id="resendEmailLink">Resend Email</button></a>
+        </div>
+        {% endif %}
+        
+        
+    </div>
+
+    <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+</div>
+
+<!-- Change Email Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="changeEmailModal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="confirm_email/">
+                <div class="modal-header">
+                    <h4 class="modal-title">Change Email</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="changeEmailError" class="error-summary alert alert-danger mb-3 hidden"></div>
+                    {% if error %}
+                    <div class="alert alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ errorText }}
+                    </div>
+                    {% elseif success %}
+                    <div class="alert alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ successText }}
+                    </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="current-email">Current Email</label>
+                        <input class="form-control" id="current-email" value="{{ user["email"] }}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-email">New Email</label>
+                        <input type="email" class="form-control" id="newemail" name="newemail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-big-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-big-primary" id="changeEmailSubmitBtn">Change Email</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="https://cdn.thepanelpoint.com/global/ch3915babussofa4.js"></script>
+<script type="text/javascript" src="https://cdn.thepanelpoint.com/global/cgtptn05b64bwcs4.js"></script>
+<script type="text/javascript" src="https://cdn.thepanelpoint.com/global/p6kj0uq342qnsb5n.js"></script>
+<script type="text/javascript" src="https://cdn.thepanelpoint.com/global/wnzsoolloslhfumj.js"></script>
+<script type="text/javascript">
+    window.modules.layouts = {"theme_id":21,"auth":1};
+    window.modules.confirmEmail = {"csrf_param":"_csrf","csrf":"{{ csrf_token }}","change_email_url":"\/change-confirm-email"};
+</script>
+</body>
+</html>

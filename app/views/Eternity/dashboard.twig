@@ -1,0 +1,308 @@
+{% include 'header.twig' %}
+
+<!-- ==================== DASHBOARD SECTION (Screenshot 3 Replica in Green) ==================== -->
+<div class="dash-page-container">
+
+  <!-- Header line: Title + New Order Button -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap;gap:16px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:#10b981;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </div>
+      <div>
+        <h1 data-i18n="dash_title" style="font-size:22px;font-weight:800;color:#fff;margin:0 0 4px;">Dashboard</h1>
+        <p data-i18n="dash_sub" style="font-size:13.5px;color:#7b8ca6;margin:0;">Colpo d'occhio su saldo, ordini e andamento della spesa.</p>
+      </div>
+    </div>
+
+    <a href="/neworder" class="btn primary" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:12px;background:linear-gradient(135deg, #10b981 0%, #059669 100%) !important;color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 24px -6px rgba(16,185,129,0.6);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      <span data-i18n="btn_new_order">+ Nuovo ordine</span>
+    </a>
+  </div>
+
+  <!-- Banner Istruzioni Ricarica Discord -->
+  <div style="background:linear-gradient(90deg, rgba(88,101,242,0.15) 0%, rgba(16,185,129,0.15) 100%);border:1px solid rgba(16,185,129,0.3);border-radius:16px;padding:16px 22px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div style="width:40px;height:40px;border-radius:12px;background:#5865F2;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 6px 18px rgba(88,101,242,0.4);flex-shrink:0;">
+        <i class="fab fa-discord"></i>
+      </div>
+      <div>
+        <h4 style="font-size:14.5px;font-weight:800;color:#fff;margin:0 0 2px;">Come funziona la ricarica del conto</h4>
+        <p style="font-size:12.5px;color:#cbd5e1;margin:0;">Per ordinare devi prima avere saldo: entra nel nostro Discord, apri un ticket nel canale ricariche, invia il pagamento (es. 10€) e un admin accrediterà i fondi sul tuo conto.</p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="/addfunds" class="btn" style="height:38px;padding:0 16px;border-radius:10px;background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;box-shadow:0 4px 12px rgba(16,185,129,0.4);">
+        <i class="fas fa-wallet"></i> Guida Ricarica
+      </a>
+      <a href="https://discord.gg/" target="_blank" rel="noopener" class="btn" style="height:38px;padding:0 16px;border-radius:10px;background:#5865F2;color:#fff;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;box-shadow:0 4px 12px rgba(88,101,242,0.4);">
+        <i class="fab fa-discord"></i> Entra nel Discord
+      </a>
+    </div>
+  </div>
+
+  <!-- Row 1: 3 Main Cards (Screenshot 3) -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:18px;margin-bottom:20px;">
+    
+    <!-- Welcome Card (Vibrant Emerald Gradient) -->
+    <div class="dash-card hero" style="background:linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);border-radius:18px;padding:26px 24px;color:#fff;position:relative;overflow:hidden;box-shadow:0 14px 34px -10px rgba(16,185,129,0.55);border:none;display:flex;justify-content:space-between;align-items:center;">
+      <div style="z-index:2;position:relative;">
+        <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.85);display:block;margin-bottom:6px;">BENVENUTO</span>
+        <h2 style="font-size:24px;font-weight:800;color:#fff;margin:0 0 6px;">{{ user['username'] }}</h2>
+        <span style="font-size:13.5px;color:#e6fcf5;">Buon lavoro sul pannello!</span>
+      </div>
+      <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;color:#fff;flex:none;z-index:2;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <div style="position:absolute;right:-20px;bottom:-20px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;"></div>
+    </div>
+
+    <!-- Saldo Speso Card -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:18px;padding:26px 24px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#7b8ca6;display:block;margin-bottom:6px;">SALDO SPESO</span>
+        <b style="font-size:26px;font-weight:800;color:#fff;display:block;margin-bottom:4px;font-variant-numeric:tabular-nums;">{{ user['spent'] }}</b>
+        <span style="font-size:13px;color:#7b8ca6;">totale storico</span>
+      </div>
+      <div style="width:48px;height:48px;border-radius:14px;background:#101a2b;display:flex;align-items:center;justify-content:center;color:#818cf8;flex:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Saldo Account Card -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:18px;padding:26px 24px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#7b8ca6;display:block;margin-bottom:6px;">SALDO ACCOUNT</span>
+        <b style="font-size:26px;font-weight:800;color:#fff;display:block;margin-bottom:4px;font-variant-numeric:tabular-nums;">{{ user['balance'] }}</b>
+        <a href="/addfunds" style="font-size:13px;color:#10b981;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+          <span>Aggiungi fondi</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+      <div style="width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;color:#10b981;flex:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <path d="M7 15h0M2 9.5h20"></path>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Row 2: 5 Status Counters (Screenshot 3) -->
+  <div style="display:grid;grid-template-columns:repeat(5, 1fr);gap:14px;margin-bottom:24px;">
+    
+    <!-- In sospeso -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:16px;padding:18px 20px;">
+      <div style="color:#7b8ca6;margin-bottom:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <b style="font-size:24px;font-weight:800;color:#fff;display:block;line-height:1.1;">{{ pendingCount|default(0) }}</b>
+      <span style="font-size:12.5px;color:#7b8ca6;font-weight:600;">In sospeso</span>
+    </div>
+
+    <!-- In corso -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:16px;padding:18px 20px;">
+      <div style="color:#38bdf8;margin-bottom:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+        </svg>
+      </div>
+      <b style="font-size:24px;font-weight:800;color:#fff;display:block;line-height:1.1;">{{ inprogressCount|default(0) }}</b>
+      <span style="font-size:12.5px;color:#7b8ca6;font-weight:600;">In corso</span>
+    </div>
+
+    <!-- Completati -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:16px;padding:18px 20px;">
+      <div style="color:#10b981;margin-bottom:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <b style="font-size:24px;font-weight:800;color:#fff;display:block;line-height:1.1;">{{ completedCount|default(0) }}</b>
+      <span style="font-size:12.5px;color:#7b8ca6;font-weight:600;">Completati</span>
+    </div>
+
+    <!-- Parziali -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:16px;padding:18px 20px;">
+      <div style="color:#f59e0b;margin-bottom:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 2a10 10 0 0 1 0 20Z" fill="currentColor"></path>
+        </svg>
+      </div>
+      <b style="font-size:24px;font-weight:800;color:#fff;display:block;line-height:1.1;">{{ partialCount|default(0) }}</b>
+      <span style="font-size:12.5px;color:#7b8ca6;font-weight:600;">Parziali</span>
+    </div>
+
+    <!-- Annullati -->
+    <div class="dash-card" style="background:#0c121e;border:1px solid #162032;border-radius:16px;padding:18px 20px;">
+      <div style="color:#ef4444;margin-bottom:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      </div>
+      <b style="font-size:24px;font-weight:800;color:#fff;display:block;line-height:1.1;">{{ canceledCount|default(0) }}</b>
+      <span style="font-size:12.5px;color:#7b8ca6;font-weight:600;">Annullati</span>
+    </div>
+
+  </div>
+
+  <!-- Row 3: Ordini recenti (Screenshot 3) -->
+  <div class="dash-recent-orders-card" style="background:#0c121e;border:1px solid #162032;border-radius:20px;padding:24px;margin-bottom:26px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #162032;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#10b981;">
+          <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"></path>
+          <path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path>
+        </svg>
+        <b style="font-size:16px;font-weight:700;color:#fff;">Ordini recenti</b>
+      </div>
+      <a href="/orders" style="font-size:13px;font-weight:700;color:#7b8ca6;text-decoration:none;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">
+        Vedi tutti
+      </a>
+    </div>
+
+    {% if recentOrders and recentOrders|length > 0 %}
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;text-align:left;">
+          <thead>
+            <tr style="color:#7b8ca6;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #162032;">
+              <th style="padding:10px 14px;">ID</th>
+              <th style="padding:10px 14px;">Data</th>
+              <th style="padding:10px 14px;">Link</th>
+              <th style="padding:10px 14px;">Addebito</th>
+              <th style="padding:10px 14px;">Inizio</th>
+              <th style="padding:10px 14px;">Quantità</th>
+              <th style="padding:10px 14px;">Servizio</th>
+              <th style="padding:10px 14px;">Stato</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for o in recentOrders %}
+              <tr style="border-bottom:1px solid #141c2b;transition:background 0.15s ease;">
+                <td style="padding:14px;color:#7b8ca6;font-weight:700;">#{{ o.order_id }}</td>
+                <td style="padding:14px;color:#7b8ca6;white-space:nowrap;">{{ o.order_create }}</td>
+                <td style="padding:14px;"><a href="{{ o.order_url }}" target="_blank" rel="noopener" style="color:#10b981;max-width:180px;display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ o.order_url }}</a></td>
+                <td style="padding:14px;color:#10b981;font-weight:800;">${{ o.order_charge }}</td>
+                <td style="padding:14px;color:#cbd5e1;">{{ o.order_start|default('0') }}</td>
+                <td style="padding:14px;color:#cbd5e1;font-weight:700;">{{ o.order_quantity }}</td>
+                <td style="padding:14px;color:#fff;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ o.service_name|default('Servizio #' ~ o.service_id) }}</td>
+                <td style="padding:14px;">
+                  {% if o.order_status == 'completed' %}
+                    <span style="background:rgba(16,185,129,0.15);color:#10b981;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700;">Completato</span>
+                  {% elseif o.order_status == 'inprogress' or o.order_status == 'processing' %}
+                    <span style="background:rgba(56,189,248,0.15);color:#38bdf8;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700;">In corso</span>
+                  {% elseif o.order_status == 'pending' %}
+                    <span style="background:rgba(123,140,166,0.15);color:#7b8ca6;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700;">In sospeso</span>
+                  {% elseif o.order_status == 'partial' %}
+                    <span style="background:rgba(245,158,11,0.15);color:#f59e0b;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700;">Parziale</span>
+                  {% else %}
+                    <span style="background:rgba(239,68,68,0.15);color:#ef4444;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700;">Annullato</span>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <!-- Empty State matching Screenshot 3 -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:46px 20px;text-align:center;">
+        <div style="width:52px;height:52px;border-radius:16px;background:#101a2b;display:flex;align-items:center;justify-content:center;color:#7b8ca6;margin-bottom:14px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px;">
+            <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"></path>
+            <path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path>
+          </svg>
+        </div>
+        <b style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Nessun ordine</b>
+        <p style="font-size:13.5px;color:#7b8ca6;margin:0 0 20px;">Quando invii un ordine lo trovi qui.</p>
+        <a href="/neworder" class="btn primary" style="display:inline-flex;align-items:center;height:42px;padding:0 22px;border-radius:10px;background:linear-gradient(135deg, #10b981 0%, #059669 100%) !important;color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 8px 20px -6px rgba(16,185,129,0.5);">
+          Crea il primo ordine
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Row 4: Piattaforme Section (Screenshot 3 bottom) -->
+  <div style="margin-bottom:30px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#10b981;">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+        <b style="font-size:16px;font-weight:700;color:#fff;">Piattaforme</b>
+      </div>
+      <a href="/services" style="font-size:13px;font-weight:700;color:#7b8ca6;text-decoration:none;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">
+        Tutti i servizi
+      </a>
+    </div>
+
+    <!-- Platform Cards Grid with hover bounce and count badges -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:12px;">
+      {% for p in platformsData %}
+        <a href="/neworder?platform={{ p.cat_keyword }}" class="dash-platform-card" style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-radius:14px;background:#0c121e;border:1px solid #162032;text-decoration:none;transition:all 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:#101a2b;display:flex;align-items:center;justify-content:center;color:{{ p.color }};font-size:18px;">
+              <i class="{{ p.icon }}"></i>
+            </div>
+            <span style="color:#e2e8f0;font-size:14px;font-weight:700;">{{ p.name }}</span>
+          </div>
+          <span style="background:#131f32;color:#10b981;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:20px;border:1px solid rgba(16,185,129,0.2);">
+            {{ p.count }}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .dash-platform-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    border-color: #10b981 !important;
+    background: #0f192b !important;
+    box-shadow: 0 10px 24px -6px rgba(16, 185, 129, 0.35);
+  }
+  .dash-platform-card:hover i {
+    transform: scale(1.15);
+  }
+  .dash-platform-card i {
+    transition: transform 0.25s ease;
+  }
+  @media (max-width: 900px) {
+    div[style*="grid-template-columns:repeat(5, 1fr)"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+</style>
+
+{% include 'footer.twig' %}

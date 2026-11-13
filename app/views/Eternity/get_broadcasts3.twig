@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern Broadcast System</title>
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <style>
+        /* Modern SweetAlert2 Styling */
+        :root {
+            --primary-blue: #667eea;
+            --primary-red: #ff6b6b;
+            --primary-green: #51cf66;
+            --primary-yellow: #ffc107;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --border-light: #e2e8f0;
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --blur-md: blur(8px);
+        }
+
+        /* Override SweetAlert2 container */
+        .swal2-container {
+            backdrop-filter: var(--blur-md);
+            background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* Modern popup styling */
+        .swal2-popup {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            border-radius: 24px !important;
+            box-shadow: var(--shadow-xl) !important;
+            border: unset !important;
+            padding: 2rem !important;
+            max-width: 32rem !important;
+            background: var(--bg-primary) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Add subtle gradient overlay */
+        .swal2-popup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            z-index: 1;
+        }
+
+        /* Hide default close button */
+        .swal2-popup .swal2-close {
+            display: none !important;
+        }
+
+        /* Custom animated close button */
+        .custom-close-x {
+            position: absolute !important;
+            top: 1rem !important;
+            right: 1rem !important;
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+            background: rgba(0, 0, 0, 0.05) !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            z-index: 1000 !important;
+            font-size: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .custom-close-x:hover {
+            background: rgba(255, 107, 107, 0.1) !important;
+            border-color: rgba(255, 107, 107, 0.3) !important;
+            transform: scale(1.1) rotate(90deg) !important;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2) !important;
+        }
+
+        .custom-close-x:active {
+            transform: scale(0.95) rotate(90deg) !important;
+        }
+
+        /* Animated X icon */
+        .custom-close-x::before,
+        .custom-close-x::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            background: #666;
+            border-radius: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .custom-close-x::before {
+            transform: rotate(45deg);
+        }
+
+        .custom-close-x::after {
+            transform: rotate(-45deg);
+        }
+
+        .custom-close-x:hover::before,
+        .custom-close-x:hover::after {
+            background: var(--primary-red);
+            width: 16px;
+        }
+
+        /* Pulse animation for close button */
+        @keyframes closePulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+            }
+            50% { 
+                box-shadow: 0 0 0 8px rgba(255, 107, 107, 0);
+            }
+        }
+
+        .custom-close-x.pulse {
+            animation: closePulse 2s infinite;
+        }
+
+        /* Modern title styling */
+        .swal2-popup .swal2-title {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.75rem !important;
+            color: var(--text-primary) !important;
+            margin-bottom: 1.5rem !important;
+            line-height: 1.2 !important;
+            letter-spacing: -0.025em !important;
+            padding-right: 3rem !important; /* Make space for close button */
+        }
+
+        /* Modern content styling */
+        .swal2-popup .swal2-html-container,
+        #swal2-html-container {
+            font-family: 'Inter', sans-serif !important;
+            text-align: left !important;
+            color: var(--text-secondary) !important;
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .swal2-popup .swal2-html-container p {
+            margin-bottom: 1rem !important;
+            color: var(--text-secondary) !important;
+        }
+
+        /* Modern icon styling */
+        .swal2-popup .swal2-icon {
+            width: 4rem !important;
+            height: 4rem !important;
+            margin: 0 auto 1.5rem !important;
+            border: none !important;
+            position: relative;
+        }
+
+        /* Info icon */
+        .swal2-popup .swal2-icon.swal2-info {
+            background: linear-gradient(135deg, var(--primary-blue), #764ba2) !important;
+            border-radius: 50% !important;
+            color: white !important;
+        }
+
+        .swal2-popup .swal2-icon.swal2-info::before {
+            content: '\f05a' !important;
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+            font-size: 1.5rem !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            color: white !important;
+        }
+
+       /* SweetAlert2 success icon (using Font Awesome 6) */
+.swal2-popup .swal2-icon.swal2-success {
+    background: linear-gradient(135deg, var(--primary-green), #40c057) !important;
+    border-radius: 50% !important;
+    position: relative;
+}
+
+/* Font Awesome checkmark icon */
+.swal2-popup .swal2-icon.swal2-success::before {
+    content: '\f00c'; /* FA6 check */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* HIDE SweetAlert2's built-in tick animation completely */
+.swal2-icon.swal2-success .swal2-success-line-tip,
+.swal2-icon.swal2-success .swal2-success-line-long,
+.swal2-icon.swal2-success .swal2-success-ring,
+.swal2-icon.swal2-success .swal2-success-fix {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
+
+        /* Warning icon */
+        .swal2-popup .swal2-icon.swal2-warning {
+            background: linear-gradient(135deg, var(--primary-yellow), #ff9800) !important;
+            border-radius: 50% !important;
+        }
+
+        .swal2-popup .swal2-icon.swal2-warning::before {
+            content: '\f071' !important;
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+            font-size: 1.5rem !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            color: white !important;
+        }
+
+        /* Error icon */
+        .swal2-popup .swal2-icon.swal2-error {
+            background: linear-gradient(135deg, var(--primary-red), #ee5a52) !important;
+            border-radius: 50% !important;
+        }
+
+        .swal2-popup .swal2-icon.swal2-error::before {
+            content: '\f00d' !important;
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+            font-size: 1.5rem !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            color: white !important;
+        }
+
+        /* Hide default icon elements */
+        .swal2-popup .swal2-icon .swal2-icon-content,
+        .swal2-popup .swal2-icon .swal2-success-ring,
+        .swal2-popup .swal2-icon .swal2-success-fix,
+        .swal2-popup .swal2-icon .swal2-success-line-tip,
+        .swal2-popup .swal2-icon .swal2-success-line-long,
+        .swal2-popup .swal2-icon .swal2-error-x-mark,
+        .swal2-popup .swal2-icon .swal2-warning-mark {
+            display: none !important;
+        }
+
+        /* Modern button styling */
+        .swal2-popup .swal2-actions {
+            margin-top: 2rem !important;
+            gap: 0.75rem !important;
+        }
+
+        .swal2-popup .swal2-confirm,
+        .swal2-popup .custom-close-btn {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.95rem !important;
+            padding: 0.875rem 2rem !important;
+            border-radius: 12px !important;
+            border: none !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .swal2-popup .swal2-confirm::before,
+        .swal2-popup .custom-close-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .swal2-popup .swal2-confirm:hover::before,
+        .swal2-popup .custom-close-btn:hover::before {
+            left: 100%;
+        }
+
+        .swal2-popup .swal2-confirm:hover,
+        .swal2-popup .custom-close-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .swal2-popup .swal2-confirm:active,
+        .swal2-popup .custom-close-btn:active {
+            transform: translateY(0) !important;
+        }
+
+        /* Summernote content styling */
+        #summernote-content {
+            background: var(--bg-secondary) !important;
+            border-radius: 12px !important;
+            padding: 1rem !important;
+            margin-top: 1rem !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        #summernote-content .note-editor {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        #summernote-content .note-editing-area {
+            background: transparent !important;
+        }
+
+        /* Animation for popup entrance */
+        .swal2-popup.swal2-show {
+            animation: modernSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        @keyframes modernSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(2rem) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .swal2-popup {
+                max-width: 90vw !important;
+                margin: 1rem !important;
+                padding: 1.5rem !important;
+            }
+
+            .swal2-popup .swal2-title {
+                font-size: 1.5rem !important;
+                padding-right: 2.5rem !important;
+            }
+
+            .swal2-popup .swal2-html-container {
+                font-size: 0.9rem !important;
+            }
+
+            .swal2-popup .swal2-icon {
+                width: 3rem !important;
+                height: 3rem !important;
+            }
+
+            .swal2-popup .swal2-confirm,
+            .swal2-popup .custom-close-btn {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .custom-close-x {
+                width: 2rem !important;
+                height: 2rem !important;
+                top: 0.75rem !important;
+                right: 0.75rem !important;
+            }
+
+            .custom-close-x::before,
+            .custom-close-x::after {
+                width: 12px !important;
+            }
+
+            .custom-close-x:hover::before,
+            .custom-close-x:hover::after {
+                width: 14px !important;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-primary: #f7fafc;
+                --text-secondary: #e2e8f0;
+                --bg-primary: #1a1a1a;
+                --bg-secondary: #1e1e1e;
+                --border-light: #4a5568;
+            }
+
+            .swal2-popup {
+                background: var(--bg-primary) !important;
+                border-color: var(--border-light) !important;
+            }
+
+            .swal2-popup .swal2-title {
+                color: var(--text-primary) !important;
+            }
+
+            .swal2-popup .swal2-html-container,
+            #swal2-html-container {
+                color: var(--text-secondary) !important;
+            }
+
+            #summernote-content {
+                background: var(--bg-secondary) !important;
+                border-color:rgba(255, 255, 255, 0.1);
+            }
+
+            .custom-close-x {
+                background: rgba(255, 255, 255, 0.05) !important;
+                border-color: rgba(255, 255, 255, 0.1) !important;
+            }
+
+            .custom-close-x::before,
+            .custom-close-x::after {
+                background: #e2e8f0 !important;
+            }
+
+            .custom-close-x:hover {
+                background: rgba(255, 107, 107, 0.15) !important;
+            }
+        }
+
+        /* Custom scrollbar for content */
+        .swal2-popup .swal2-html-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .swal2-popup .swal2-html-container::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 3px;
+        }
+
+        .swal2-popup .swal2-html-container::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 3px;
+        }
+
+        .swal2-popup .swal2-html-container::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+        .swal2-hide {
+  animation: modernSlideOut 0.3s forwards !important;
+}
+
+@keyframes modernSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.95);
+  }
+}
+/* Span Tag */
+.modern-popup .swal2-error > span{
+ display:none;
+}
+/* SweetAlert2 success icon (using Font Awesome 6) */
+.swal2-popup .swal2-icon.swal2-success {
+    background: linear-gradient(135deg, var(--primary-green), #40c057) !important;
+    border-radius: 50% !important;
+    position: relative;
+}
+
+/* Font Awesome checkmark icon */
+.swal2-popup .swal2-icon.swal2-success::before {
+    content: '\f00c'; /* FA6 check */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* HIDE SweetAlert2's built-in tick animation completely */
+.swal2-icon.swal2-success .swal2-success-line-tip,
+.swal2-icon.swal2-success .swal2-success-line-long,
+.swal2-icon.swal2-success .swal2-success-ring,
+.swal2-icon.swal2-success .swal2-success-fix {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
+    </style>
+
+    <!-- jQuery (needed for Summernote) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+</head>
+<body>
+<script>
+    fetch('/app/controller/get_broadcasts.php')
+        .then(response => response.json())
+        .then(broadcasts => {
+            function getIcon(type) {
+                if (type === "none") return null;
+                return ["info", "warning", "success", "error"].includes(type) ? type : "info";
+            }
+
+            function shouldShowBroadcast(id) {
+                return !sessionStorage.getItem(`broadcastClosed_${id}`);
+            }
+
+            function markBroadcastAsClosed(id) {
+                sessionStorage.setItem(`broadcastClosed_${id}`, "true");
+            }
+
+            function isPathAllowed(broadcast) {
+                if (!broadcast.show_on_paths || broadcast.show_on_paths.trim() === "") {
+                    return true;
+                }
+                const currentPath = window.location.pathname;
+                const allowedPaths = broadcast.show_on_paths.split(',').map(path => path.trim());
+                return allowedPaths.includes(currentPath);
+            }
+
+function createAnimatedCloseButton() {
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'custom-close-x';
+    closeBtn.setAttribute('aria-label', 'Close notification');
+    closeBtn.setAttribute('type', 'button');
+
+    setTimeout(() => closeBtn.classList.add('pulse'), 3000);
+
+    closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Trigger same flow as confirm button
+        Swal.clickConfirm();
+    });
+
+    return closeBtn;
+}
+
+
+            function displayBroadcast(index) {
+                if (index >= broadcasts.length) return;
+
+                const broadcast = broadcasts[index];
+
+                if (!shouldShowBroadcast(broadcast.id) || !isPathAllowed(broadcast)) {
+                    return displayBroadcast(index + 1);
+                }
+
+                let htmlContent = '';
+                if (broadcast.info) {
+                    htmlContent += `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${broadcast.info}</p>`;
+                }
+                if (broadcast.description) {
+                    htmlContent += `<div id="summernote-content">${broadcast.description}</div>`;
+                }
+                const themeClass = broadcast.theme ? broadcast.theme.trim().toLowerCase() : 'system';
+                Swal.fire({
+                    title: broadcast.title,
+                    html: htmlContent,
+                    icon: getIcon(broadcast.type) || undefined,
+                    confirmButtonText: broadcast.close_button_text || 'Close',
+                    
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    confirmButtonColor: broadcast.close_button_color || '#667eea',
+                    showCloseButton: false,
+                    customClass: {
+                        confirmButton: 'custom-close-btn',
+                        popup: `modern-popup ${themeClass}`,
+                        title: 'modern-title',
+                        htmlContainer: 'modern-content'
+                    },
+                    showClass: {
+                        popup: 'swal2-show'
+                    },
+                    hideClass: {
+                        popup: 'swal2-hide'
+                    },
+                    didOpen: () => {
+                        const icon = Swal.getPopup().querySelector('.swal2-icon.swal2-success');
+if (icon) {
+    icon.innerHTML = ''; // Remove default SVG structure completely
+}
+                        const popup = Swal.getPopup();
+                        popup.style.animation = 'modernSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+
+                        const closeBtn = createAnimatedCloseButton(() => {
+                            markBroadcastAsClosed(broadcast.id);
+                            setTimeout(() => {
+                                displayBroadcast(index + 1);
+                            }, 200);
+                        });
+
+                        popup.appendChild(closeBtn);
+
+                        setTimeout(() => {
+                            const summernoteContent = document.getElementById('summernote-content');
+                            if (summernoteContent) {
+                                $(summernoteContent).summernote({
+                                    toolbar: false,
+                                    airMode: false,
+                                    disableResizeEditor: true,
+                                    height: 'auto',
+                                    focus: false,
+                                    callbacks: {
+                                        onInit: function () {
+                                            $(this).summernote('disable');
+                                        }
+                                    }
+                                });
+                            }
+                        }, 100);
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const popup = Swal.getPopup();
+                        popup.classList.remove('swal2-show');
+                        popup.classList.add('swal2-hide');
+
+                        setTimeout(() => {
+                            markBroadcastAsClosed(broadcast.id);
+                            // Open the button link if defined
+        if (broadcast.button_link && broadcast.button_link.trim() !== '') {
+            window.open(broadcast.button_link, '_blank'); // open in new tab
+        }
+                            Swal.close();
+                            setTimeout(() => {
+                                displayBroadcast(index + 1);
+                            }, 200);
+                        }, 300);
+                    }
+                });
+            }
+
+           function hasStarted(broadcast) {
+    if (!broadcast.start_datetime) return true; // no start date = always show
+    const now = new Date();
+    const start = new Date(broadcast.start_datetime);
+    return now >= start;
+}
+
+const filteredBroadcasts = broadcasts.filter(b => isPathAllowed(b) && hasStarted(b));
+            if (filteredBroadcasts.length > 0) {
+                setTimeout(() => {
+                    displayBroadcast(0);
+                }, 500);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching broadcasts:', error);
+
+            if (window.location.hostname !== 'localhost') {
+                Swal.fire({
+                    title: 'Connection Error',
+                    text: 'Unable to load notifications. Please refresh the page.',
+                    icon: 'error',
+                    confirmButtonText: 'Refresh',
+                    confirmButtonColor: '#ff6b6b',
+                    customClass: {
+                        confirmButton: 'custom-close-btn'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && Swal.isVisible()) {
+            const closeBtn = document.querySelector('.custom-close-x');
+            if (closeBtn) closeBtn.click();
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList') {
+                    const swalContainer = document.querySelector('.swal2-container');
+                    if (swalContainer && swalContainer.style.display !== 'none') {
+                        setTimeout(() => {
+                            const closeBtn = document.querySelector('.custom-close-x');
+                            if (closeBtn) {
+                                closeBtn.setAttribute('tabindex', '0');
+                            }
+                        }, 100);
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+</script>
+
+    
+</body>
+</html>

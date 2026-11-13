@@ -1,0 +1,120 @@
+<head><style>
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Heading */
+.swal2-container .swal2-popup h2{
+ font-family:'Inter', sans-serif;
+}
+
+/* Swal2 html container */
+#swal2-html-container{
+ font-family:'Inter', sans-serif;
+ text-align:left;
+}
+
+/* Custom close */
+.swal2-popup .swal2-actions .custom-close-btn{
+ font-family:'Inter', sans-serif;
+ background-color:#df3434;
+}
+
+
+
+</style>
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- jQuery (needed for Summernote) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+</head>
+<body>
+    <script>
+        // Fetch the broadcasts from PHP
+        fetch('get_broadcasts')
+            .then(response => response.json())
+            .then(broadcasts => {
+                function getIcon(type) {
+                    if (type === "none") return null; // No icon for "None"
+                    return ["info", "warning", "success", "error"].includes(type) ? type : "info";
+                }
+
+                // Function to check if a broadcast should be displayed
+                function shouldShowBroadcast(id) {
+                    return !sessionStorage.getItem(`broadcastClosed_${id}`); // Session-based storage
+                }
+
+                // Function to mark broadcast as closed in sessionStorage
+                function markBroadcastAsClosed(id) {
+                    sessionStorage.setItem(`broadcastClosed_${id}`, "true");
+                }
+
+                // Function to check if the broadcast should be shown on this path
+                function isPathAllowed(broadcast) {
+                    if (!broadcast.show_on_paths || broadcast.show_on_paths.trim() === "") {
+                        return true; // No path restriction
+                    }
+                    const currentPath = window.location.pathname;
+                    const allowedPaths = broadcast.show_on_paths.split(',').map(path => path.trim()); // Convert to array
+                    return allowedPaths.includes(currentPath); // Check if current path is in allowed paths
+                }
+
+                // Function to display broadcast notifications sequentially
+                function displayBroadcast(index) {
+                    if (index >= broadcasts.length) return;
+
+                    const broadcast = broadcasts[index];
+
+                    // Skip if recently closed or not allowed on this path
+                    if (!shouldShowBroadcast(broadcast.id) || !isPathAllowed(broadcast)) {
+                        return displayBroadcast(index + 1);
+                    }
+
+                    let htmlContent = '';
+                    if (broadcast.info) htmlContent += `<p>${broadcast.info}</p>`;
+                    if (broadcast.description) htmlContent += `<div id="summernote-content">${broadcast.description}</div>`;
+
+                    Swal.fire({
+                        title: broadcast.title,
+                        html: htmlContent,
+                        icon: getIcon(broadcast.type) || undefined,
+                        confirmButtonText: broadcast.close_button_text || 'Close',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        confirmButtonColor: broadcast.close_button_color,
+                        customClass: {
+                            confirmButton: 'custom-close-btn'
+                        }
+                    }).then(() => {
+                        markBroadcastAsClosed(broadcast.id); // Store in sessionStorage
+                        displayBroadcast(index + 1);
+                    });
+
+                    // Initialize Summernote in read-only mode
+                    setTimeout(() => {
+                        $('#summernote-content').summernote({
+                            toolbar: false,
+                            airMode: true,
+                            disableResizeEditor: true
+                        });
+                    }, 100);
+                }
+
+                // Start displaying notifications only if path is allowed
+                const filteredBroadcasts = broadcasts.filter(isPathAllowed);
+                if (filteredBroadcasts.length > 0) {
+                    displayBroadcast(0);
+                }
+            })
+            .catch(error => console.error('Error fetching broadcasts:', error));
+    </script>
+</body>

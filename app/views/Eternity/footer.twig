@@ -1,0 +1,537 @@
+{% if user['auth'] %}
+  </main>
+</div>
+{% else %}
+  </main>
+
+  <!-- ==================== PUBLIC FOOTER ==================== -->
+  <footer class="sitefoot" style="background:#070a12;border-top:1px solid #141c2b;padding:56px 24px 28px;margin-top:60px;color:#7b8ca6;font-size:14px;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;">
+      
+      <!-- Brand & description -->
+      <div>
+        <a href="/" style="display:inline-block;margin-bottom:16px;">
+          <img src="/public/Eternity/logo.png" alt="DeepSMM" style="width:150px;height:auto;object-fit:contain;">
+        </a>
+        <p data-i18n="foot_desc" style="color:#7b8ca6;line-height:1.6;font-size:14px;max-width:320px;margin:0;">
+          Il pannello SMM più veloce: follower, like e visualizzazioni su tutte le piattaforme, a prezzi da rivenditore.
+        </p>
+      </div>
+
+      <!-- Column 1: Pannello -->
+      <div>
+        <h4 data-i18n="foot_panel" style="font-size:15px;font-weight:700;color:#fff;margin:0 0 16px;">Pannello</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="/signup" data-i18n="foot_signup" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">Crea un account</a></li>
+          <li><a href="/login" onclick="openLoginModal(event)" data-i18n="foot_login" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">Accedi</a></li>
+          <li><a href="/services" data-i18n="foot_services" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">Listino</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Assistenza -->
+      <div>
+        <h4 data-i18n="foot_support" style="font-size:15px;font-weight:700;color:#fff;margin:0 0 16px;">Assistenza</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="/#faq" data-i18n="foot_faq" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">Domande frequenti</a></li>
+          <li><a href="mailto:support@deepsmm.com" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">support@deepsmm.com</a></li>
+          <li><a href="https://t.me/krazysmm" target="_blank" rel="noopener" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">Telegram</a></li>
+          <li><a href="https://discord.gg/" target="_blank" rel="noopener" style="color:#7b8ca6;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#7b8ca6'">Discord</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom copyright line -->
+    <div style="max-width:1180px;margin:44px auto 0;padding-top:24px;border-top:1px solid #141c2b;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4a586e;">
+      <span>© 2026 DeepSMM</span>
+      <span style="color:#4a586e;">DeepSMM Panel</span>
+    </div>
+  </footer>
+{% endif %}
+
+<!-- UNIVERSAL SCRIPTS & TRANSLATION ENGINE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.toggle('active');
+  }
+
+  function toggleTheme() {
+    var cur = document.documentElement.dataset.theme || 'dark';
+    var nxt = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nxt;
+    try { localStorage.setItem('krazysmm.theme', nxt); } catch(e) {}
+  }
+
+  function toggleLangDropdown(e) {
+    if (e) e.stopPropagation();
+    var m = document.getElementById('langDropdownMenu');
+    if (m) m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function toggleLangDropdownPublic(e) {
+    if (e) e.stopPropagation();
+    var m = document.getElementById('langDropdownMenuPublic');
+    if (m) m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+  }
+
+  document.addEventListener('click', function(e) {
+    var m1 = document.getElementById('langDropdownMenu');
+    if (m1 && !e.target.closest('.lang-dropdown-wrapper')) m1.style.display = 'none';
+    var m2 = document.getElementById('langDropdownMenuPublic');
+    if (m2 && !e.target.closest('.lang-dropdown-wrapper')) m2.style.display = 'none';
+  });
+
+  // COMPLETE MULTILINGUAL DICTIONARY
+  var DEEPSMM_I18N = {
+    it: {
+      nav_services: "Servizi",
+      nav_how: "Come funziona",
+      nav_faq: "Domande",
+      nav_login: "Accedi",
+      nav_signup: "Registrati",
+      hero_badge: "Pannello SMM Ufficiale",
+      hero_title_1: "Fai crescere i tuoi profili",
+      hero_title_2: "in pochi minuti",
+      hero_sub: "Follower, like, visualizzazioni e molto altro su Instagram, TikTok, YouTube e oltre 33 piattaforme. Prezzi da rivenditore, consegna immediata, nessun abbonamento.",
+      btn_start: "Inizia ora",
+      btn_prices: "Vedi i prezzi",
+      dash_title: "Dashboard",
+      dash_sub: "Colpo d'occhio su saldo, ordini e andamento della spesa.",
+      btn_new_order: "+ Nuovo ordine",
+      card_welcome: "BENVENUTO",
+      card_welcome_sub: "Buon lavoro sul pannello!",
+      card_spent: "SALDO SPESO",
+      card_spent_sub: "totale storico",
+      card_balance: "SALDO ACCOUNT",
+      card_balance_add: "Aggiungi fondi →",
+      stat_pending: "In sospeso",
+      stat_inprogress: "In corso",
+      stat_completed: "Completati",
+      stat_partial: "Parziali",
+      stat_canceled: "Annullati",
+      recent_orders: "Ordini recenti",
+      btn_view_all: "Vedi tutti",
+      no_orders: "Nessun ordine",
+      no_orders_sub: "Quando invii un ordine lo trovi qui.",
+      create_first_order: "Crea il primo ordine",
+      platforms: "Piattaforme",
+      all_services: "Tutti i servizi",
+      discord_banner_title: "Come funziona la ricarica del conto",
+      discord_banner_sub: "Per ordinare devi prima avere saldo: entra nel nostro Discord, apri un ticket nel canale ricariche, invia il pagamento (es. 10€) e un admin accrediterà i fondi sul tuo conto.",
+      btn_recharge_guide: "Guida Ricarica",
+      btn_enter_discord: "Entra nel Discord",
+      side_dash: "Dashboard",
+      side_neworder: "Nuovo ordine",
+      side_services: "Servizi",
+      side_orders: "Ordini",
+      side_addfunds: "Aggiungi fondi",
+      side_ticket: "Ticket",
+      side_account: "Account",
+      side_logout: "Disconnetti",
+      foot_desc: "Il pannello SMM più veloce: follower, like e visualizzazioni su tutte le piattaforme, a prezzi da rivenditore.",
+      foot_panel: "Pannello",
+      foot_signup: "Crea un account",
+      foot_login: "Accedi",
+      foot_services: "Listino",
+      foot_support: "Assistenza",
+      foot_faq: "Domande frequenti"
+    },
+    en: {
+      nav_services: "Services",
+      nav_how: "How it works",
+      nav_faq: "FAQ",
+      nav_login: "Sign In",
+      nav_signup: "Sign Up",
+      hero_badge: "Official SMM Panel",
+      hero_title_1: "Grow your social profiles",
+      hero_title_2: "in just minutes",
+      hero_sub: "Followers, likes, views and more on Instagram, TikTok, YouTube and 33+ other platforms. Reseller prices, instant delivery, zero contracts.",
+      btn_start: "Get Started",
+      btn_prices: "View Pricing",
+      dash_title: "Dashboard",
+      dash_sub: "Quick overview of balance, active orders, and spending habits.",
+      btn_new_order: "+ New Order",
+      card_welcome: "WELCOME",
+      card_welcome_sub: "Enjoy working on the panel!",
+      card_spent: "TOTAL SPENT",
+      card_spent_sub: "lifetime total",
+      card_balance: "ACCOUNT BALANCE",
+      card_balance_add: "Add funds →",
+      stat_pending: "Pending",
+      stat_inprogress: "In Progress",
+      stat_completed: "Completed",
+      stat_partial: "Partial",
+      stat_canceled: "Canceled",
+      recent_orders: "Recent Orders",
+      btn_view_all: "View All",
+      no_orders: "No Orders Yet",
+      no_orders_sub: "When you place an order, it will appear right here.",
+      create_first_order: "Create First Order",
+      platforms: "Platforms",
+      all_services: "All Services",
+      discord_banner_title: "How to Recharge Your Account",
+      discord_banner_sub: "Before ordering you need funds: join our Discord, open a ticket in #recharge, send your payment (e.g. 10€) and an admin will credit your balance instantly.",
+      btn_recharge_guide: "Recharge Guide",
+      btn_enter_discord: "Join Discord",
+      side_dash: "Dashboard",
+      side_neworder: "New Order",
+      side_services: "Services",
+      side_orders: "Orders",
+      side_addfunds: "Add Funds",
+      side_ticket: "Tickets",
+      side_account: "Account",
+      side_logout: "Logout",
+      foot_desc: "The fastest SMM panel: followers, likes, and views across all platforms at wholesale reseller rates.",
+      foot_panel: "Panel",
+      foot_signup: "Create Account",
+      foot_login: "Sign In",
+      foot_services: "Service List",
+      foot_support: "Support",
+      foot_faq: "Frequently Asked Questions"
+    },
+    es: {
+      nav_services: "Servicios",
+      nav_how: "Cómo funciona",
+      nav_faq: "Preguntas",
+      nav_login: "Entrar",
+      nav_signup: "Registrarse",
+      hero_badge: "Panel SMM Oficial",
+      hero_title_1: "Haz crecer tus perfiles",
+      hero_title_2: "en pocos minutos",
+      hero_sub: "Seguidores, likes, vistas y más en Instagram, TikTok, YouTube y más de 33 plataformas. Precios de mayorista, entrega instantánea.",
+      btn_start: "Comenzar",
+      btn_prices: "Ver Precios",
+      dash_title: "Panel de Control",
+      dash_sub: "Visión general de saldo, pedidos y gastos.",
+      btn_new_order: "+ Nuevo Pedido",
+      card_welcome: "BIENVENIDO",
+      card_welcome_sub: "¡Buen trabajo en el panel!",
+      card_spent: "TOTAL GASTADO",
+      card_spent_sub: "total acumulado",
+      card_balance: "SALDO DE CUENTA",
+      card_balance_add: "Añadir fondos →",
+      stat_pending: "Pendiente",
+      stat_inprogress: "En curso",
+      stat_completed: "Completado",
+      stat_partial: "Parcial",
+      stat_canceled: "Cancelado",
+      recent_orders: "Pedidos Recientes",
+      btn_view_all: "Ver todos",
+      no_orders: "Sin pedidos",
+      no_orders_sub: "Cuando envíes un pedido aparecerá aquí.",
+      create_first_order: "Crear primer pedido",
+      platforms: "Plataformas",
+      all_services: "Todos los servicios",
+      discord_banner_title: "Cómo recargar tu saldo",
+      discord_banner_sub: "Para ordenar necesitas saldo: entra a nuestro Discord, abre un ticket en #recargas, envía tu pago y un admin cargará tu saldo al instante.",
+      btn_recharge_guide: "Guía de Recarga",
+      btn_enter_discord: "Entrar a Discord",
+      side_dash: "Dashboard",
+      side_neworder: "Nuevo Pedido",
+      side_services: "Servicios",
+      side_orders: "Pedidos",
+      side_addfunds: "Añadir Fondos",
+      side_ticket: "Tickets",
+      side_account: "Cuenta",
+      side_logout: "Cerrar sesión",
+      foot_desc: "El panel SMM más rápido: seguidores, likes y vistas a precios de revendedor.",
+      foot_panel: "Panel",
+      foot_signup: "Crear cuenta",
+      foot_login: "Entrar",
+      foot_services: "Precios",
+      foot_support: "Soporte",
+      foot_faq: "Preguntas Frecuentes"
+    },
+    fr: {
+      nav_services: "Services",
+      nav_how: "Fonctionnement",
+      nav_faq: "FAQ",
+      nav_login: "Connexion",
+      nav_signup: "Inscription",
+      hero_badge: "Panneau SMM Officiel",
+      hero_title_1: "Développez vos profils",
+      hero_title_2: "en quelques minutes",
+      hero_sub: "Abonnés, likes, vues sur Instagram, TikTok, YouTube et plus de 33 plateformes. Prix revendeur, livraison rapide.",
+      btn_start: "Commencer",
+      btn_prices: "Voir les tarifs",
+      dash_title: "Tableau de Bord",
+      dash_sub: "Aperçu de votre solde, vos commandes et vos dépenses.",
+      btn_new_order: "+ Nouvelle Commande",
+      card_welcome: "BIENVENUE",
+      card_welcome_sub: "Bon travail sur le panneau!",
+      card_spent: "SOLDE DÉPENSÉ",
+      card_spent_sub: "total historique",
+      card_balance: "SOLDE DU COMPTE",
+      card_balance_add: "Ajouter des fonds →",
+      stat_pending: "En attente",
+      stat_inprogress: "En cours",
+      stat_completed: "Terminé",
+      stat_partial: "Partiel",
+      stat_canceled: "Annulé",
+      recent_orders: "Commandes récentes",
+      btn_view_all: "Voir tout",
+      no_orders: "Aucune commande",
+      no_orders_sub: "Vos commandes apparaîtront ici dès que vous en passerez une.",
+      create_first_order: "Créer première commande",
+      platforms: "Plateformes",
+      all_services: "Tous les services",
+      discord_banner_title: "Comment recharger votre compte",
+      discord_banner_sub: "Rejoignez notre Discord, ouvrez un ticket dans #recharges, effectuez le paiement et un admin rechargera votre solde instantanément.",
+      btn_recharge_guide: "Guide Recharge",
+      btn_enter_discord: "Rejoindre Discord",
+      side_dash: "Tableau de bord",
+      side_neworder: "Nouvelle commande",
+      side_services: "Services",
+      side_orders: "Commandes",
+      side_addfunds: "Ajouter des fonds",
+      side_ticket: "Tickets",
+      side_account: "Compte",
+      side_logout: "Déconnexion",
+      foot_desc: "Le panneau SMM le plus rapide: abonnés, likes et vues aux prix de gros.",
+      foot_panel: "Panneau",
+      foot_signup: "Créer un compte",
+      foot_login: "Connexion",
+      foot_services: "Liste des services",
+      foot_support: "Support",
+      foot_faq: "Questions Fréquentes"
+    },
+    de: {
+      nav_services: "Dienste",
+      nav_how: "Funktionsweise",
+      nav_faq: "FAQ",
+      nav_login: "Anmelden",
+      nav_signup: "Registrieren",
+      hero_badge: "Offizielles SMM-Panel",
+      hero_title_1: "Bauen Sie Ihre Profile auf",
+      hero_title_2: "in wenigen Minuten",
+      hero_sub: "Follower, Likes, Views auf Instagram, TikTok, YouTube und über 33 Plattformen. Händlerpreise, sofortige Lieferung.",
+      btn_start: "Jetzt starten",
+      btn_prices: "Preise ansehen",
+      dash_title: "Dashboard",
+      dash_sub: "Überblick über Guthaben, Bestellungen und Ausgaben.",
+      btn_new_order: "+ Neue Bestellung",
+      card_welcome: "WILLKOMMEN",
+      card_welcome_sub: "Viel Erfolg auf dem Panel!",
+      card_spent: "GESAMTAUSGABEN",
+      card_spent_sub: "Gesamtsumme",
+      card_balance: "KONTOGUTHABEN",
+      card_balance_add: "Guthaben aufladen →",
+      stat_pending: "Ausstehend",
+      stat_inprogress: "In Bearbeitung",
+      stat_completed: "Abgeschlossen",
+      stat_partial: "Teilweise",
+      stat_canceled: "Storniert",
+      recent_orders: "Letzte Bestellungen",
+      btn_view_all: "Alle anzeigen",
+      no_orders: "Keine Bestellungen",
+      no_orders_sub: "Ihre Bestellungen erscheinen hier.",
+      create_first_order: "Erste Bestellung aufgeben",
+      platforms: "Plattformen",
+      all_services: "Alle Dienste",
+      discord_banner_title: "Guthaben aufladen",
+      discord_banner_sub: "Treten Sie unserem Discord bei, öffnen Sie ein Ticket in #recharge, und ein Admin lädt Ihr Guthaben sofort auf.",
+      btn_recharge_guide: "Auflade-Anleitung",
+      btn_enter_discord: "Discord beitreten",
+      side_dash: "Dashboard",
+      side_neworder: "Neue Bestellung",
+      side_services: "Dienste",
+      side_orders: "Bestellungen",
+      side_addfunds: "Guthaben aufladen",
+      side_ticket: "Tickets",
+      side_account: "Konto",
+      side_logout: "Abmelden",
+      foot_desc: "Das schnellste SMM-Panel für alle Plattformen zu Großhandelspreisen.",
+      foot_panel: "Panel",
+      foot_signup: "Konto erstellen",
+      foot_login: "Anmelden",
+      foot_services: "Preisliste",
+      foot_support: "Support",
+      foot_faq: "Häufige Fragen"
+    },
+    pt: {
+      nav_services: "Serviços",
+      nav_how: "Como funciona",
+      nav_faq: "Perguntas",
+      nav_login: "Entrar",
+      nav_signup: "Cadastrar",
+      hero_badge: "Painel SMM Oficial",
+      hero_title_1: "Cresça seus perfis",
+      hero_title_2: "em poucos minutos",
+      hero_sub: "Seguidores, curtidas, visualizações no Instagram, TikTok, YouTube e 33+ plataformas. Preços de revenda e entrega rápida.",
+      btn_start: "Começar agora",
+      btn_prices: "Ver preços",
+      dash_title: "Painel",
+      dash_sub: "Visão geral de saldo, pedidos e despesas.",
+      btn_new_order: "+ Novo Pedido",
+      card_welcome: "BEM-VINDO",
+      card_welcome_sub: "Bom trabalho no painel!",
+      card_spent: "TOTAL GASTO",
+      card_spent_sub: "histórico total",
+      card_balance: "SALDO DA CONTA",
+      card_balance_add: "Adicionar saldo →",
+      stat_pending: "Pendente",
+      stat_inprogress: "Em andamento",
+      stat_completed: "Concluído",
+      stat_partial: "Parcial",
+      stat_canceled: "Cancelado",
+      recent_orders: "Pedidos Recentes",
+      btn_view_all: "Ver todos",
+      no_orders: "Nenhum pedido",
+      no_orders_sub: "Quando você criar um pedido, ele aparecerá aqui.",
+      create_first_order: "Criar primeiro pedido",
+      platforms: "Plataformas",
+      all_services: "Todos os serviços",
+      discord_banner_title: "Como recarregar sua conta",
+      discord_banner_sub: "Entre no nosso Discord, abra um ticket em #recarregar, pague o valor e um admin adicionará seu saldo na hora.",
+      btn_recharge_guide: "Guia de Recarga",
+      btn_enter_discord: "Entrar no Discord",
+      side_dash: "Painel",
+      side_neworder: "Novo Pedido",
+      side_services: "Serviços",
+      side_orders: "Pedidos",
+      side_addfunds: "Adicionar Saldo",
+      side_ticket: "Tickets",
+      side_account: "Conta",
+      side_logout: "Sair",
+      foot_desc: "O painel SMM mais rápido: seguidores, likes e views a preços de atacado.",
+      foot_panel: "Painel",
+      foot_signup: "Criar conta",
+      foot_login: "Entrar",
+      foot_services: "Tabela de preços",
+      foot_support: "Suporte",
+      foot_faq: "Perguntas Frequentes"
+    },
+    tr: {
+      nav_services: "Servisler",
+      nav_how: "Nasıl Çalışır",
+      nav_faq: "SSS",
+      nav_login: "Giriş Yap",
+      nav_signup: "Kayıt Ol",
+      hero_badge: "Resmi SMM Paneli",
+      hero_title_1: "Hesaplarınızı büyütün",
+      hero_title_2: "dakikalar içinde",
+      hero_sub: "Instagram, TikTok, YouTube ve 33+ platformda takipçi, beğeni ve izlenme. Toptan fiyatlar, anında teslimat.",
+      btn_start: "Hemen Başla",
+      btn_prices: "Fiyatları Gör",
+      dash_title: "Kontrol Paneli",
+      dash_sub: "Bakiye, siparişler ve harcama durumunuza anında göz atın.",
+      btn_new_order: "+ Yeni Sipariş",
+      card_welcome: "HOŞ GELDİNİZ",
+      card_welcome_sub: "Panelde iyi çalışmalar dileriz!",
+      card_spent: "HARCANAN BAKİYE",
+      card_spent_sub: "toplam harcama",
+      card_balance: "HESAP BAKİYESİ",
+      card_balance_add: "Bakiye yükle →",
+      stat_pending: "Beklemede",
+      stat_inprogress: "İşleniyor",
+      stat_completed: "Tamamlandı",
+      stat_partial: "Kısmi",
+      stat_canceled: "İptal Edildi",
+      recent_orders: "Son Siparişler",
+      btn_view_all: "Tümünü Gör",
+      no_orders: "Henüz Sipariş Yok",
+      no_orders_sub: "Bir sipariş verdiğinizde burada görünecektir.",
+      create_first_order: "İlk Siparişi Oluştur",
+      platforms: "Platformlar",
+      all_services: "Tüm Servisler",
+      discord_banner_title: "Bakiye Yükleme Rehberi",
+      discord_banner_sub: "Sipariş vermeden önce bakiye yükleyin: Discord sunucumuza katılın, #bakiye kanalında ticket açın, admin hemen bakiyenizi yüklesin.",
+      btn_recharge_guide: "Yükleme Rehberi",
+      btn_enter_discord: "Discord'a Katıl",
+      side_dash: "Panel",
+      side_neworder: "Yeni Sipariş",
+      side_services: "Servisler",
+      side_orders: "Siparişler",
+      side_addfunds: "Bakiye Yükle",
+      side_ticket: "Destek Talebi",
+      side_account: "Hesap",
+      side_logout: "Çıkış Yap",
+      foot_desc: "En hızlı SMM paneli: tüm platformlarda takipçi ve beğeni hizmetleri.",
+      foot_panel: "Panel",
+      foot_signup: "Hesap Aç",
+      foot_login: "Giriş Yap",
+      foot_services: "Servis Listesi",
+      foot_support: "Destek",
+      foot_faq: "Sıkça Sorulan Sorular"
+    }
+  };
+
+  var LANG_FLAGS = {
+    it: { flag: '🇮🇹', name: 'Italiano' },
+    en: { flag: '🇬🇧', name: 'English' },
+    es: { flag: '🇪🇸', name: 'Español' },
+    fr: { flag: '🇫🇷', name: 'Français' },
+    de: { flag: '🇩🇪', name: 'Deutsch' },
+    pt: { flag: '🇵🇹', name: 'Português' },
+    tr: { flag: '🇹🇷', name: 'Türkçe' }
+  };
+
+  function selectLanguage(code) {
+    try {
+      localStorage.setItem('deepsmm_lang', code);
+      document.cookie = "site_lang=" + code + ";path=/;max-age=31536000";
+    } catch(e) {}
+    
+    // Apply client translations immediately
+    applyDeepLanguage(code);
+
+    // Call server to persist session and reload seamlessly
+    var u = new URL(window.location.href);
+    u.searchParams.set('lang', code);
+    window.location.href = u.toString();
+  }
+
+  function applyDeepLanguage(code) {
+    if (!DEEPSMM_I18N[code]) code = 'it';
+    var dict = DEEPSMM_I18N[code];
+
+    // Update Flag Buttons
+    var info = LANG_FLAGS[code] || LANG_FLAGS.it;
+    document.querySelectorAll('.lang-btn-current-flag').forEach(function(el) {
+      el.textContent = info.flag;
+    });
+    document.querySelectorAll('.lang-btn-current-text').forEach(function(el) {
+      el.textContent = info.name;
+    });
+
+    // Translate all elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    // Update active state in dropdown menus
+    document.querySelectorAll('.lang-opt-item').forEach(function(el) {
+      var optLang = el.getAttribute('data-lang');
+      if (optLang === code) {
+        el.style.color = '#10b981';
+        el.style.background = 'rgba(16,185,129,0.14)';
+        el.style.fontWeight = '700';
+      } else {
+        el.style.color = '#cbd5e1';
+        el.style.background = 'transparent';
+        el.style.fontWeight = '500';
+      }
+    });
+  }
+
+  // Run on load
+  document.addEventListener('DOMContentLoaded', function() {
+    var stored = null;
+    try { stored = localStorage.getItem('deepsmm_lang'); } catch(e) {}
+    var urlParams = new URLSearchParams(window.location.search);
+    var langParam = urlParams.get('lang');
+    var activeLang = langParam || stored || '{{ active_lang_code|default("it") }}';
+    if (!DEEPSMM_I18N[activeLang]) activeLang = 'it';
+    applyDeepLanguage(activeLang);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+{% include 'header.twig' %}
+<style>
+{{ settings.user_font_import|raw }}   
+   body {
+        font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+        background-color: #f7f9fc;
+        color: #333;
+    }
+    .alert {
+        border-radius: 0.25rem;
+        margin-bottom: 20px;
+    }
+    .confirm-email-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 400px;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .confirm-email__header h3 {
+         font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        
+    }
+    .confirm-email__description {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: #555;
+    }
+    .btn-primary {
+        background: #21c5fb;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-primary:hover {
+        background: #17a2b8;
+    }
+    .modal-header, .modal-footer {
+        border: none;
+    }
+    .modal-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+    .error-summary {
+        display: none; /* Initially hidden */
+    }
+    .footer {
+        background: #343a40;
+        color: white;
+        padding: 20px 0;
+    }
+    .footer p {
+        margin: 0;
+        text-align: center;
+    }
+    /* Import Google Fonts */
+    {{ settings.user_font_import|raw }}   {{ settings.user_font_import|raw }}
+
+    /* Confirm email card */
+    .wrapper-sidebar-navbar .confirm-email-card {
+        position: relative;
+        top: 100px;
+        font-family: '{{ settings.user_font }}', {{ settings.user_font_type }}  ;
+    }
+
+    /* Button */
+    #resendEmailLink {
+        background-color: #d83346;
+    }
+
+    /* Button */
+    #changeEmailLink {
+        background-color: #d83346;
+    }
+
+/* Sidebar block  left */
+#block_82 span .sidebar-block__left{
+ pointer-events: none;
+}
+
+/* Navigation */
+.sidebar-block__top div nav{
+ pointer-events: none;
+}
+/* Row */
+.wrapper-sidebar-navbar .justify-content-center{
+ padding-bottom:200px;
+ margin-bottom:80px;
+}
+
+
+
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="confirm-email-card">
+                <div class="confirm-email__header">
+                    <h3>Two-Factor Authentication</h3>
+                </div>
+                <div class="confirm-email__description">
+                    Please check your email for the verification code and enter it below to complete the login process.
+                </div>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ errorText }}</div>
+                {% endif %}
+                {% if success %}
+                    <div class="alert alert-success">{{ successText }}</div>
+                {% endif %}
+<br>
+                <form method="post" action="">
+                    <div class="form-group">
+                        <label for="2FA_Code">Verification Code</label>
+                        <input type="text" class="form-control" id="2FA_Code" name="2FA_Code" placeholder="Enter verification code" required>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Verify</button>
+                    <a href="/logout" class="btn btn-primary">Logout</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+{% include 'new-footer.twig' %}

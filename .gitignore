@@ -1,0 +1,13 @@
+# Logs
+*.log
+error_log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Temp files
+test_*.php
+test_*.txt
+cookies.txt

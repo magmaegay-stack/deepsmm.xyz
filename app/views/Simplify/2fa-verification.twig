@@ -1,0 +1,159 @@
+{% include 'header.twig' %}
+<style>
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+    @import url("//fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+    body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #f7f9fc;
+        color: #333;
+    }
+    .alert {
+        border-radius: 0.25rem;
+        margin-bottom: 20px;
+    }
+    .confirm-email-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 400px;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .confirm-email__header h3 {
+         font-family: 'Nunito', sans-serif;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        {% if settings["site_theme_alt"] == "Red" %}
+        color: #d83346;
+        {% elseif settings["site_theme_alt"] == "Blue" %}
+        color: #1e79e4;
+        {% elseif settings["site_theme_alt"] == "Lime" %}
+        color: #46b649;
+        {% elseif settings["site_theme_alt"] == "Grapes" %}
+        color: #6216fb;
+        {% elseif settings["site_theme_alt"] == "Dark" %}
+        color: #ff8355;
+        {% elseif settings["site_theme_alt"] == "Cyan" %}
+        color: #32c7ce;
+        {% elseif settings["site_theme_alt"] == "Coral" %}
+        color: #ff6b63;
+        {% elseif settings["site_theme_alt"] == "Green" %}
+        color: #307c6f;
+        {% elseif settings["site_theme_alt"] == "Grey" %}
+        color: #415566;
+        {% elseif settings["site_theme_alt"] == "Lilac" %}
+        color: #7c96cf;
+        {% elseif settings["site_theme_alt"] == "Orange" %}
+        color: #f36b15;
+        {% else %}
+        color: #007bff; /* Default color */
+        {% endif %}
+    }
+    .confirm-email__description {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: #555;
+    }
+    .btn-big-primary {
+        background: #21c5fb;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-big-primary:hover {
+        background: #17a2b8;
+    }
+    .modal-header, .modal-footer {
+        border: none;
+    }
+    .modal-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+    .error-summary {
+        display: none; /* Initially hidden */
+    }
+    .footer {
+        background: #343a40;
+        color: white;
+        padding: 20px 0;
+    }
+    .footer p {
+        margin: 0;
+        text-align: center;
+    }
+    /* Import Google Fonts */
+    @import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+    @import url("//fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+    /* Confirm email card */
+    .wrapper-sidebar-navbar .confirm-email-card {
+        position: relative;
+        top: 100px;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    /* Button */
+    #resendEmailLink {
+        background-color: #d83346;
+    }
+
+    /* Button */
+    #changeEmailLink {
+        background-color: #d83346;
+    }
+
+/* Sidebar block  left */
+#block_82 span .sidebar-block__left{
+ pointer-events: none;
+}
+
+/* Navigation */
+.sidebar-block__top div nav{
+ pointer-events: none;
+}
+
+
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="confirm-email-card">
+                <div class="confirm-email__header">
+                    <h3>Two-Factor Authentication</h3>
+                </div>
+                <div class="confirm-email__description">
+                    Please check your email for the verification code and enter it below to complete the login process.
+                </div>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ errorText }}</div>
+                {% endif %}
+                {% if success %}
+                    <div class="alert alert-success">{{ successText }}</div>
+                {% endif %}
+<br>
+                <form method="post" action="">
+                    <div class="form-group">
+                        <label for="2FA_Code">Verification Code</label>
+                        <input type="text" class="form-control" id="2FA_Code" name="2FA_Code" placeholder="Enter verification code" required>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-big-primary">Verify</button>
+                    <a href="/logout" class="btn btn-big-primary">Logout</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+{% include 'footer.twig' %}

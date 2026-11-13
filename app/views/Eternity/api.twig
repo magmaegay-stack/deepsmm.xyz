@@ -1,0 +1,278 @@
+{% include 'header.twig' %}
+
+<!-- ==================== API DOCUMENTATION PAGE (KrazySMM Green Style) ==================== -->
+<div class="dash-head-section" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px;">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:#10b981;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+    </div>
+    <div>
+      <h1 style="font-size:22px;font-weight:800;color:#fff;margin:0 0 3px;">Documentazione API</h1>
+      <p style="font-size:13.5px;color:#7b8ca6;margin:0;">Collega il tuo sito o pannello e ordina via codice.</p>
+    </div>
+  </div>
+
+  <a href="/account" class="btn" style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 20px;border-radius:10px;background:#101726;border:1px solid #1e2c44;color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;transition:all 0.2s ease;" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='#1e2c44'">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:#10b981;">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    <span>La tua chiave API</span>
+  </a>
+</div>
+
+<!-- SECTION 1: OVERVIEW & SPECS -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:24px;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#10b981;">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </svg>
+    <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0;">Documentazione API</h3>
+  </div>
+  <p style="font-size:13.8px;color:#94a3b8;line-height:1.6;margin:0 0 22px;">
+    Collega il tuo sito o il tuo pannello a KrazySmm: stesso formato degli altri pannelli SMM, quindi se hai già un'integrazione ti basta cambiare indirizzo e chiave. I prezzi sono quelli del tuo listino e il saldo scalato è quello del tuo account.
+  </p>
+
+  <!-- 4 Meta Boxes Grid -->
+  <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;margin-bottom:20px;">
+    <div style="padding:14px;border-radius:12px;background:#101726;border:1px solid #1e2c44;">
+      <span style="display:block;font-size:10.5px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">INDIRIZZO</span>
+      <b style="font-size:13px;color:#10b981;font-family:monospace;word-break:break-all;">{{ site['url'] }}/api/v2</b>
+    </div>
+    <div style="padding:14px;border-radius:12px;background:#101726;border:1px solid #1e2c44;">
+      <span style="display:block;font-size:10.5px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">METODO</span>
+      <b style="font-size:13px;color:#fff;font-family:monospace;">POST</b>
+    </div>
+    <div style="padding:14px;border-radius:12px;background:#101726;border:1px solid #1e2c44;">
+      <span style="display:block;font-size:10.5px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">FORMATO INVIO</span>
+      <b style="font-size:12px;color:#94a3b8;font-family:monospace;word-break:break-all;">application/x-www-form-urlencoded</b>
+    </div>
+    <div style="padding:14px;border-radius:12px;background:#101726;border:1px solid #1e2c44;">
+      <span style="display:block;font-size:10.5px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;color:#7b8ca6;margin-bottom:4px;">RISPOSTA</span>
+      <b style="font-size:13px;color:#fff;font-family:monospace;">JSON</b>
+    </div>
+  </div>
+
+  {% if not user['apikey'] %}
+    <div style="padding:12px 16px;border-radius:10px;background:rgba(220,53,69,0.12);border:1px solid rgba(220,53,69,0.3);color:#ff6b77;font-size:13.5px;display:flex;align-items:center;gap:10px;">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>Non hai ancora una chiave API. Creala dalla pagina <a href="/account" style="color:#fff;font-weight:700;text-decoration:underline;">Account</a>.</span>
+    </div>
+  {% else %}
+    <div style="padding:12px 16px;border-radius:10px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:#34d399;font-size:13.5px;display:flex;align-items:center;gap:10px;">
+      <i class="fas fa-check-circle"></i>
+      <span>La tua chiave API attiva: <code style="color:#fff;background:rgba(0,0,0,0.3);padding:2px 8px;border-radius:6px;">{{ user['apikey'] }}</code></span>
+    </div>
+  {% endif %}
+</div>
+
+<!-- SECTION 2: CREARE UN ORDINE -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:24px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+    <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0;">Creare un ordine</h3>
+    <span style="font-size:12.5px;color:#7b8ca6;">Il saldo viene scalato subito; se il fornitore rifiuta non ti viene addebitato nulla.</span>
+  </div>
+
+  <div class="api-split-box" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px;">
+    <table class="api-param-table">
+      <thead><tr><th>PARAMETRI</th><th>DESCRIZIONE</th></tr></thead>
+      <tbody>
+        <tr><td><code>key</code></td><td>La tua chiave API</td></tr>
+        <tr><td><code>action</code></td><td><code>add</code></td></tr>
+        <tr><td><code>service</code></td><td>ID del servizio, dal listino</td></tr>
+        <tr><td><code>link</code></td><td>Link pubblico del profilo o del post</td></tr>
+        <tr><td><code>quantity</code></td><td>Quantità, tra il minimo e il massimo del servizio</td></tr>
+        <tr><td><code>runs</code></td><td>Facoltativo: numero di consegne (solo drip-feed)</td></tr>
+        <tr><td><code>interval</code></td><td>Facoltativo: minuti tra una consegna e l'altra</td></tr>
+      </tbody>
+    </table>
+
+    <div class="api-json-box">
+      <span class="api-json-label">RISPOSTA</span>
+      <pre><code>{
+  "order": 12345
+}</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: STATO DI UN ORDINE -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:24px;">
+  <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0 0 16px;">Stato di un ordine</h3>
+  <div class="api-split-box" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px;">
+    <table class="api-param-table">
+      <thead><tr><th>PARAMETRI</th><th>DESCRIZIONE</th></tr></thead>
+      <tbody>
+        <tr><td><code>key</code></td><td>La tua chiave API</td></tr>
+        <tr><td><code>action</code></td><td><code>status</code></td></tr>
+        <tr><td><code>order</code></td><td>ID dell'ordine restituito da <code>add</code></td></tr>
+      </tbody>
+    </table>
+
+    <div class="api-json-box">
+      <span class="api-json-label">RISPOSTA</span>
+      <pre><code>{
+  "charge": "0.8100",
+  "start_count": "1240",
+  "status": "Completed",
+  "remains": "0",
+  "currency": "USD"
+}</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: ELENCO DEI SERVIZI -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:24px;">
+  <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0 0 16px;">Elenco dei servizi</h3>
+  <div class="api-split-box" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px;">
+    <table class="api-param-table">
+      <thead><tr><th>PARAMETRI</th><th>DESCRIZIONE</th></tr></thead>
+      <tbody>
+        <tr><td><code>key</code></td><td>La tua chiave API</td></tr>
+        <tr><td><code>action</code></td><td><code>services</code></td></tr>
+      </tbody>
+    </table>
+
+    <div class="api-json-box">
+      <span class="api-json-label">RISPOSTA</span>
+      <pre><code>[
+  {
+    "service": 14235,
+    "name": "TikTok Video Views",
+    "category": "TikTok",
+    "rate": "0.0081",
+    "min": "100",
+    "max": "2147483647",
+    "refill": false,
+    "cancel": true,
+    "dripfeed": false
+  }
+]</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: ESEMPI PRONTI (cURL & JS) -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:24px;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#10b981;">
+      <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+    </svg>
+    <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0;">Esempi pronti</h3>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <!-- cURL -->
+    <div class="api-json-box">
+      <span class="api-json-label">cURL</span>
+      <pre><code>curl -X POST {{ site['url'] }}/api/v2 \
+  -d "key={{ user['apikey'] ?: 'YOUR_API_KEY' }}" \
+  -d "action=add" \
+  -d "service=14235" \
+  -d "link=https://vm.tiktok.com/XXXXXX/" \
+  -d "quantity=1000"</code></pre>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="api-json-box">
+      <span class="api-json-label">JavaScript (Node.js / Browser)</span>
+      <pre><code>const r = await fetch('{{ site['url'] }}/api/v2', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams({
+    key: '{{ user['apikey'] ?: 'YOUR_API_KEY' }}',
+    action: 'add',
+    service: '14235',
+    link: 'https://vm.tiktok.com/XXXXXX/',
+    quantity: '1000'
+  })
+});
+const data = await r.json();</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: GESTIONE ERRORI -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;margin-bottom:30px;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#eab308;">
+      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+    </svg>
+    <h3 style="font-size:17px;font-weight:800;color:#fff;margin:0;">Errori</h3>
+  </div>
+  <p style="font-size:13.5px;color:#94a3b8;margin:0 0 16px;">
+    Quando qualcosa non va la risposta ha sempre codice HTTP 200 e contiene il campo <code>error</code>: controlla sempre quel campo prima di leggere il resto.
+  </p>
+
+  <div class="api-json-box">
+    <pre><code>{
+  "error": "Not enough funds on balance"
+}</code></pre>
+  </div>
+</div>
+
+<style>
+  .api-param-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .api-param-table th {
+    padding: 10px 12px;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #7b8ca6;
+    border-bottom: 1px solid #1a2538;
+  }
+  .api-param-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #cbd5e1;
+  }
+  .api-param-table code {
+    background: rgba(16, 185, 129, 0.12);
+    color: #34d399;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .api-json-box {
+    background: #080d17;
+    border: 1px solid #182236;
+    border-radius: 12px;
+    padding: 16px 20px;
+    position: relative;
+    overflow-x: auto;
+  }
+  .api-json-label {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #7b8ca6;
+    text-transform: uppercase;
+  }
+  .api-json-box pre {
+    margin: 0;
+    color: #34d399;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .api-split-box {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+{% include 'footer.twig' %}

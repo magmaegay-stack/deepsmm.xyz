@@ -1,0 +1,156 @@
+{% include 'header.twig' %}
+
+<!-- ==================== ADDFUNDS PAGE (DeepSMM Discord Recharge Workflow) ==================== -->
+<div class="dash-head-section" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px;">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div style="width:46px;height:46px;border-radius:14px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:#10b981;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+        <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+      </svg>
+    </div>
+    <div>
+      <h1 style="font-size:22px;font-weight:800;color:#fff;margin:0 0 3px;">Ricarica Saldo</h1>
+      <p style="font-size:13.5px;color:#7b8ca6;margin:0;">Carica il tuo conto tramite ticket Discord: accredito rapido manuale da parte dello staff.</p>
+    </div>
+  </div>
+</div>
+
+{% if errorText %}
+  <div style="background:rgba(220,53,69,0.15);border:1px solid #dc3545;color:#ff6b77;padding:12px 18px;border-radius:12px;margin-bottom:20px;font-size:14px;">
+    {{ errorText }}
+  </div>
+{% endif %}
+
+{% if successText %}
+  <div style="background:rgba(16,185,129,0.15);border:1px solid #10b981;color:#34d399;padding:12px 18px;border-radius:12px;margin-bottom:20px;font-size:14px;">
+    {{ successText }}
+  </div>
+{% endif %}
+
+<div class="addfunds-grid" style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:20px;margin-bottom:24px;">
+  
+  <!-- LEFT: PROCEDURA RICARICA DISCORD (PROMINENTE) -->
+  <div class="dash-card" style="border-radius:20px;background:linear-gradient(180deg, #0d1626 0%, #080d17 100%);border:1px solid rgba(16,185,129,0.3);padding:28px 30px;box-shadow:0 15px 35px -10px rgba(0,0,0,0.6);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:42px;height:42px;border-radius:12px;background:rgba(88,101,242,0.15);border:1px solid rgba(88,101,242,0.3);display:flex;align-items:center;justify-content:center;color:#5865F2;">
+          <i class="fab fa-discord" style="font-size:22px;"></i>
+        </div>
+        <div>
+          <span style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#10b981;">METODO UFFICIALE</span>
+          <h3 style="font-size:19px;font-weight:800;color:#fff;margin:0;">Ricarica tramite Ticket Discord</h3>
+        </div>
+      </div>
+      <span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;">
+        ⚡ Accredito Immediato
+      </span>
+    </div>
+
+    <p style="font-size:14px;color:#94a3b8;margin:0 0 22px;line-height:1.6;">
+      Per ricaricare il tuo saldo ed effettuare ordini, segui questi semplici 3 passi:
+    </p>
+
+    <!-- STEP BY STEP -->
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:26px;">
+      
+      <!-- STEP 1 -->
+      <div style="display:flex;gap:14px;align-items:flex-start;background:#0c121e;padding:14px 18px;border-radius:14px;border:1px solid #162032;">
+        <div style="width:28px;height:28px;border-radius:8px;background:rgba(16,185,129,0.2);color:#10b981;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">1</div>
+        <div>
+          <h4 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 2px;">Entra nel nostro Discord Ufficiale</h4>
+          <p style="font-size:12.5px;color:#7b8ca6;margin:0;">Unisciti alla nostra community per avere supporto dedicato e accesso ai canali di ricarica.</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div style="display:flex;gap:14px;align-items:flex-start;background:#0c121e;padding:14px 18px;border-radius:14px;border:1px solid #162032;">
+        <div style="width:28px;height:28px;border-radius:8px;background:rgba(16,185,129,0.2);color:#10b981;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">2</div>
+        <div>
+          <h4 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 2px;">Apri un Ticket nel canale <code>#ricariche</code></h4>
+          <p style="font-size:12.5px;color:#7b8ca6;margin:0;">Comunica il tuo username (<b>{{ user['username'] }}</b>) e l'importo desiderato (es. 10€, 25€, 50€, ecc.). Accettiamo PayPal, Carte, Crypto e Bonifico.</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div style="display:flex;gap:14px;align-items:flex-start;background:#0c121e;padding:14px 18px;border-radius:14px;border:1px solid #162032;">
+        <div style="width:28px;height:28px;border-radius:8px;background:rgba(16,185,129,0.2);color:#10b981;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">3</div>
+        <div>
+          <h4 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 2px;">Un Admin carica il tuo saldo istantaneamente</h4>
+          <p style="font-size:12.5px;color:#7b8ca6;margin:0;">Appena confermato il pagamento, l'admin ricarica il saldo sul tuo account e puoi subito inviare ordini dalla sezione Nuovo Ordine!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DISCORD CTA BUTTON -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://discord.gg/" target="_blank" rel="noopener" class="btn" style="flex:1;min-width:220px;height:48px;border-radius:12px;background:#5865F2;color:#fff;font-weight:800;font-size:14.5px;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;box-shadow:0 8px 24px -4px rgba(88,101,242,0.6);transition:all 0.25s ease;">
+        <i class="fab fa-discord" style="font-size:20px;"></i>
+        <span>Entra nel Discord & Apri Ticket</span>
+      </a>
+      <a href="https://t.me/krazysmm" target="_blank" rel="noopener" class="btn" style="min-width:180px;height:48px;border-radius:12px;background:#0088cc;color:#fff;font-weight:800;font-size:14.5px;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;box-shadow:0 8px 24px -4px rgba(0,136,204,0.5);">
+        <i class="fab fa-telegram-plane" style="font-size:18px;"></i>
+        <span>Supporto Telegram</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: SALDO ATTUALE & INFO UTENTE -->
+  <div style="display:flex;flex-direction:column;gap:20px;">
+    
+    <!-- SALDO ATTUALE CARD -->
+    <div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:26px 28px;">
+      <span style="display:block;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#7b8ca6;margin-bottom:8px;">IL TUO SALDO DISPONIBILE</span>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:42px;height:42px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;color:#10b981;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.8 1.8 0 0 1 0 3.6h-3a1.8 1.8 0 0 0 0 3.6h4"/></svg>
+        </div>
+        <h2 style="font-size:32px;font-weight:800;color:#10b981;margin:0;">{{ user['balance'] ?: '$0.0000' }}</h2>
+      </div>
+      <div style="padding:10px 14px;border-radius:10px;background:#101726;border:1px solid #1e2c44;font-size:12.5px;color:#94a3b8;">
+        Username da comunicare nel ticket: <br><strong style="color:#fff;font-size:14px;">{{ user['username'] }}</strong>
+      </div>
+    </div>
+
+    <!-- GUIDA RAPIDA -->
+    <div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:24px 26px;flex:1;">
+      <h4 style="font-size:15px;font-weight:800;color:#fff;margin:0 0 10px;display:flex;align-items:center;gap:8px;">
+        <i class="fas fa-shield-alt" style="color:#10b981;"></i> Sicurezza & Garanzia
+      </h4>
+      <p style="font-size:12.5px;color:#7b8ca6;margin:0 0 14px;line-height:1.5;">
+        Tutte le ricariche vengono processate in sicurezza dallo staff DeepSMM. Una volta caricato, il saldo non scade mai e puoi spenderlo in qualunque momento.
+      </p>
+      <a href="/neworder" class="btn" style="width:100%;height:42px;border-radius:10px;background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:800;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;">
+        <i class="fas fa-plus"></i> Vai a Nuovo Ordine
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- RISCATTA UN CODICE (OPZIONALE) -->
+<div class="dash-card" style="border-radius:18px;background:#0c121e;border:1px solid #1a2538;padding:24px 28px;max-width:750px;margin-bottom:30px;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#10b981;">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    <h3 style="font-size:16px;font-weight:800;color:#fff;margin:0;">Hai un voucher o codice regalo?</h3>
+  </div>
+  <p style="font-size:13px;color:#7b8ca6;margin:0 0 16px;">
+    Se possiedi un codice coupon fornito dall'assistenza, incollalo qui sotto per riscattarlo:
+  </p>
+
+  <form method="post" action="/addfunds">
+    <div style="margin-bottom:14px;">
+      <input type="text" name="coupon_codes" placeholder="Es. DEEP-XXXX-XXXX-XXXX" style="width:100%;height:46px;padding:0 14px;background:#101726;border:1px solid #1e2c44;color:#10b981;font-family:monospace;border-radius:10px;font-size:14px;">
+    </div>
+
+    <button type="submit" class="btn primary" style="height:42px;padding:0 24px;border-radius:10px;background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;font-weight:800;font-size:13.5px;border:none;cursor:pointer;">
+      Riscatta Voucher
+    </button>
+  </form>
+</div>
+
+{% include 'footer.twig' %}
